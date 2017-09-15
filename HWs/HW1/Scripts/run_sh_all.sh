@@ -1,4 +1,13 @@
-my_script = Software_deployment.sh
+to_run=Software_deployment.sh
+#################################
+cur=$(pwd)
+my_script="${cur}/${to_run}"
+
+echo ${my_script}
+
+cd ~
+${my_script}
+cd -
 
 ssh vm-32-2 'bash -s' < ${my_script}
 ssh vm-32-3 'bash -s' < ${my_script}
