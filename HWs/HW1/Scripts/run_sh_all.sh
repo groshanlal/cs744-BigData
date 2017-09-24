@@ -1,4 +1,4 @@
-to_run=Software_deployment.sh
+to_run=hapood_setup.sh
 #################################
 cur=$(pwd)
 my_script="${cur}/${to_run}"

@@ -1,0 +1,66 @@
+
+Logging initialized using configuration in jar:file:/home/ubuntu/software/hive-1.2.1/lib/hive-common-1.2.1.jar!/hive-log4j.properties
+Hive history file=/tmp/ubuntu/hive_job_log_3a981a11-8174-44d7-9d3a-05ceb1d1c90a_605356168.txt
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/ubuntu/software/tez-0.7.1-SNAPSHOT-minimal/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/ubuntu/software/hadoop-2.6.0/share/hadoop/common/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+OK
+Time taken: 0.999 seconds
+Query ID = ubuntu_20170923230147_cad35c97-1474-4405-bc75-73c59c2bb59d
+Total jobs = 1
+Launching Job 1 out of 1
+
+
+Status: Running (Executing on YARN cluster with App id application_1505508390280_0050)
+
+Map 1: -/-	Map 4: -/-	Map 5: -/-	Map 6: -/-	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 0/26	Map 4: 0/1	Map 5: 0/1	Map 6: 0/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 0(+1)/26	Map 4: 0(+1)/1	Map 5: 0(+1)/1	Map 6: 0(+1)/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 0(+7)/26	Map 4: 0(+1)/1	Map 5: 0(+1)/1	Map 6: 0(+1)/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 0(+9)/26	Map 4: 0(+1)/1	Map 5: 0(+1)/1	Map 6: 0(+1)/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 0(+9)/26	Map 4: 1/1	Map 5: 0(+1)/1	Map 6: 0(+1)/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 0(+9)/26	Map 4: 1/1	Map 5: 0(+1)/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 0(+9)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 0(+11)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 0(+12)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 0(+12)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 2(+10)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 5(+7)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 8(+4)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 9(+3)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 9(+4)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 9(+5)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 9(+7)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 9(+8)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 9(+12)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 10(+11)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 11(+10)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 12(+9)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 12(+10)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 12(+11)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 12(+12)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 13(+11)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 14(+10)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 15(+9)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 16(+8)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 17(+7)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 18(+6)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 19(+6)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 19(+7)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 20(+6)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 21(+5)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 22(+4)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 23(+3)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 24(+2)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 25(+1)/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 26/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0/1	Reducer 3: 0/1	
+Map 1: 26/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 0(+1)/1	Reducer 3: 0/1	
+Map 1: 26/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 1/1	Reducer 3: 0/1	
+Map 1: 26/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 1/1	Reducer 3: 0(+1)/1	
+Map 1: 26/26	Map 4: 1/1	Map 5: 1/1	Map 6: 1/1	Reducer 2: 1/1	Reducer 3: 1/1	
+OK
+Time taken: 44.734 seconds, Fetched: 100 row(s)
+16.72user 0.92system 0:55.27elapsed 31%CPU (0avgtext+0avgdata 551004maxresident)k
+0inputs+800outputs (0major+87465minor)pagefaults 0swaps
