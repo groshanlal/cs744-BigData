@@ -1,0 +1,9 @@
+#javac -classpath $(hadoop classpath) -d wordcount_classes WordCount.java
+javac -classpath $(hadoop classpath) -d build anagram.java
+
+#jar -cvf /usr/joe/wordcount.jar -C wordcount_classes/ .
+jar -cvf anagram.jar -C build .
+
+
+#hadoop jar wordcount.jar org.myorg.WordCount input_dir/wcount_input.txt /usr/joe/wordcount/output
+hadoop jar anagram.jar org.myorg.anagram input_dir/input.txt inter_dir/output
