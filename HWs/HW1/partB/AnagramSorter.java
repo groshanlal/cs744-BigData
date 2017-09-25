@@ -12,122 +12,130 @@ import org.apache.hadoop.util.*;
 	
 public class AnagramSorter {
 	
-	public static class Map extends MapReduceBase implements Mapper<LongWritable, Text, Text, Text> {
-		private final static IntWritable one = new IntWritable(1);
-		private Text word = new Text();
-		private Text sorted = new Text();
+  public class Anagram { 
+  	public static class Map extends MapReduceBase implements Mapper<LongWritable, Text, Text, Text> {
+  		private final static IntWritable one = new IntWritable(1);
+  		private Text word = new Text();
+  		private Text sorted = new Text();
 
-	  public void map(LongWritable key, Text value, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
-	  	String line = value.toString();
-	    StringTokenizer tokenizer = new StringTokenizer(line);
-	    while (tokenizer.hasMoreTokens()) {
-	    	word.set(tokenizer.nextToken());
-				char[] chars = word.toString().toCharArray();
-        Arrays.sort(chars);
-				sorted.set(new String(chars));
-	      output.collect(sorted, word);
-	    }
-	  }
-	}
-	
-	public static class Reduce  extends MapReduceBase implements Reducer<Text, Text, Text, Text> {
-		public void reduce(Text key, Iterator<Text> values, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
-    	//int sum = 0;
-    	//while (values.hasNext()) {
-    	//	sum += values.next().get();
-    	//}
-    	//output.collect(key, new IntWritable(sum));
-			//ArrayList<IntWritable> list = new ArrayList<IntWritable>();    
-      StringBuilder strVal = new StringBuilder();
-    	while ( values.hasNext()) {
-         
-				strVal.append(values.next().toString());
-				strVal.append(",");
-    	}
-			//output.collect(key, new MyArrayWritable(IntWritable.class, list.toArray(new IntWritable[list.size()]) ) );
-			output.collect(key, new Text(strVal.toString()));
-    	//context.write(key, new MyArrayWritable(IntWritable.class, list.toArray(new IntWritable[list.size()])));
+  	  public void map(LongWritable key, Text value, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
+  	  	String line = value.toString();
+  	    StringTokenizer tokenizer = new StringTokenizer(line);
+  	    while (tokenizer.hasMoreTokens()) {
+  	    	word.set(tokenizer.nextToken());
+  				char[] chars = word.toString().toCharArray();
+          Arrays.sort(chars);
+  				sorted.set(new String(chars));
+  	      output.collect(sorted, word);
+  	    }
+  	  }
   	}
-	}
-	
-	public static class Map_sort extends MapReduceBase implements Mapper<Text, Text, IntWritable, Text> {
-    //private final static IntWritable one = new IntWritable(1);
-    private Text word = new Text(); 
-    //private Text sorted = new Text(); 
-
-    public void map(LongWritable key, Text value, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
-      String line = value.toString();
-      StringTokenizer tokenizer = new StringTokenizer(line);
-      while (tokenizer.hasMoreTokens()) {
-        word.set(tokenizer.nextToken());
-				
-				int count = StringUtils.countMatches(word.toString(), ",");        
-        output.collect(new IntWritable(count), word);
-      }
-    }
+  	
+  	public static class Reduce  extends MapReduceBase implements Reducer<Text, Text, Text, Text> {
+  		public void reduce(Text key, Iterator<Text> values, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
+      	//int sum = 0;
+      	//while (values.hasNext()) {
+      	//	sum += values.next().get();
+      	//}
+      	//output.collect(key, new IntWritable(sum));
+  			//ArrayList<IntWritable> list = new ArrayList<IntWritable>();    
+        StringBuilder strVal = new StringBuilder();
+      	while ( values.hasNext()) {
+           
+  				strVal.append(values.next().toString());
+  				strVal.append(",");
+      	}
+  			//output.collect(key, new MyArrayWritable(IntWritable.class, list.toArray(new IntWritable[list.size()]) ) );
+  			output.collect(key, new Text(strVal.toString()));
+      	//context.write(key, new MyArrayWritable(IntWritable.class, list.toArray(new IntWritable[list.size()])));
+    	}
+  	}
   }
 
+  public class Sorter {
+    public static class Map extends MapReduceBase implements Mapper<Text, Text, IntWritable, Text> {
+      //private final static IntWritable one = new IntWritable(1);
+      private Text word = new Text(); 
+      //private Text sorted = new Text(); 
 
-	public static class Reduce_sort  extends MapReduceBase implements Reducer<IntWritable, Text, NullWritable, Text> {
-    public void reduce(Text key, Iterator<Text> values, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
-      output.collect(NullWritable.get(), values);
+      public void map(LongWritable key, Text value, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
+        String line = value.toString();
+        StringTokenizer tokenizer = new StringTokenizer(line);
+        while (tokenizer.hasMoreTokens()) {
+          word.set(tokenizer.nextToken());
+          
+          int count = StringUtils.countMatches(word.toString(), ",");        
+          output.collect(new IntWritable(count), word);
+        }
+      }
     }
-  }	
 
+
+    public static class Reduce extends MapReduceBase implements Reducer<IntWritable, Text, NullWritable, Text> {
+      public void reduce(Text key, Iterator<Text> values, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
+        output.collect(NullWritable.get(), values);
+      }
+    } 
+  }
 
   public static void main(String[] args) throws Exception {
-  	JobConf conf = new JobConf(AnagramSorter.class);
-    conf.setJobName("AnagramSorter");
-		
+  	// JobConf conf = new JobConf(AnagramSorter.class);
+    // conf.setJobName("AnagramSorter");
+		Configuration conf = getConf();
+    Job job = new Job(conf, "secondary sort");
 		// set MAP output parameters
-    conf.setMapOutputKeyClass(Text.class);
-		conf.setMapOutputValueClass(Text.class);
+    job.setMapOutputKeyClass(Text.class);
+		job.setMapOutputValueClass(Text.class);
 		// set RDC output paramters
-    conf.setOutputKeyClass(Text.class);
-    conf.setOutputValueClass(Text.class);
+    job.setOutputKeyClass(Text.class);
+    job.setOutputValueClass(Text.class);
 
-    conf.setMapperClass(Map.class);
+    job.setMapperClass(Map.class);
     //conf.setCombinerClass(Reduce.class);
-    conf.setReducerClass(Reduce.class);
+    job.setReducerClass(Reduce.class);
 		
 		// set IO value
-    conf.setInputFormat(TextInputFormat.class);
-    conf.setOutputFormat(TextOutputFormat.class);
+    job.setInputFormat(TextInputFormat.class);
+    job.setOutputFormat(TextOutputFormat.class);
 
-    FileInputFormat.setInputPaths(conf, new Path(args[0]));
-    FileOutputFormat.setOutputPath(conf, new Path("inter_dir/output/"));
+    FileInputFormat.setInputPaths(job, new Path(args[0]));
+    FileOutputFormat.setOutputPath(job, new Path("inter_dir/output/"));
 
-    JobClient.runJob(conf);
-
+    // JobClient.runJob(conf);
+    job.waitForCompletion(true);
+    
   	/*
    	* Sorting
    	*/
-		JobConf conf1 = new JobConf(AnagramSorter.class);
-    conf1.setJobName("AnagramSorter");
+		// JobConf conf1 = new JobConf(AnagramSorter.class);
+  //   conf1.setJobName("AnagramSorter");
 
-    // set MAP output parameters
-    conf1.setMapOutputKeyClass(IntWritable.class);
-    conf1.setMapOutputValueClass(Text.class);
-    // set RDC output paramters
-    conf1.setOutputKeyClass(NullWritable.class);
-    conf1.setOutputValueClass(Text.class);
+  //   // set MAP output parameters
+  //   conf1.setMapOutputKeyClass(IntWritable.class);
+  //   conf1.setMapOutputValueClass(Text.class);
+  //   // set RDC output paramters
+  //   conf1.setOutputKeyClass(NullWritable.class);
+  //   conf1.setOutputValueClass(Text.class);
 
-    conf1.setMapperClass(Map_sort.class);
-    //conf.setCombinerClass(Reduce.class);
-    conf1.setReducerClass(Reduce_sort.class);
+  //   conf1.setMapperClass(Map_sort.class);
+  //   //conf.setCombinerClass(Reduce.class);
+  //   conf1.setReducerClass(Reduce_sort.class);
 
-    // set IO value
-    conf1.setInputFormat(TextInputFormat.class);
-    conf1.setOutputFormat(TextOutputFormat.class);
+  //   // set IO value
+  //   conf1.setInputFormat(TextInputFormat.class);
+  //   conf1.setOutputFormat(TextOutputFormat.class);
 
-    FileInputFormat.setInputPaths(conf, new Path("inter_dir/output/"));
-    FileOutputFormat.setOutputPath(conf, new Path(args[1]));
+  //   FileInputFormat.setInputPaths(conf, new Path("inter_dir/output/"));
+  //   FileOutputFormat.setOutputPath(conf, new Path(args[1]));
 
-    JobClient.runJob(conf);
+  //   JobClient.runJob(conf);
 
   	
 	}
 }
+
+
+
 
 class MyArrayWritable extends ArrayWritable{
 
