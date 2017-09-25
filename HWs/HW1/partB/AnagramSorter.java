@@ -54,7 +54,7 @@ public class AnagramSorter {
     }
   }
 
-  public static class Sorter {
+  public static class MySorter {
     public static class Map extends MapReduceBase implements Mapper<Text, Text, IntWritable, Text> {
       //private final static IntWritable one = new IntWritable(1);
       private Text word = new Text(); 
@@ -78,7 +78,7 @@ public class AnagramSorter {
       }
     } 
   }
-  
+
   public static void main(String[] args) throws Exception {
     //Configuration conf = getConf();
     //Job job = new Job(conf, "AnagramSorter");
