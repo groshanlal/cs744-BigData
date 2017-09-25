@@ -8,10 +8,13 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.conf.*;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapred.*;
+//import org.apache.hadoop.mapreduce.*;
 import org.apache.hadoop.util.*;
   
 public class AnagramSorter {
   
+
+  public static class Anagram {
   public static class Map extends MapReduceBase implements Mapper<LongWritable, Text, Text, Text> {
     private final static IntWritable one = new IntWritable(1);
     private Text word = new Text();
@@ -49,20 +52,22 @@ public class AnagramSorter {
       //context.write(key, new MyArrayWritable(IntWritable.class, list.toArray(new IntWritable[list.size()])));
     }
   }
-
+  }
   public static void main(String[] args) throws Exception {
-    JobConf conf = new JobConf(AnagramSorter.class);
-    conf.setJobName("AnagramSorter");
+    //Configuration conf = getConf();
+    //Job job = new Job(conf, "AnagramSorter");
+    JobConf job = new JobConf(AnagramSorter.class);
+    job.setJobName("AnagramSorter");
 
-    conf.setMapOutputKeyClass(Text.class);
-    conf.setMapOutputValueClass(Text.class);
+    job.setMapOutputKeyClass(Text.class);
+    job.setMapOutputValueClass(Text.class);
 
-    conf.setOutputKeyClass(Text.class);
-    conf.setOutputValueClass(Text.class);
+    job.setOutputKeyClass(Text.class);
+    job.setOutputValueClass(Text.class);
 
-    conf.setMapperClass(Map.class);
+    job.setMapperClass(Anagram.Map.class);
     //conf.setCombinerClass(Reduce.class);
-    conf.setReducerClass(Reduce.class);
+    job.setReducerClass(Anagram.Reduce.class);
 
     // Set Output and Input Parameters
     //job.setMapOutputKeyClass(Text.class);
@@ -72,13 +77,14 @@ public class AnagramSorter {
     //job.setOutputValueClass(MyArrayWritable.class);
     
     // set IO value
-    conf.setInputFormat(TextInputFormat.class);
-    conf.setOutputFormat(TextOutputFormat.class);
+    job.setInputFormat(TextInputFormat.class);
+    job.setOutputFormat(TextOutputFormat.class);
 
-    FileInputFormat.setInputPaths(conf, new Path(args[0]));
-    FileOutputFormat.setOutputPath(conf, new Path(args[1]));
+    FileInputFormat.setInputPaths(job, new Path(args[0]));
+    FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
-    JobClient.runJob(conf);
+    JobClient.runJob(job);
+    //job.waitForCompletion(true);
   }
 }
 
