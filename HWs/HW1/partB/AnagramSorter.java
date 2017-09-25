@@ -49,36 +49,83 @@ public class AnagramSorter {
     	//context.write(key, new MyArrayWritable(IntWritable.class, list.toArray(new IntWritable[list.size()])));
   	}
 	}
+	
+	public static class Map_sort extends MapReduceBase implements Mapper<Text, Text, IntWritable, Text> {
+    //private final static IntWritable one = new IntWritable(1);
+    private Text word = new Text(); 
+    //private Text sorted = new Text(); 
+
+    public void map(LongWritable key, Text value, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
+      String line = value.toString();
+      StringTokenizer tokenizer = new StringTokenizer(line);
+      while (tokenizer.hasMoreTokens()) {
+        word.set(tokenizer.nextToken());
+				
+				int count = StringUtils.countMatches(word.toString(), ",");        
+        output.collect(new IntWritable(count), word);
+      }
+    }
+  }
+
+
+	public static class Reduce_sort  extends MapReduceBase implements Reducer<IntWritable, Text, NullWritable, Text> {
+    public void reduce(Text key, Iterator<Text> values, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
+      output.collect(NullWritable.get(), values);
+    }
+  }	
+
 
   public static void main(String[] args) throws Exception {
   	JobConf conf = new JobConf(AnagramSorter.class);
     conf.setJobName("AnagramSorter");
-
+		
+		// set MAP output parameters
     conf.setMapOutputKeyClass(Text.class);
 		conf.setMapOutputValueClass(Text.class);
-
+		// set RDC output paramters
     conf.setOutputKeyClass(Text.class);
     conf.setOutputValueClass(Text.class);
 
     conf.setMapperClass(Map.class);
     //conf.setCombinerClass(Reduce.class);
     conf.setReducerClass(Reduce.class);
-
-		// Set Output and Input Parameters
-    //job.setMapOutputKeyClass(Text.class);
-    //job.setMapOutputValueClass(IntWritable.class);
-
-    //job.setOutputKeyClass(Text.class);
-    //job.setOutputValueClass(MyArrayWritable.class);
 		
 		// set IO value
     conf.setInputFormat(TextInputFormat.class);
     conf.setOutputFormat(TextOutputFormat.class);
 
     FileInputFormat.setInputPaths(conf, new Path(args[0]));
+    FileOutputFormat.setOutputPath(conf, new Path("inter_dir/output/"));
+
+    JobClient.runJob(conf);
+
+  	/*
+   	* Sorting
+   	*/
+		JobConf conf1 = new JobConf(AnagramSorter.class);
+    conf1.setJobName("AnagramSorter");
+
+    // set MAP output parameters
+    conf1.setMapOutputKeyClass(IntWritable.class);
+    conf1.setMapOutputValueClass(Text.class);
+    // set RDC output paramters
+    conf1.setOutputKeyClass(NullWritable.class);
+    conf1.setOutputValueClass(Text.class);
+
+    conf1.setMapperClass(Map_sort.class);
+    //conf.setCombinerClass(Reduce.class);
+    conf1.setReducerClass(Reduce_sort.class);
+
+    // set IO value
+    conf1.setInputFormat(TextInputFormat.class);
+    conf1.setOutputFormat(TextOutputFormat.class);
+
+    FileInputFormat.setInputPaths(conf, new Path("inter_dir/output/"));
     FileOutputFormat.setOutputPath(conf, new Path(args[1]));
 
     JobClient.runJob(conf);
+
+  	
 	}
 }
 
