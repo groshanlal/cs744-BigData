@@ -14,7 +14,19 @@ import org.apache.commons.lang.StringUtils;
   
 public class AnagramSorter {
   
+  public static class DescendingKeyComparator extends WritableComparator {
+    protected DescendingKeyComparator() {
+      super(Text.class, true);
+    }
 
+    @SuppressWarnings("rawtypes")
+    @Override
+    public int compare(WritableComparable w1, WritableComparable w2) {
+      IntWritable key1 = (IntWritable) w1;
+      IntWritable key2 = (IntWritable) w2;          
+      return -1 * key1.compareTo(key2);
+    }
+  }
   public static class Anagram {
     public static class Map extends MapReduceBase implements Mapper<LongWritable, Text, Text, Text> {
       private final static IntWritable one = new IntWritable(1);
@@ -69,7 +81,7 @@ public class AnagramSorter {
           word.set(tokenizer.nextToken());
           
           int count = StringUtils.countMatches(word.toString(),",");        
-          output.collect(new IntWritable(count), word);
+          output.collect(new IntWritable(20-count), word);
         }
       }
     }
@@ -120,7 +132,7 @@ public class AnagramSorter {
     //job.waitForCompletion(true);
     ///////////////////////////////////////////////////////////////
     // The sorter part
-        
+            
     JobConf job2 = new JobConf(AnagramSorter.class);
     job2.setJobName("AnagramSorter_sort");
 
@@ -130,7 +142,7 @@ public class AnagramSorter {
     job2.setOutputKeyClass(NullWritable.class);
     job2.setOutputValueClass(Text.class);
     
-    //job2.setSortComparatorClass(IntWritable.DecreasingComparator.class);
+    //job2.setOutputKeyComparatorClass(DescendingKeyComparator.class);
     job2.setMapperClass(MySorter.Map.class);
     //conf.setCombinerClass(Reduce.class);
     job2.setReducerClass(MySorter.Reduce.class);
