@@ -81,7 +81,7 @@ public class AnagramSorter {
           word.set(tokenizer.nextToken());
           
           int count = StringUtils.countMatches(word.toString(),",");        
-          output.collect(new IntWritable(20-count), word);
+          output.collect(new IntWritable(100-count), word);
         }
       }
     }
