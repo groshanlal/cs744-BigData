@@ -1,0 +1,4 @@
+mapreduce.job.jvm.numtasks
+
+
+hive.stats.gather.num.threads
