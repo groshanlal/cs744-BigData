@@ -8,7 +8,8 @@ spark = SparkSession \
 	.getOrCreate()
 
 
-# Create DataFrame representing the stream of input lines from connection to localhost:9999
+# Create DataFrame representing the stream of input lines 
+# from connection to localhost:9999
 lines = spark \
 	.readStream \
 	.format("socket") \
