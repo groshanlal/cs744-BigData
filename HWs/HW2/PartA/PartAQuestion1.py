@@ -26,10 +26,10 @@ userSchema = StructType()\
 	.add("interaction","string")
 
 activity = spark \
-    .readStream \
-    .option("sep", ",") \
-    #.schema(userSchema) \
-    .csv("higgs/stage")  # Equivalent to format("csv").load("/path/to/directory")
+	.readStream \
+	.option("sep", ",") \
+	#.schema(userSchema) \
+	.csv("higgs/stage")  # Equivalent to format("csv").load("/path/to/directory")
 
 
 # Split the lines into words
