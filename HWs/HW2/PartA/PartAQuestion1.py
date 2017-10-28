@@ -30,7 +30,7 @@ userSchema = StructType()\
 activity = spark \
 	.readStream \
 	.option("sep", ",") \
-	.option("inferSchema", "true")
+	.option("inferSchema", "true")\
 	.csv("higgs/stage")  
 	# Equivalent to format("csv").load("/path/to/directory")
 	#.schema(userSchema) \
