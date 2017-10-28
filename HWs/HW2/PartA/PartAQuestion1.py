@@ -10,22 +10,37 @@ spark = SparkSession \
 
 # Create DataFrame representing the stream of input lines 
 # from connection to localhost:9999
-lines = spark \
-	.readStream \
-	.format("socket") \
-	.option("host", "localhost") \
-	.option("port", 9999) \
-	.load()
+# lines = spark \
+# 	.readStream \
+# 	.format("socket") \
+# 	.option("host", "localhost") \
+# 	.option("port", 9999) \
+# 	.load()
+
+# Read all the csv files written atomically in a directory
+# userA, userB, timestamp, interaction
+userSchema = StructType()\
+	.add("userA", "integer")\
+	.add("userB", "integer")\
+	.add("timestamp", "string")\
+	.add("interaction","string")
+
+activity = spark \
+    .readStream \
+    .option("sep", ",") \
+    #.schema(userSchema) \
+    .csv("higgs/stage")  # Equivalent to format("csv").load("/path/to/directory")
+
 
 # Split the lines into words
-words = lines.select(
-	explode(
-		split(lines.value, " ")
-	).alias("word")
-)
+# words = lines.select(
+# 	explode(
+# 		split(lines.value, " ")
+# 	).alias("word")
+# )
 
 # Generate running word count
-wordCounts = words.groupBy("word").count()
+wordCounts = activity.groupBy("interaction").count()
 
 
 
