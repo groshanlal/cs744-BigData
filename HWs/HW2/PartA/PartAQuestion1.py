@@ -23,7 +23,7 @@ spark = SparkSession \
 userSchema = StructType()\
 	.add("userA", "integer")\
 	.add("userB", "integer")\
-	.add("timestamp", "string")\
+	.add("timestamp", "Timestamp")\
 	.add("interaction","string")
 
 activity = spark \
@@ -41,7 +41,10 @@ activity = spark \
 # )
 
 # Generate running word count
-wordCounts = activity.groupBy("interaction").count()
+wordCounts = activity.groupBy(
+				window(activity.timestamp, "1 hours", "30 minutes"),
+				"interaction"
+			).count()
 
 
 
