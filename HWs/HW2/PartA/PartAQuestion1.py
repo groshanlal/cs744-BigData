@@ -1,6 +1,7 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import explode
 from pyspark.sql.functions import split
+from pyspark.sql.functions import window
 from pyspark.sql.types import StructType
 
 spark = SparkSession \
