@@ -1,0 +1,17 @@
+It is a scalable and fault-tolerant stream processing engine built on the Spark SQL engine. 
+
+
+You can express your streaming computation the same way you would express a batch computation on static data.
+
+end-to-end streaming applications
+
+Structured Streaming treats all the data arriving as an unbounded input table
+Each new item in the stream is like a row appended to the input table.
+
+The framework doesn't actually retain all the input, but the results will be equivalent to having all of it and running a batch job. 
+
+
+A developer using Structured Streaming defines a query on this input table, as if it were a static table, to compute a final result table that will be written to an output sink. Spark automatically converts this batch-like query to a streaming execution plan.
+	SO you basically write a batch querry
+
+
