@@ -21,11 +21,12 @@ spark = SparkSession \
 
 # Read all the csv files written atomically in a directory
 # userA, userB, timestamp, interaction
-userSchema = StructType()\
-	.add("userA", "integer")\
-	.add("userB", "integer")\
-	.add("timestamp", "Timestamp")\
-	.add("interaction","string")
+
+# userSchema = StructType()\
+# 	.add("userA", "integer")\
+# 	.add("userB", "integer")\
+# 	.add("timestamp", "Timestamp")\
+# 	.add("interaction","string")
 
 activity = spark \
 	.readStream \
