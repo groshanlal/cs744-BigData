@@ -29,8 +29,9 @@ userSchema = StructType()\
 activity = spark \
 	.readStream \
 	.option("sep", ",") \
+	.schema(userSchema) \
 	.csv("higgs/stage")  # Equivalent to format("csv").load("/path/to/directory")
-	#.schema(userSchema) \
+
 
 # Split the lines into words
 # words = lines.select(
