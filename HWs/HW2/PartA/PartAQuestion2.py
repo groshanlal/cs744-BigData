@@ -27,7 +27,7 @@ activity = spark \
 
 
 # Generate running word count
-wordCounts = activity.window('10 seconds') \
+wordCounts = activity \
 			.select("userB") \
 			.where("interaction = \"MT\"") \
 			.groupBy(window(activity.timestamp, "10 seconds")).last()
