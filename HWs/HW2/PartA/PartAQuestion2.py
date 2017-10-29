@@ -31,14 +31,14 @@ activity = spark \
 	.readStream \
 	.option("sep", ",") \
 	.schema(userSchema) \
-	.csv("higgs/stage/*.csv")  # Equivalent to format("csv").load("/path/to/directory")
+	.csv("higgs/stage/*.csv").window(Minutes(10))
 
 
 # Generate running word count
 wordCounts = activity \
 			.select("userB") \
 			.where("interaction = \"MT\"") \
-			.window(Minutes(10))
+			
 
 # Start running the query that prints the running counts to the console
 query = wordCounts \
