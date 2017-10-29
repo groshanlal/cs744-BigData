@@ -33,17 +33,12 @@ activity = spark \
 	.schema(userSchema) \
 	.csv("higgs/stage/*.csv")  # Equivalent to format("csv").load("/path/to/directory")
 
-#.option("inferSchema", "true")
-
-# Split the lines into words
-# words = lines.select(
-# 	explode(
-# 		split(lines.value, " ")
-# 	).alias("word")
-# )
 
 # Generate running word count
-wordCounts = activity.select("userB").where("interaction = \"MT\"")
+wordCounts = activity \
+			.select("userB") \
+			.where("interaction = \"MT\"") \
+			.where("current_timestamp()- timestamp <10 minutes")
 				
 
 
