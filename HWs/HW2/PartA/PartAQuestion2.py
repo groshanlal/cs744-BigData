@@ -31,7 +31,7 @@ activity = spark \
 	.readStream \
 	.option("sep", ",") \
 	.schema(userSchema) \
-	.csv("higgs/stage/*.csv").window(Minutes(10))
+	.csv("higgs/stage/*.csv")
 
 
 # Generate running word count
@@ -44,7 +44,8 @@ wordCounts = activity \
 query = wordCounts \
 	.writeStream \
 	.format("parquet").option("checkpointLocation","higgs/stage") \
-	.start("higgs/stage")
+	.start("higgs/stage") \
+	.groupBy(window(activity.timestamp, "10 minutes"))
 
 
 query = wordCounts \
