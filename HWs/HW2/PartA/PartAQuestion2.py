@@ -20,7 +20,7 @@ userSchema = StructType()\
 	.add("interaction","string")
 
 activity = spark \
-	.readStream.trigger(processingTime='10 minutes')  \
+	.readStream \
 	.option("sep", ",") \
 	.schema(userSchema) \
 	.csv("higgs/stage/*.csv")
