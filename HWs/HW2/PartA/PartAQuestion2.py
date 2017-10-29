@@ -53,4 +53,10 @@ query = wordCounts \
 	.format("parquet").option("checkpointLocation","higgs/stage") \
 	.start("higgs/stage")
 
+
+query = wordCounts \
+	.writeStream \
+	.format("console") \
+	.start()
+
 query.awaitTermination()
