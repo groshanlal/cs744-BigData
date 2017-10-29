@@ -53,7 +53,12 @@ wordCounts = activity.groupBy(
 # Start running the query that prints the running counts to the console
 query = wordCounts \
 	.writeStream \
-	.parquet("higgs/stage") \
+	.format("parquet") \
 	.start()
+
+# query = wordCounts \
+# 	.format(“memory”) \
+#   	.queryName(“table”) \
+#   	.start()
 
 query.awaitTermination()
