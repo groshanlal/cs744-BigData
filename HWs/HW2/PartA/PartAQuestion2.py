@@ -43,7 +43,7 @@ query = wordCounts \
 
 
 query = wordCounts \
-	.writeStream \
+	.writeStream.trigger(processingTime='10 seconds') \
 	.format("console") \
 	.start()
 

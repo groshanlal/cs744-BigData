@@ -21,27 +21,15 @@ userSchema = StructType()\
 
 activity = spark \
 	.readStream \
-	.option("sep", ",") \
-	.schema(userSchema) \
-	.csv("higgs/stage/*.csv")
+	.parquet("higgs/stage/out/")
 
 
 # Generate running word count
-wordCounts = activity \
-			.select("userB") \
-			.where("interaction = \"MT\"")
+wordCounts = activity.groupBy("userB").count()
+	
 			
-
-# Start running the query that prints the running counts to the console
 query = wordCounts \
 	.writeStream.trigger(processingTime='10 minutes') \
-	.format("parquet").option("checkpointLocation","higgs/stage") \
-	.start("higgs/stage") \
-
-
-
-query = wordCounts \
-	.writeStream \
 	.format("console") \
 	.start()
 
