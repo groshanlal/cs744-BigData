@@ -28,6 +28,7 @@ wordCounts = activity.groupBy("userB").count()
 			
 query = wordCounts \
 	.writeStream.trigger(processingTime='10 minutes') \
+	.outputMode("complete") \
 	.format("console") \
 	.start()
 
