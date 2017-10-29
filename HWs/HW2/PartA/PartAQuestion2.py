@@ -20,7 +20,7 @@ userSchema = StructType()\
 	.add("interaction","string")
 
 activity = spark \
-	.readStream \
+	.readStream.trigger(processingTime='10 minutes')  \
 	.option("sep", ",") \
 	.schema(userSchema) \
 	.csv("higgs/stage/*.csv")
@@ -36,7 +36,7 @@ wordCounts = activity \
 query = wordCounts \
 	.writeStream.trigger(processingTime='10 minutes') \
 	.format("parquet") \
-	.option("path","higgs/stage") \
+	.option("path","higgs/stage/out") \
 	.option("checkpointLocation","higgs/stage/checkpoint") \
 	.start() \
 
