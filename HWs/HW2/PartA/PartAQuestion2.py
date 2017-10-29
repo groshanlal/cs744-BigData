@@ -55,6 +55,7 @@ query = wordCounts \
 	.writeStream \
 	.outputMode("append") \
 	.format("parquet") \
+	.option("checkpointLocation", "checkpoint") \
 	.option("path", "higgs/stage") \
 	.start()
 
