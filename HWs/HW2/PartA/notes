@@ -1,0 +1,30 @@
+It is a scalable and fault-tolerant stream processing engine built on the Spark SQL engine. 
+
+
+You can express your streaming computation the same way you would express a batch computation on static data.
+
+end-to-end streaming applications
+
+Structured Streaming treats all the data arriving as an unbounded input table
+Each new item in the stream is like a row appended to the input table.
+
+The framework doesn't actually retain all the input, but the results will be equivalent to having all of it and running a batch job. 
+
+
+A developer using Structured Streaming defines a query on this input table, as if it were a static table, to compute a final result table that will be written to an output sink. Spark automatically converts this batch-like query to a streaming execution plan.
+	SO you basically write a batch querry
+
+-----------------------------------------------------------------------------
+Question 1
+-----------------------------------------------------------------------------
+One of the key features of Structured Streaming is support for window operations on event time (as opposed to arrival time).
+
+you are expected to write a simple application that emits the number of retweets (RT), mention (MT) and reply (RE) for an hourly window that is updated every 30 minutes based on the timestamps of the tweets.
+
+You are expected to write the output of your application onto the standard console. You need to take care of choosing the appropriate output mode while developing your application.
+
+
+to emulate streaming data, you are required to write a simple script that would periodically (say every 5 seconds) copy one split file of the Higgs dataset to the HDFS directory your application is listening to.
+
+
+The key idea in Structured Streaming is to treat a live data stream as a table that is being continuously appended. This leads to a new stream processing model that is very similar to a batch processing model. You will express your streaming computation as standard batch-like query as on a static table, and Spark runs it as an incremental query on the unbounded input table. 
