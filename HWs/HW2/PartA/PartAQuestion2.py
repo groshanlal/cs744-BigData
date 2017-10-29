@@ -44,10 +44,9 @@ activity = spark \
 
 # Generate running word count
 wordCounts = activity.groupBy(
-				window(activity.timestamp, "1 hours", "30 minutes"),
-				"interaction"
-			).count()
-
+				window(activity.timestamp, "10 minutes", "10 minutes")
+				).select("userB").where("interaction = MT")
+				
 
 
 # Start running the query that prints the running counts to the console
