@@ -34,11 +34,17 @@ activity = spark \
 	.csv("higgs/stage/*.csv")  # Equivalent to format("csv").load("/path/to/directory")
 
 
+def secondsBetween(col1, col2):
+	col2.cast("timestamp").cast("bigint") - col1.cast("timestamp").cast("bigint")
+
+def minutesBetween(col1, col2):
+	(secondsBetween(col1, col2) / 60).cast("bigint")
+
 # Generate running word count
 wordCounts = activity \
 			.select("userB") \
 			.where("interaction = \"MT\"") \
-			.where("current_timestamp()- timestamp <10 minutes")
+			.where(	minutesBetween(current_timestamp(),$"timestamp")<10)
 				
 
 
