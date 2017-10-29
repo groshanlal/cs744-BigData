@@ -55,10 +55,9 @@ query = wordCounts \
 	.writeStream \
 	.format("parquet") \
 	.start()
-
 # query = wordCounts \
-# 	.format(“memory”) \
-#   	.queryName(“table”) \
-#   	.start()
+#	.format(“memory”) \
+#	.queryName(“table”) \
+#	.start()
 
 query.awaitTermination()
