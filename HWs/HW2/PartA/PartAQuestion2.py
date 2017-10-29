@@ -27,7 +27,7 @@ activity = spark \
 
 
 # Generate running word count
-wordCounts = activity \
+wordCounts = activity.window('10 seconds') \
 			.select("userB") \
 			.where("interaction = \"MT\"")
 			
