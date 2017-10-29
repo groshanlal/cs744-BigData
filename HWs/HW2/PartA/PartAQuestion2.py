@@ -38,14 +38,14 @@ activity = spark \
 wordCounts = activity \
 			.select("userB") \
 			.where("interaction = \"MT\"") \
-			
+			.groupBy(window(activity.timestamp, "10 minutes"))		
 
 # Start running the query that prints the running counts to the console
 query = wordCounts \
 	.writeStream \
 	.format("parquet").option("checkpointLocation","higgs/stage") \
 	.start("higgs/stage") \
-	.groupBy(window(activity.timestamp, "10 minutes"))
+
 
 
 query = wordCounts \
