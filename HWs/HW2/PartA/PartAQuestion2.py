@@ -54,7 +54,7 @@ wordCounts = activity.groupBy(
 query = wordCounts \
 	.writeStream \
 	.outputMode("append") \
-	.format("csv") \
+	.format("parquet") \
 	.option("path", "higgs/stage") \
 	.start()
 
