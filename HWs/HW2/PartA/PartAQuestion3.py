@@ -14,13 +14,11 @@ spark = SparkSession \
 # Read all the csv files written atomically in a directory
 # userA, userB, timestamp, interaction
 userSchema = StructType()\
-	.add("userA", "integer")\
 	.add("userB", "integer")\
-	.add("timestamp", TimestampType())\
-	.add("interaction","string")
-
+	
 activity = spark \
 	.readStream \
+	.schema(userSchema) \
 	.parquet("higgs/stage/out/")
 
 
