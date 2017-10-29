@@ -55,7 +55,7 @@ query = wordCounts \
 	.writeStream \
 	.outputMode("complete") \
 	.format("csv") \
-	.option("path", "higgs/stage")
+	.option("path", "higgs/stage") \
 	.start()
 
 query.awaitTermination()
