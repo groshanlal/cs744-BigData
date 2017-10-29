@@ -34,7 +34,7 @@ wordCounts = activity \
 
 # Start running the query that prints the running counts to the console
 query = wordCounts \
-	.writeStream.trigger(processingTime='10 minutes') \
+	.writeStream.trigger(processingTime='10 seconds') \
 	.format("parquet") \
 	.option("path","higgs/stage/out") \
 	.option("checkpointLocation","higgs/stage/checkpoint") \
