@@ -52,7 +52,7 @@ wordCounts = activity.groupBy(
 
 # Start running the query that prints the running counts to the console
 query = wordCounts \
-	.writeStream \
+	.writeStream() \
 	.parquet("higgs/stage") \
 	.start()
 
