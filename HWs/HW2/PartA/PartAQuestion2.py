@@ -53,10 +53,7 @@ wordCounts = activity.groupBy(
 # Start running the query that prints the running counts to the console
 query = wordCounts \
 	.writeStream \
-	.outputMode("append") \
-	.format("parquet") \
-	.option("checkpointLocation", "checkpoint") \
-	.option("path", "higgs/stage") \
+	.parquet("higgs/stage") \
 	.start()
 
 query.awaitTermination()
