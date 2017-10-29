@@ -44,7 +44,7 @@ def minutesBetween(col1, col2):
 wordCounts = activity \
 			.select("userB") \
 			.where("interaction = \"MT\"") \
-			.where(	minutesBetween(current_timestamp(),$"timestamp")<10)
+			.where(	minutesBetween( $"current_timestamp()" , $"timestamp")<10)
 				
 
 
