@@ -23,7 +23,7 @@ activity = spark \
 	.readStream \
 	.option("sep", ",") \
 	.schema(userSchema) \
-	.csv("higgs/stage/*.csv").trigger("10 seconds")
+	.csv("higgs/stage/*.csv")
 
 
 windowedData = activity.where("interaction = \"MT\"") \
