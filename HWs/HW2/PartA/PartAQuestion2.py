@@ -29,7 +29,7 @@ activity = spark \
 
 
 windowedData = activity.where("interaction = \"MT\"") \
-			.foreachRDD(lambda rdd, time: print(time) )
+			.foreachRDD(lambda rdd, time: rdd.map( (time, _)  ) )
 
 
 # Generate running word count
