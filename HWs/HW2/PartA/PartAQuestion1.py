@@ -1,8 +1,13 @@
+import sys
+
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import explode
 from pyspark.sql.functions import split
 from pyspark.sql.functions import window
 from pyspark.sql.types import StructType, TimestampType
+
+
+staging_dir = sys.argv[1]
 
 spark = SparkSession \
 	.builder \
@@ -31,7 +36,7 @@ activity = spark \
 	.readStream \
 	.option("sep", ",") \
 	.schema(userSchema) \
-	.csv("higgs/stage/*.csv")  # Equivalent to format("csv").load("/path/to/directory")
+	.csv(staging_dir+"/*.csv")  # Equivalent to format("csv").load("/path/to/directory")
 
 #.option("inferSchema", "true")
 
