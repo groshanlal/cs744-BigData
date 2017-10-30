@@ -23,11 +23,11 @@ activity = spark \
 	.readStream \
 	.option("sep", ",") \
 	.schema(userSchema) \
-	.csv("higgs/stage/*.csv")
+	.csv("higgs/stage/*.csv").trigger("10 seconds")
 
 
 windowedData = activity.where("interaction = \"MT\"") \
-			.select((current_timestamp().cast("bigint")))
+			.select("MAX(timestamp)")
 
 
 # Generate running word count
