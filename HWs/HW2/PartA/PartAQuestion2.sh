@@ -4,7 +4,7 @@ count=1
 stage_dir="higgs/stage" # $1
 input_dir="higgs/split-dataset"
 
-spark-submit PartAQuestion1.py ${stage_dir}  &
+spark-submit PartAQuestion2.py ${stage_dir}  &
 
 while :
 do

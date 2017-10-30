@@ -1,8 +1,13 @@
+import sys
+
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import explode, current_timestamp
 from pyspark.sql.functions import split
 from pyspark.sql.functions import window
 from pyspark.sql.types import StructType, TimestampType
+
+
+staging_dir = sys.argv[1]
 
 spark = SparkSession \
 	.builder \
@@ -23,25 +28,8 @@ activity = spark \
 	.readStream \
 	.option("sep", ",") \
 	.schema(userSchema) \
-	.csv("higgs/stage/*.csv")
+	.csv(staging_dir+"/*.csv")
 
-
-# maxTime = activity\
-# 			.select(activity.interaction,
-# 				activity.timestamp.cast("bigint").alias("time")
-# 			) \
-# 			.where("interaction = \"MT\"") \
-# 			.groupby("interaction").max().select("max(time)")
-
-
-# query3 = maxTime \
-# 	.writeStream.trigger(processingTime='10 seconds') \
-# 	.outputMode("complete") \
-# 	.format("console") \
-# 	.start()
-
-
-#			.where(activity.timestamp.cast("bigint") > 0) \
 
 # Generate running word count
 wordCounts = activity \
@@ -53,7 +41,7 @@ wordCounts = activity \
 query = wordCounts \
 	.writeStream.trigger(processingTime='10 seconds') \
 	.format("parquet") \
-	.option("path","higgs/stage/out") \
+	.option("path",staging_dir+"/out") \
 	.option("checkpointLocation","higgs/stage/checkpoint") \
 	.start() \
 

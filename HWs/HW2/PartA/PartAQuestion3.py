@@ -1,8 +1,12 @@
+import sys
+
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import explode
 from pyspark.sql.functions import split
 from pyspark.sql.functions import window
 from pyspark.sql.types import StructType, TimestampType
+
+staging_dir = sys.argv[1]
 
 spark = SparkSession \
 	.builder \
@@ -19,7 +23,7 @@ userSchema = StructType()\
 activity = spark \
 	.readStream \
 	.schema(userSchema) \
-	.parquet("higgs/stage/out/")
+	.parquet(staging_dir+"/")
 
 
 # Generate running word count
