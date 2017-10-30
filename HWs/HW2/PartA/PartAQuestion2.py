@@ -31,14 +31,14 @@ maxTime = activity\
 				activity.timestamp.cast("bigint").alias("time")
 			) \
 			.where("interaction = \"MT\"") \
-			.groupby("interaction").max().select("max(time)")
+			.groupby("interaction").max().select("max(time)").collect()
 
 
 # Generate running word count
 wordCounts = activity \
 			.select("userB") \
 			.where("interaction = \"MT\"")\
-			.where(maxTime-activity.timestamp.cast("bigint") > 0) \
+			.where(activity.timestamp.cast("bigint") > 0) \
 			
 			
 
@@ -57,10 +57,10 @@ query2 = wordCounts \
 	.format("console") \
 	.start()
 
-query3 = maxTime \
-	.writeStream.trigger(processingTime='10 seconds') \
-	.outputMode("complete") \
-	.format("console") \
-	.start()
+# query3 = maxTime \
+# 	.writeStream.trigger(processingTime='10 seconds') \
+# 	.outputMode("complete") \
+# 	.format("console") \
+# 	.start()
 
 query.awaitTermination()
