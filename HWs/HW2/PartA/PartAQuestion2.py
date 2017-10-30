@@ -29,7 +29,7 @@ activity = spark \
 
 
 windowedData = activity.where("interaction = \"MT\"") \
-			.select(activity.timestamp.cast("bigint") - current_timestamp().cast("bigint"))
+			.where(current_timestamp().cast("bigint")-activity.timestamp.cast("bigint") < 10*10^6)
 
 
 # Generate running word count
