@@ -6,7 +6,7 @@ from pyspark.sql.types import StructType, TimestampType
 
 spark = SparkSession \
 	.builder \
-	.appName("PartAQuestion2") \
+	.appName("PartAQuestion3") \
 	.getOrCreate()
 
 

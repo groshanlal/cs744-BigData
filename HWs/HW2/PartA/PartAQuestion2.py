@@ -26,11 +26,17 @@ activity = spark \
 	.csv("higgs/stage/*.csv")
 
 
+
+
+windowedData = activity.where("interaction = \"MT\"") \
+			.foreachRDD(lambda rdd, time: print(time) )
+
+
 # Generate running word count
 wordCounts = activity \
 			.select("userB") \
 			.where("interaction = \"MT\"") \
-			.groupBy(window(activity.timestamp, "10 seconds")).last()
+			
 			
 
 # Start running the query that prints the running counts to the console
