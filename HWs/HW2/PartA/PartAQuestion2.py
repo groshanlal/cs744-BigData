@@ -26,10 +26,8 @@ activity = spark \
 	.csv("higgs/stage/*.csv")
 
 
-
-
 windowedData = activity.where("interaction = \"MT\"") \
-			.select(current_timestamp().cast("bigint")-activity.timestamp.cast("bigint"))
+			.select((current_timestamp().cast("bigint")-activity.timestamp.cast("bigint"))/10^6)
 
 
 # Generate running word count
