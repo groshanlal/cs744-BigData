@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import explode
+from pyspark.sql.functions import explode, current_timestamp
 from pyspark.sql.functions import split
 from pyspark.sql.functions import window
 from pyspark.sql.types import StructType, TimestampType
@@ -29,7 +29,7 @@ activity = spark \
 
 
 windowedData = activity.where("interaction = \"MT\"") \
-			.select(activity.timestamp.cast("bigint")- $"current_timestamp()".cast("bigint"))
+			.select(activity.timestamp.cast("bigint") - current_timestamp().cast("bigint"))
 
 
 # Generate running word count
