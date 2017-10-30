@@ -26,33 +26,28 @@ activity = spark \
 	.csv("higgs/stage/*.csv")
 
 
-maxTime = activity\
-			.select(activity.interaction,
-				activity.timestamp.cast("bigint").alias("time")
-			) \
-			.where("interaction = \"MT\"") \
-			.groupby("interaction").max().select("max(time)")
+# maxTime = activity\
+# 			.select(activity.interaction,
+# 				activity.timestamp.cast("bigint").alias("time")
+# 			) \
+# 			.where("interaction = \"MT\"") \
+# 			.groupby("interaction").max().select("max(time)")
 
 
-query3 = maxTime \
-	.writeStream.trigger(processingTime='10 seconds') \
-	.outputMode("complete") \
-	.format("console") \
-	.start()
+# query3 = maxTime \
+# 	.writeStream.trigger(processingTime='10 seconds') \
+# 	.outputMode("complete") \
+# 	.format("console") \
+# 	.start()
 
 
-print("*******************",query3);
-
-
-
+#			.where(activity.timestamp.cast("bigint") > 0) \
 
 # Generate running word count
 wordCounts = activity \
 			.select("userB") \
-			.where("interaction = \"MT\"")\
-			.where(activity.timestamp.cast("bigint") > 0) \
-			
-			
+			.where("interaction = \"MT\"")
+			 			
 
 # Start running the query that prints the running counts to the console
 query = wordCounts \
