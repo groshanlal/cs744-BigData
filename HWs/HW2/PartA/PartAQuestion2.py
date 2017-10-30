@@ -31,7 +31,7 @@ maxTime = activity\
 				activity.timestamp.cast("bigint").alias("time")
 			) \
 			.where("interaction = \"MT\"") \
-			.groupby("interaction").max().select("time")
+			.groupby("interaction").max().select("max(time)")
 
 
 # Generate running word count
