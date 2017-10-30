@@ -29,7 +29,7 @@ activity = spark \
 
 
 windowedData = activity.where("interaction = \"MT\"") \
-			.foreachRDD(lambda rdd, time: rdd.map( (time, _)  ) )
+			.select(activity.timestamp.cast(bigint).alias("newTime"))
 
 
 # Generate running word count
@@ -49,7 +49,12 @@ query = wordCounts \
 
 
 
-query = wordCounts \
+query2 = wordCounts \
+	.writeStream.trigger(processingTime='10 seconds') \
+	.format("console") \
+	.start()
+
+query3 = windowedData \
 	.writeStream.trigger(processingTime='10 seconds') \
 	.format("console") \
 	.start()
