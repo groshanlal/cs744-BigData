@@ -27,7 +27,7 @@ activity = spark \
 
 
 windowedData = activity.where("interaction = \"MT\"") \
-			.select("MAX(timestamp)")
+			.groupby("interaction").min()
 
 
 # Generate running word count
@@ -54,6 +54,7 @@ query2 = wordCounts \
 
 query3 = windowedData \
 	.writeStream.trigger(processingTime='10 seconds') \
+	.outputMode("complete") \
 	.format("console") \
 	.start()
 
