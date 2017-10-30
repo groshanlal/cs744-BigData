@@ -27,7 +27,7 @@ activity = spark \
 
 
 windowedData = activity.where("interaction = \"MT\"") \
-			.groupby("interaction").min()
+			.groupby("interaction").min("timestamp")
 
 
 # Generate running word count
