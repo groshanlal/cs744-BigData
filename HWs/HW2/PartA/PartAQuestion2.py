@@ -26,8 +26,12 @@ activity = spark \
 	.csv("higgs/stage/*.csv")
 
 
-windowedData = activity.where("interaction = \"MT\"") \
-			.groupby("interaction").min("timestamp")
+windowedData = activity\
+			.select(activity.interaction,
+				activity.timestamp.cast("bigint").alias("time")
+			) \
+			.where("interaction = \"MT\"") \
+			.groupby("interaction").min()
 
 
 # Generate running word count
