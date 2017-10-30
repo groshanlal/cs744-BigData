@@ -41,7 +41,7 @@ query3 = maxTime \
 	.start()
 
 
-nowTime = maxTime.collect()
+print("*******************",query3);
 
 
 
