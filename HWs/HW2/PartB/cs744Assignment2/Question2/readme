@@ -1,0 +1,14 @@
+Complie the application:
+cd /home/ubuntu/software/apache-storm-1.0.2/examples/storm-starter
+mvn clean install -DskipTests=true; mvn package -DskipTests=true;
+
+-----------------------
+
+Running the application:
+cd /home/ubuntu/software/apache-storm-1.0.2/examples/storm-starter
+> storm jar target/storm-starter-1.0.2.jar storm.starter.cs744Assignment2.Question1.Main <MODE> <OUTPUT_DIR> <FRIENDS_COUNT> <HASHTAGS>
+
+ - <MODE> can be cluster/local.
+ - <OUTPUT_DIR> is an HDFS file path.
+ - <FRIENDS_COUNT> is a list of space separated friendsCount.
+ - <HASHTAGS> is a list of space separated hashtags.

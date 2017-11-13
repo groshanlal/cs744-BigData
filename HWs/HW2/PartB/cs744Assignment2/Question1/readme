@@ -1,0 +1,12 @@
+Complie the application:
+cd /home/ubuntu/software/apache-storm-1.0.2/examples/storm-starter
+mvn clean install -DskipTests=true; mvn package -DskipTests=true;
+-----------------------
+
+Running the application:
+cd /home/ubuntu/software/apache-storm-1.0.2/examples/storm-starter
+> storm jar target/storm-starter-1.0.2.jar storm.starter.cs744Assignment2.Question1.Main <MODE> <OUTPUT_DIR> <KEYWORDS>
+
+ - <MODE> can be cluster/local.
+ - <OUTPUT_DIR> is an HDFS file path.
+ - <KEYWORDS> is a list of space separated keywords.
