@@ -11,7 +11,7 @@ import os
 
 tf.logging.set_verbosity(tf.logging.DEBUG)
 
-N = 100000 # dimension of the matrix
+N = 100 # dimension of the matrix
 d = 10 # number of splits along one dimension. Thus, we will have 100 blocks
 M = int(N / d)
 

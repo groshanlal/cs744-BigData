@@ -19,7 +19,7 @@ with g.as_default():
     # this sets the random seed for operations on the current graph
     tf.set_random_seed(1)
 
-    M = 100
+    M = 100*100
 
     matrices = {} # a container to hold the operators we just created
     for i in range(0, 5):
@@ -54,4 +54,4 @@ with g.as_default():
     with tf.Session("grpc://vm-32-2:2222", config=config) as sess:
         result = sess.run(retval)
         sess.close()
-        print "SUCCESS"
+        print "SUCCESS:",result 
