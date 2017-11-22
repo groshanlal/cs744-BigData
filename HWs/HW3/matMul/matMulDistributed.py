@@ -11,7 +11,7 @@ import os
 
 tf.logging.set_verbosity(tf.logging.DEBUG)
 
-N = 100 # dimension of the matrix
+N = 1000 # dimension of the matrix
 d = 10 # number of splits along one dimension. Thus, we will have 100 blocks
 M = int(N / d)
 
@@ -23,6 +23,13 @@ def get_block_name(i, j):
 def get_intermediate_trace_name(i, j):
     return "inter-"+str(i)+"-"+str(j)
 
+def get_device_name(i):
+    return "/job:worker/task:%d" % i
+
+# it is important that the hashing funciton be symmetric 
+# to ensure data locality in calculating the trace
+def get_machine_id(i,j,N):
+    return  (i+j)%N
 
 # Create  a new graph in TensorFlow. A graph contains operators and their
 # dependencies. Think of Graph in TensorFlow as a DAG. Graph is however, a more
@@ -39,8 +46,10 @@ with g.as_default(): # make our graph the default graph
     matrices = {}
     for i in range(0, d):
         for j in range(0, d):
-            matrix_name = get_block_name(i, j)
-            matrices[matrix_name] = tf.random_uniform([M, M], name=matrix_name)
+            mid = get_machine_id(i,j)
+            with tf.device(get_device_name(mid)):
+                matrix_name = get_block_name(i, j)
+                matrices[matrix_name] = tf.random_uniform([M, M], name=matrix_name)
 
     # In order the
 
@@ -53,26 +62,30 @@ with g.as_default(): # make our graph the default graph
     intermediate_traces = {}
     for i in range(0, d):
         for j in range(0, d):
-            A = matrices[get_block_name(i, j)]
-            B = matrices[get_block_name(j, i)]
-            intermediate_traces[get_intermediate_trace_name(i, j)] = tf.trace(tf.matmul(A, B))
+            mid = get_machine_id(i,j)
+            with tf.device(get_device_name(mid)):
+                A = matrices[get_block_name(i, j)]
+                B = matrices[get_block_name(j, i)]
+                intermediate_traces[get_intermediate_trace_name(i, j)] = tf.trace(tf.matmul(A, B))
 
     # here, we add a "add_n" operator that takes output of the "trace" operators as
     # input and produces the "retval" output tensor.
-    retval = tf.add_n(intermediate_traces.values())
+    with tf.device(get_device_name(0)):
+        retval = tf.add_n(intermediate_traces.values())
 
 
 
 # Here, we create session. A session is required to run a computation
 # represented as a graph.
-sess = tf.Session(graph=g) # create a session used to run computations on graph
-output = sess.run(retval) # executes all necessary operations to find value of retval tensor
+config = tf.ConfigProto(log_device_placement=True)
+with tf.Session("grpc://vm-32-0:2222", config=config) as sess:
+    output = sess.run(retval) # executes all necessary operations to find value of retval tensor
 
-# Summary writer is used to write the summary of execution including graph
-# structure into a log directory. By pointing "tensorboard" to this directory,
-# we will be able to graphically view the graph.
-tf.train.SummaryWriter("%s/example_distributed" % (os.environ.get("TF_LOG_DIR")), sess.graph)
+    # Summary writer is used to write the summary of execution including graph
+    # structure into a log directory. By pointing "tensorboard" to this directory,
+    # we will be able to graphically view the graph.
+    tf.train.SummaryWriter("%s/example_distributed" % (os.environ.get("TF_LOG_DIR")), sess.graph)
 
-sess.close()
+    sess.close()
 
-print "Trace of the big matrix is = ", output
+    print "Trace of the big matrix is = ", output
