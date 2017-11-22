@@ -75,17 +75,17 @@ with g.as_default(): # make our graph the default graph
 
 
 
-# Here, we create session. A session is required to run a computation
-# represented as a graph.
-config = tf.ConfigProto(log_device_placement=True)
-with tf.Session("grpc://vm-32-0:2222", config=config) as sess:
-    output = sess.run(retval) # executes all necessary operations to find value of retval tensor
+    # Here, we create session. A session is required to run a computation
+    # represented as a graph.
+    config = tf.ConfigProto(log_device_placement=True)
+    with tf.Session("grpc://vm-32-0:2222", config=config) as sess:
+        output = sess.run(retval) # executes all necessary operations to find value of retval tensor
 
-    # Summary writer is used to write the summary of execution including graph
-    # structure into a log directory. By pointing "tensorboard" to this directory,
-    # we will be able to graphically view the graph.
-    tf.train.SummaryWriter("%s/example_distributed" % (os.environ.get("TF_LOG_DIR")), sess.graph)
+        # Summary writer is used to write the summary of execution including graph
+        # structure into a log directory. By pointing "tensorboard" to this directory,
+        # we will be able to graphically view the graph.
+        tf.train.SummaryWriter("%s/example_distributed" % (os.environ.get("TF_LOG_DIR")), sess.graph)
 
-    sess.close()
+        sess.close()
 
-    print "Trace of the big matrix is = ", output
+        print "Trace of the big matrix is = ", output
