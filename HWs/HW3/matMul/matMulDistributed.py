@@ -46,7 +46,7 @@ with g.as_default(): # make our graph the default graph
     matrices = {}
     for i in range(0, d):
         for j in range(0, d):
-            mid = get_machine_id(i,j)
+            mid = get_machine_id(i,j,N)
             with tf.device(get_device_name(mid)):
                 matrix_name = get_block_name(i, j)
                 matrices[matrix_name] = tf.random_uniform([M, M], name=matrix_name)
@@ -62,7 +62,7 @@ with g.as_default(): # make our graph the default graph
     intermediate_traces = {}
     for i in range(0, d):
         for j in range(0, d):
-            mid = get_machine_id(i,j)
+            mid = get_machine_id(i,j,N)
             with tf.device(get_device_name(mid)):
                 A = matrices[get_block_name(i, j)]
                 B = matrices[get_block_name(j, i)]
