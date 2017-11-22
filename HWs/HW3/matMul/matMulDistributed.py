@@ -67,7 +67,7 @@ with g.as_default(): # make our graph the default graph
             with tf.device(get_device_name(mid)):
                 A = matrices[get_block_name(i, j)]
                 B = matrices[get_block_name(j, i)]
-                intermediate_traces[get_intermediate_trace_name(i, j)] = tf.trace(tf.matmul(A, B))
+                intermediate_traces[get_machine_id(i,j)-1] += tf.trace(tf.matmul(A, B))
 
     # here, we add a "add_n" operator that takes output of the "trace" operators as
     # input and produces the "retval" output tensor.
