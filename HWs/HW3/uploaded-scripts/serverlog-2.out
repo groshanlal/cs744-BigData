@@ -1,0 +1,15 @@
+nohup: ignoring input
+Traceback (most recent call last):
+  File "startserver.py", line 4, in <module>
+    import tensorflow as tf
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/__init__.py", line 23, in <module>
+    from tensorflow.python import *
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/__init__.py", line 98, in <module>
+    from tensorflow.python.platform import test
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/platform/test.py", line 77, in <module>
+    import mock                # pylint: disable=g-import-not-at-top,unused-import
+  File "/usr/local/lib/python2.7/dist-packages/mock/__init__.py", line 2, in <module>
+    import mock.mock as _mock
+  File "/usr/local/lib/python2.7/dist-packages/mock/mock.py", line 69, in <module>
+    from pbr.version import VersionInfo
+ImportError: No module named pbr.version
