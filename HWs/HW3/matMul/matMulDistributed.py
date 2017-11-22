@@ -30,7 +30,7 @@ def get_device_name(i):
 # it is important that the hashing funciton be symmetric 
 # to ensure data locality in calculating the trace
 def get_machine_id(i,j,N=n_m):
-    return  (i+j)%N
+    return  ((i+j)%N) +1
 
 # Create  a new graph in TensorFlow. A graph contains operators and their
 # dependencies. Think of Graph in TensorFlow as a DAG. Graph is however, a more
@@ -71,7 +71,7 @@ with g.as_default(): # make our graph the default graph
 
     # here, we add a "add_n" operator that takes output of the "trace" operators as
     # input and produces the "retval" output tensor.
-    with tf.device(get_device_name(0)):
+    with tf.device(get_device_name(2)):
         retval = tf.add_n(intermediate_traces.values())
 
 
@@ -79,7 +79,7 @@ with g.as_default(): # make our graph the default graph
     # Here, we create session. A session is required to run a computation
     # represented as a graph.
     config = tf.ConfigProto(log_device_placement=True)
-    with tf.Session("grpc://vm-32-0:2222", config=config) as sess:
+    with tf.Session("grpc://vm-32-2:2222", config=config) as sess:
         output = sess.run(retval) # executes all necessary operations to find value of retval tensor
 
         # Summary writer is used to write the summary of execution including graph
