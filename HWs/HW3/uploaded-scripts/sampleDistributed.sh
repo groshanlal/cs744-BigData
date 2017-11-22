@@ -13,6 +13,5 @@ echo "Executing the distributed tensorflow job from exampleDistributed.py"
 # launch a session to run the Graph
 python exampleDistributed.py
 
-echo "Terminating the cluster"
 # defined in tfdefs.sh to terminate the cluster
 terminate_cluster

@@ -33,8 +33,7 @@ with g.as_default():
             # connects to. Feel free to experiment with default or alternate
             # placement strategies.
             matrices[matrix_name] = tf.random_normal([M, M], name=matrix_name)
-    
-    print "END OF INTITIALIZATION"
+
     # container to hold operators that calculate the traces of individual
     # matrices.
     intermediate_traces = {}
@@ -49,8 +48,7 @@ with g.as_default():
     # sum all the traces
     with tf.device("/job:worker/task:0"):
         retval = tf.add_n(intermediate_traces.values())
-    
-    print "END of ARCH DESIGN"
+        print retval.get_shape()
 
     config = tf.ConfigProto(log_device_placement=True)
     with tf.Session("grpc://vm-32-2:2222", config=config) as sess:
