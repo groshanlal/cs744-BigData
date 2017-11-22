@@ -48,7 +48,7 @@ with g.as_default():
     # sum all the traces
     with tf.device("/job:worker/task:0"):
         retval = tf.add_n(intermediate_traces.values())
-        print retval.get_shape()
+        #print retval.get_shape()
 
     config = tf.ConfigProto(log_device_placement=True)
     with tf.Session("grpc://vm-32-2:2222", config=config) as sess:
