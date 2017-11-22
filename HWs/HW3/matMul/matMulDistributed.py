@@ -62,7 +62,7 @@ with g.as_default(): # make our graph the default graph
     # trace operator is actually implements as multiple small operators.
     intermediate_traces = {}
     for i in range(0,n_m):
-        intermediate_traces[i] = tf.constant([0.0],dtype=float32)
+        intermediate_traces[i] = tf.constant([0.0])
 
     for i in range(0, d):
         for j in range(0, d):
