@@ -58,7 +58,7 @@ with g.as_default():
     print features.keys()
     print "#########################"
     # since we parsed a VarLenFeatures, they are returned as SparseTensors.
-    # To run operations on then, we first convert them to dense Tensors as below.
+    # To run operations on them, we first convert them to dense Tensors as below.
     dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
                                    [num_features,],
     #                               tf.constant([33762578, 1], dtype=tf.int64),
@@ -73,9 +73,10 @@ with g.as_default():
     # Effectively, it spins up separate threads to read from the files
     tf.train.start_queue_runners(sess=sess)
 
-    for i in range(0, 20):
+    for i in range(0, 5):
         print "#########################"
         # every time we call run, a new data point is read from the files
         output =  sess.run(dense_feature)
         print output.shape
         print sum(output)
+        print output[1:10]
