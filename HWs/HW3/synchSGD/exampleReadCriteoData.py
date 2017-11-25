@@ -52,7 +52,8 @@ with g.as_default():
     print label
     print index
     print value
-
+    print features.keys()
+    print "#########################"
     # since we parsed a VarLenFeatures, they are returned as SparseTensors.
     # To run operations on then, we first convert them to dense Tensors as below.
     dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
@@ -70,6 +71,7 @@ with g.as_default():
     tf.train.start_queue_runners(sess=sess)
 
     for i in range(0, 20):
+        print "#########################"
         # every time we call run, a new data point is read from the files
         output =  sess.run(dense_feature)
         print output.shape
