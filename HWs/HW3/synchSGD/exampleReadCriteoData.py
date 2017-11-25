@@ -71,6 +71,10 @@ with g.as_default():
     dense_feature0,label0 = get_datapoint_iter(file_dict[0])
     dense_feature1,label1 = get_datapoint_iter(file_dict[0])
 
+
+    print dense_feature0
+    print label0
+
     dense_feature = tf.stack([dense_feature0,dense_feature1])
     label = tf.stack([label0,label1])
 
