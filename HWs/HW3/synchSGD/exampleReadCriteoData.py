@@ -23,11 +23,11 @@ with g.as_default():
 
     # We first define a filename queue comprising 5 files.
     filename_queue = tf.train.string_input_producer([
-        "criteo-tfr-tiny/tfrecords00",
-        "criteo-tfr-tiny/tfrecords01",
-        "criteo-tfr-tiny/tfrecords02",
-        "criteo-tfr-tiny/tfrecords03",
-        "criteo-tfr-tiny/tfrecords04",
+        "~/criteo-tfr-tiny/tfrecords00",
+        "~/criteo-tfr-tiny/tfrecords01",
+        "~/criteo-tfr-tiny/tfrecords02",
+        "~/criteo-tfr-tiny/tfrecords03",
+        "~/criteo-tfr-tiny/tfrecords04",
     ], num_epochs=None)
 
 
