@@ -1,0 +1,12 @@
+It is interesting that although the updates are happening asynchronously the variable server of TF internally handles all of the updates to the shared variables.
+
+However I do not see any differences between the local and global one
+
+
+When I changed the globalVar from task 0 to 2, the output is not consistent anymore for 20 concurrent sessions and the race condition kicks in. the final output for 21 updates is 1998,2000
+for 3 consurrent sessions, we have 300,297. the local one is also having problem.
+
+the only point is the variables are kept for multiple session runs
+
+
+it seems the default behaviour of assign_add is without locking. this locking mechnism can be set to true as a parameter to the assign add
