@@ -44,7 +44,19 @@ with g.as_default():
                                             'value' : tf.VarLenFeature(dtype=tf.float32),
                                            }
                                           )
-        return features
+
+        label = features['label']
+        index = features['index']
+        value = features['value']
+
+
+        # since we parsed a VarLenFeatures, they are returned as SparseTensors.
+        # To run operations on then, we first convert them to dense Tensors as below.
+        dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
+                                       [num_features,],
+        #                               tf.constant([33762578, 1], dtype=tf.int64),
+                                       tf.sparse_tensor_to_dense(value))
+        return (dense_feature,label)
 
 
     # # We first define a filename queue comprising 5 files.
@@ -76,24 +88,24 @@ with g.as_default():
     #                                    }
     #                                   )
     
-    features = get_datapoint_iter(file_dict[0])
+    dense_feature,label = get_datapoint_iter(file_dict[0])
 
-    label = features['label']
-    index = features['index']
-    value = features['value']
+    # label = features['label']
+    # index = features['index']
+    # value = features['value']
 
     # These print statements are there for you see the type of the following
     # variables
-    print label
-    print index
-    print value
+    # print label
+    # print index
+    # print value
 
     # since we parsed a VarLenFeatures, they are returned as SparseTensors.
     # To run operations on then, we first convert them to dense Tensors as below.
-    dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
-                                   [num_features,],
-    #                               tf.constant([33762578, 1], dtype=tf.int64),
-                                   tf.sparse_tensor_to_dense(value))
+    # dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
+    #                                [num_features,],
+    # #                               tf.constant([33762578, 1], dtype=tf.int64),
+    #                                tf.sparse_tensor_to_dense(value))
 
 
     # as usual we create a session.
