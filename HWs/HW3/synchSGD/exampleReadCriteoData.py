@@ -108,4 +108,5 @@ with g.as_default():
         # every time we call run, a new data point is read from the files
         output =  sess.run(dense_feature)
         print output.shape
-        print sum(output)
+        print output[1:20]
+        # print sum(output)
