@@ -50,8 +50,11 @@ with g.as_default():
     # These print statements are there for you see the type of the following
     # variables
     print label
+    print "#########################"
     print index
+    print "#########################"
     print value
+    print "#########################"
     print features.keys()
     print "#########################"
     # since we parsed a VarLenFeatures, they are returned as SparseTensors.
