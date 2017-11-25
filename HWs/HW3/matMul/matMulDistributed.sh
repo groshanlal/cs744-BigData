@@ -19,4 +19,4 @@ python matMulDistributed.py
 terminate_cluster
 
 # Under the "GRAPHS" tab, use the options on the left to navigate to the "Run" you are interested in.
-tensorboard --logdir=$TF_LOG_DIR >TB_LOG
+#tensorboard --logdir=$TF_LOG_DIR >TB_LOG
