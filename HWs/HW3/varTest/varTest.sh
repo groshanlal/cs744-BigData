@@ -13,7 +13,12 @@ echo "Executing the distributed tensorflow job from matMulDistributed.py"
 # testdistributed.py is a client that can run jobs on the exampleMatmulDistributedcluster.
 # please read testdistributed.py to understand the steps defining a Graph and
 # launch a session to run the Graph
-python exampleVariablePersistence.py
+
+for i in {1..3}
+do
+    echo ">> ATTEMPT ${i} :"
+    python exampleVariablePersistence.py
+done
 
 # defined in tfdefs.sh to terminate the cluster
 terminate_cluster
