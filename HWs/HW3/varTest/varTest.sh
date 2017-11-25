@@ -19,7 +19,7 @@ do
     echo ">> ATTEMPT ${i} :"
     python exampleVariablePersistence.py &
 done
-
+sleep 10
 # defined in tfdefs.sh to terminate the cluster
 terminate_cluster
 
