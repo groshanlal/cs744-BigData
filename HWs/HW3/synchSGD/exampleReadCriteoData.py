@@ -85,7 +85,7 @@ with g.as_default():
     # Effectively, it spins up separate threads to read from the files
     tf.train.start_queue_runners(sess=sess)
 
-    for i in range(0, 20):
+    for i in range(0, 2):
         # every time we call run, a new data point is read from the files
         X,Y =  sess.run([dense_feature,label])
         print X.shape
