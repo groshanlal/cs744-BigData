@@ -81,8 +81,8 @@ with g.as_default():
     for i in range(0, 5):
         print "#########################"
         # every time we call run, a new data point is read from the files
-        X,Y =  sess.run([dense_feature,label])
+        X =  sess.run([dense_feature])
         print X.shape
         # print sum(output)
         print X[X> 0.1]
-        print Y
+        # print Y
