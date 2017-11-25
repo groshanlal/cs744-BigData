@@ -2,7 +2,7 @@ import tensorflow as tf
 
 # number of features in the criteo dataset after one-hot encoding
 num_features = 33762578
-
+s_batch = 20
 
 # Here, we will show how to include reader operators in the TensorFlow graph.
 # These operators take as input list of filenames from which they read data.
@@ -58,9 +58,17 @@ with g.as_default():
         return (dense_feature,label)
 
 
+    def next_batch():
+        X = []
+        Y = []
+        for i in range(s_batch):
+            x_,y_ = get_datapoint_iter(file_dict[0])
+            X.append(x_)
+            Y.append(y_)
+        return tf.stack(X),tf.stack(Y)
    
     
-    dense_feature,label = get_datapoint_iter(file_dict[0])
+    dense_feature,label = next_batch()#get_datapoint_iter(file_dict[0])
 
    
     # as usual we create a session.
