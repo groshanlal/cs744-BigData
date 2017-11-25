@@ -16,9 +16,45 @@ g = tf.Graph()
 
 with g.as_default():
 
+    def get_datapoint_iter(file_idx=[]):
+        fileNames = map(lambda s: "/home/ubuntu/criteo-tfr-tiny/tfrecords"+s,file_idx)
+        # We first define a filename queue comprising 5 files.
+        filename_queue = tf.train.string_input_producer(fileNames, num_epochs=None)
+
+         # TFRecordReader creates an operator in the graph that reads data from queue
+        reader = tf.TFRecordReader()
+
+        # Include a read operator with the filenae queue to use. The output is a string
+        # Tensor called serialized_example
+        _, serialized_example = reader.read(filename_queue)
 
 
-    # creating a model variable on task 0. This is a process running on node vm-48-1
+        # The string tensors is essentially a Protobuf serialized string. With the
+        # following fields: label, index, value. We provide the protobuf fields we are
+        # interested in to parse the data. Note, feature here is a dict of tensors
+        features = tf.parse_single_example(serialized_example,
+                                           features={
+                                            'label': tf.FixedLenFeature([1], dtype=tf.int64),
+                                            'index' : tf.VarLenFeature(dtype=tf.int64),
+                                            'value' : tf.VarLenFeature(dtype=tf.float32),
+                                           }
+                                          )
+
+        label = features['label']
+        index = features['index']
+        value = features['value']
+
+        # since we parsed a VarLenFeatures, they are returned as SparseTensors.
+        # To run operations on then, we first convert them to dense Tensors as below.
+        dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
+                                       [num_features,],
+        #                               tf.constant([33762578, 1], dtype=tf.int64),
+                                       tf.sparse_tensor_to_dense(value))
+        return (dense_feature,label)
+
+    ## END OF get_datapoint_iter
+
+    # creating a model variable on task 0. This is a process running on node vm-32-1
     with tf.device("/job:worker/task:0"):
         w = tf.Variable(tf.ones([10, 1]), name="model")
 
