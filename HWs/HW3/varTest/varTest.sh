@@ -17,7 +17,7 @@ echo "Executing the distributed tensorflow job from matMulDistributed.py"
 for i in {1..3}
 do
     echo ">> ATTEMPT ${i} :"
-    python exampleVariablePersistence.py
+    python exampleVariablePersistence.py &
 done
 
 # defined in tfdefs.sh to terminate the cluster
