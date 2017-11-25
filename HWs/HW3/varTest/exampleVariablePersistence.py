@@ -4,7 +4,7 @@ import os
 tf.app.flags.DEFINE_integer("task_index", 0, "Index of the worker task")
 FLAGS = tf.app.flags.FLAGS
 
-# creating a variable on task 0. This is a process running on node vm-32-1
+# creating a variable on task 2. This is a process running on node vm-32-3
 with tf.device("/job:worker/task:2"):
     X = tf.Variable(tf.constant(0.0), name="globalvar")
     pass
