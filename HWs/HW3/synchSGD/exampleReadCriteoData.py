@@ -23,6 +23,7 @@ with g.as_default():
 
     def get_datapoint_iter(file_idx=[]):
         filename = map(lambda s: "~/criteo-tfr-tiny/tfrecords"+s,file_idx)
+        print filename
         # We first define a filename queue comprising 5 files.
         filename_queue = tf.train.string_input_producer(filename, num_epochs=None)
         # TFRecordReader creates an operator in the graph that reads data from queue
