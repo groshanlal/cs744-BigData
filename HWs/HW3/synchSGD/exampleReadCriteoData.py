@@ -9,60 +9,65 @@ num_features = 33762578
 # On every invocation of the operator, some records are read and passed to the
 # downstream vertices as Tensors
 
+file_dict = {0:["00","01","02","03","04"],
+             1:["05","06","07","08","09"],
+             2:["10","11","12","13","14"],
+             3:["15","16","17","18","19"],
+             4:["20","21"],
+            -1:["22"]}
+
 
 g = tf.Graph()
 
 with g.as_default():
 
-    # We first define a filename queue comprising 5 files.
-    filename_queue = tf.train.string_input_producer([
-        "criteo-tfr-tiny/tfrecords00",
-        "criteo-tfr-tiny/tfrecords01",
-        "criteo-tfr-tiny/tfrecords02",
-        "criteo-tfr-tiny/tfrecords03",
-        "criteo-tfr-tiny/tfrecords04",
-    ], num_epochs=None)
+    def get_datapoint_iter(file_idx=[]):
+        filename = map(lambda s: "~/criteo-tfr-tiny/tfrecords"+s,file_idx)
+        # We first define a filename queue comprising 5 files.
+        filename_queue = tf.train.string_input_producer(filename, num_epochs=None)
+        # TFRecordReader creates an operator in the graph that reads data from queue
+        reader = tf.TFRecordReader()
+
+        # Include a read operator with the filenae queue to use. The output is a string
+        # Tensor called serialized_example
+        _, serialized_example = reader.read(filename_queue)
 
 
-    # TFRecordReader creates an operator in the graph that reads data from queue
-    reader = tf.TFRecordReader()
+        # The string tensors is essentially a Protobuf serialized string. With the
+        # following fields: label, index, value. We provide the protobuf fields we are
+        # interested in to parse the data. Note, feature here is a dict of tensors
+        features = tf.parse_single_example(serialized_example,
+                                           features={
+                                            'label': tf.FixedLenFeature([1], dtype=tf.int64),
+                                            'index' : tf.VarLenFeature(dtype=tf.int64),
+                                            'value' : tf.VarLenFeature(dtype=tf.float32),
+                                           }
+                                          )
 
-    # Include a read operator with the filenae queue to use. The output is a string
-    # Tensor called serialized_example
-    _, serialized_example = reader.read(filename_queue)
+        label = features['label']
+        index = features['index']
+        value = features['value']
 
+        print label
+        print "#########################"
+        print index
+        print "#########################"
+        print value
+        print "#########################"
+        print features.keys()
+        print "#########################"
 
-    # The string tensors is essentially a Protobuf serialized string. With the
-    # following fields: label, index, value. We provide the protobuf fields we are
-    # interested in to parse the data. Note, feature here is a dict of tensors
-    features = tf.parse_single_example(serialized_example,
-                                       features={
-                                        'label': tf.FixedLenFeature([1], dtype=tf.int64),
-                                        'index' : tf.VarLenFeature(dtype=tf.int64),
-                                        'value' : tf.VarLenFeature(dtype=tf.float32),
-                                       }
-                                      )
-
-    label = features['label']
-    index = features['index']
-    value = features['value']
-
-    # These print statements are there for you see the type of the following
-    # variables
-    print label
-    print "#########################"
-    print index
-    print "#########################"
-    print value
-    print "#########################"
-    print features.keys()
-    print "#########################"
-    # since we parsed a VarLenFeatures, they are returned as SparseTensors.
-    # To run operations on them, we first convert them to dense Tensors as below.
-    dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
+        dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
                                    [num_features,],
-    #                               tf.constant([33762578, 1], dtype=tf.int64),
+        #                               tf.constant([33762578, 1], dtype=tf.int64),
                                    tf.sparse_tensor_to_dense(value))
+
+        return (dense_feature,label)
+
+    ## END OF get_datapoint_iter
+
+    dense_feature, label = get_datapoint_iter(file_dict[0])
+
 
 
     # as usual we create a session.
@@ -76,7 +81,8 @@ with g.as_default():
     for i in range(0, 5):
         print "#########################"
         # every time we call run, a new data point is read from the files
-        output =  sess.run(dense_feature)
-        print output.shape
+        X,Y =  sess.run([dense_feature,label])
+        print X.shape
         # print sum(output)
-        print output[output> 0.1]
+        print X[X> 0.1]
+        print Y
