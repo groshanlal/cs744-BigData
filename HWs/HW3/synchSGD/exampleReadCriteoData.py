@@ -21,34 +21,62 @@ g = tf.Graph()
 
 with g.as_default():
 
-    # We first define a filename queue comprising 5 files.
-    filename_queue = tf.train.string_input_producer([
-        "/home/ubuntu/criteo-tfr-tiny/tfrecords00",
-        "/home/ubuntu/criteo-tfr-tiny/tfrecords01",
-        "/home/ubuntu/criteo-tfr-tiny/tfrecords02",
-        "/home/ubuntu/criteo-tfr-tiny/tfrecords03",
-        "/home/ubuntu/criteo-tfr-tiny/tfrecords04",
-    ], num_epochs=None)
+    def get_datapoint_iter(file_idx=[]):
+        fileNames = map(lambda s: "/home/ubuntu/criteo-tfr-tiny/tfrecords"+s,file_idx)
+        # We first define a filename queue comprising 5 files.
+        filename_queue = tf.train.string_input_producer(fileNames, num_epochs=None)
+
+         # TFRecordReader creates an operator in the graph that reads data from queue
+        reader = tf.TFRecordReader()
+
+        # Include a read operator with the filenae queue to use. The output is a string
+        # Tensor called serialized_example
+        _, serialized_example = reader.read(filename_queue)
 
 
-    # TFRecordReader creates an operator in the graph that reads data from queue
-    reader = tf.TFRecordReader()
+        # The string tensors is essentially a Protobuf serialized string. With the
+        # following fields: label, index, value. We provide the protobuf fields we are
+        # interested in to parse the data. Note, feature here is a dict of tensors
+        features = tf.parse_single_example(serialized_example,
+                                           features={
+                                            'label': tf.FixedLenFeature([1], dtype=tf.int64),
+                                            'index' : tf.VarLenFeature(dtype=tf.int64),
+                                            'value' : tf.VarLenFeature(dtype=tf.float32),
+                                           }
+                                          )
+        return features
 
-    # Include a read operator with the filenae queue to use. The output is a string
-    # Tensor called serialized_example
-    _, serialized_example = reader.read(filename_queue)
+
+    # # We first define a filename queue comprising 5 files.
+    # filename_queue = tf.train.string_input_producer([
+    #     "/home/ubuntu/criteo-tfr-tiny/tfrecords00",
+    #     "/home/ubuntu/criteo-tfr-tiny/tfrecords01",
+    #     "/home/ubuntu/criteo-tfr-tiny/tfrecords02",
+    #     "/home/ubuntu/criteo-tfr-tiny/tfrecords03",
+    #     "/home/ubuntu/criteo-tfr-tiny/tfrecords04",
+    # ], num_epochs=None)
 
 
-    # The string tensors is essentially a Protobuf serialized string. With the
-    # following fields: label, index, value. We provide the protobuf fields we are
-    # interested in to parse the data. Note, feature here is a dict of tensors
-    features = tf.parse_single_example(serialized_example,
-                                       features={
-                                        'label': tf.FixedLenFeature([1], dtype=tf.int64),
-                                        'index' : tf.VarLenFeature(dtype=tf.int64),
-                                        'value' : tf.VarLenFeature(dtype=tf.float32),
-                                       }
-                                      )
+    # # TFRecordReader creates an operator in the graph that reads data from queue
+    # reader = tf.TFRecordReader()
+
+    # # Include a read operator with the filenae queue to use. The output is a string
+    # # Tensor called serialized_example
+    # _, serialized_example = reader.read(filename_queue)
+
+
+    # # The string tensors is essentially a Protobuf serialized string. With the
+    # # following fields: label, index, value. We provide the protobuf fields we are
+    # # interested in to parse the data. Note, feature here is a dict of tensors
+    # features = tf.parse_single_example(serialized_example,
+    #                                    features={
+    #                                     'label': tf.FixedLenFeature([1], dtype=tf.int64),
+    #                                     'index' : tf.VarLenFeature(dtype=tf.int64),
+    #                                     'value' : tf.VarLenFeature(dtype=tf.float32),
+    #                                    }
+    #                                   )
+    
+    features = get_datapoint_iter(file_dict[0])
 
     label = features['label']
     index = features['index']
