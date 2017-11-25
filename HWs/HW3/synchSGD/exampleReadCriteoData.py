@@ -68,8 +68,13 @@ with g.as_default():
     #     return tf.stack(X),tf.stack(Y)
    
     
-    dense_feature,label = get_datapoint_iter(file_dict[0])
+    dense_feature0,label0 = get_datapoint_iter(file_dict[0])
     dense_feature1,label1 = get_datapoint_iter(file_dict[0])
+
+    dense_feature = tf.stack([dense_feature0,dense_feature1])
+    label = tf.stack([label0,label1])
+
+
     # next_batch()#
    
     # as usual we create a session.
@@ -82,9 +87,7 @@ with g.as_default():
 
     for i in range(0, 20):
         # every time we call run, a new data point is read from the files
-        X,Y,X1,Y1 =  sess.run([dense_feature,label,dense_feature1,label1])
-        # print X.shape
-        print X[1:20]
-        print X1[1:20]
-        # print Y
+        X,Y =  sess.run([dense_feature,label])
+        print X.shape
+        print Y.shape
         # print sum(output)
