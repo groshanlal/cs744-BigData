@@ -79,4 +79,4 @@ with g.as_default():
         output =  sess.run(dense_feature)
         print output.shape
         # print sum(output)
-        print output[1:100]
+        print output[output> 0.1]
