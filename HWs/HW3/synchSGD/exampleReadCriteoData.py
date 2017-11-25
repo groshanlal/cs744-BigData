@@ -21,54 +21,51 @@ g = tf.Graph()
 
 with g.as_default():
 
-    def get_datapoint_iter(file_idx=[]):
-        filename = map(lambda s: "~/criteo-tfr-tiny/tfrecords"+s,file_idx)
-        print filename
-        # We first define a filename queue comprising 5 files.
-        filename_queue = tf.train.string_input_producer(filename, num_epochs=None)
-        # TFRecordReader creates an operator in the graph that reads data from queue
-        reader = tf.TFRecordReader()
-
-        # Include a read operator with the filenae queue to use. The output is a string
-        # Tensor called serialized_example
-        _, serialized_example = reader.read(filename_queue)
+    # We first define a filename queue comprising 5 files.
+    filename_queue = tf.train.string_input_producer([
+        "~/criteo-tfr-tiny/tfrecords00",
+        "~/criteo-tfr-tiny/tfrecords01",
+        "~/criteo-tfr-tiny/tfrecords02",
+        "~/criteo-tfr-tiny/tfrecords03",
+        "~/criteo-tfr-tiny/tfrecords04",
+    ], num_epochs=None)
 
 
-        # The string tensors is essentially a Protobuf serialized string. With the
-        # following fields: label, index, value. We provide the protobuf fields we are
-        # interested in to parse the data. Note, feature here is a dict of tensors
-        features = tf.parse_single_example(serialized_example,
-                                           features={
-                                            'label': tf.FixedLenFeature([1], dtype=tf.int64),
-                                            'index' : tf.VarLenFeature(dtype=tf.int64),
-                                            'value' : tf.VarLenFeature(dtype=tf.float32),
-                                           }
-                                          )
+    # TFRecordReader creates an operator in the graph that reads data from queue
+    reader = tf.TFRecordReader()
 
-        label = features['label']
-        index = features['index']
-        value = features['value']
+    # Include a read operator with the filenae queue to use. The output is a string
+    # Tensor called serialized_example
+    _, serialized_example = reader.read(filename_queue)
 
-        print label
-        print "#########################"
-        print index
-        print "#########################"
-        print value
-        print "#########################"
-        print features.keys()
-        print "#########################"
 
-        dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
+    # The string tensors is essentially a Protobuf serialized string. With the
+    # following fields: label, index, value. We provide the protobuf fields we are
+    # interested in to parse the data. Note, feature here is a dict of tensors
+    features = tf.parse_single_example(serialized_example,
+                                       features={
+                                        'label': tf.FixedLenFeature([1], dtype=tf.int64),
+                                        'index' : tf.VarLenFeature(dtype=tf.int64),
+                                        'value' : tf.VarLenFeature(dtype=tf.float32),
+                                       }
+                                      )
+
+    label = features['label']
+    index = features['index']
+    value = features['value']
+
+    # These print statements are there for you see the type of the following
+    # variables
+    print label
+    print index
+    print value
+
+    # since we parsed a VarLenFeatures, they are returned as SparseTensors.
+    # To run operations on then, we first convert them to dense Tensors as below.
+    dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
                                    [num_features,],
-        #                               tf.constant([33762578, 1], dtype=tf.int64),
+    #                               tf.constant([33762578, 1], dtype=tf.int64),
                                    tf.sparse_tensor_to_dense(value))
-
-        return (dense_feature,label)
-
-    ## END OF get_datapoint_iter
-
-    dense_feature, label = get_datapoint_iter(file_dict[0])
-
 
 
     # as usual we create a session.
