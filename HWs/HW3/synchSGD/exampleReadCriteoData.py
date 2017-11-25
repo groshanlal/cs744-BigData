@@ -75,7 +75,7 @@ with g.as_default():
     print dense_feature0
     print label0
 
-    dense_feature = tf.stack([dense_feature0,dense_feature1])
+    dense_feature = tf.pack([dense_feature0,dense_feature1])
     label = tf.pack([label0,label1])
 
 
