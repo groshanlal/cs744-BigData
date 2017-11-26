@@ -5,7 +5,7 @@ tf.logging.set_verbosity(tf.logging.DEBUG)
 
 # number of features in the criteo dataset after one-hot encoding
 num_features = 100
-s_batch = 5
+s_batch = 1
 
 eta = 0.1
 
