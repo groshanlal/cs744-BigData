@@ -111,5 +111,5 @@ with g.as_default():
         sess.run(tf.initialize_all_variables())
         for i in range(0, 1):
             sess.run(assign_op)
-            print w.eval()
+            print w.eval().shape
         sess.close()
