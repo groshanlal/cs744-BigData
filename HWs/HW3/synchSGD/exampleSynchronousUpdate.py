@@ -4,7 +4,9 @@ import os
 
 # number of features in the criteo dataset after one-hot encoding
 num_features = 33762578
-s_batch = 20
+s_batch = 1
+
+eta = 0.1
 
 
 file_dict = {0:["00","01","02","03","04"],
@@ -53,14 +55,30 @@ with g.as_default():
         #                               tf.constant([33762578, 1], dtype=tf.int64),
                                        tf.sparse_tensor_to_dense(value))
         return (dense_feature,label)
-
     ## END OF get_datapoint_iter
 
-    def calc_gradient(X,W,Y):
-        gradient = tf.matmul()
+    def next_batch(id = 0):
+        X = []
+        Y = []
+        for i in range(s_batch):
+            x_,y_ = get_datapoint_iter(file_dict[id])
+            X.append(x_)
+            Y.append(y_)
+        # returns two tensors (s_batch,num_features) and (s_batch,1)
+        return tf.pack(X),tf.pack(Y)
+    # END OF next_batch
 
-    def next_batch():
-        pass
+
+    def calc_gradient(X,W,Y):
+        error = tf.sigmoid(tf.multiply(Y,tf.matmul(X,W)))
+        print error.shape
+        error_m1 = tf.subtract(error,1)
+        print error_m1.shape
+        gradient = tf.multiply(Y,tf.matmul(X,error_m1))
+        print gradient.shape
+        return tf.reduce_sum(gradient)
+    # END OF calc_gradient
+
 
     # creating a model variable on task 0. This is a process running on node vm-32-1
     with tf.device("/job:worker/task:0"):
@@ -73,13 +91,16 @@ with g.as_default():
     gradients = []
     for i in range(0, 5):
         with tf.device("/job:worker/task:%d" % i):
-            reader = tf.ones([num_features, 1], name="operator_%d" % i)
+            # reader = tf.ones([num_features, 1], name="operator_%d" % i)
+            X,Y = next_batch(i)
+
             # not the gradient compuation here is a random operation. You need
             # to use the right way (as described in assignment 3 desc).
             # we use this specific example to show that gradient computation
             # requires use of the model
-            local_gradient = tf.mul(reader, tf.matmul(tf.transpose(w), reader))
-            gradients.append(tf.mul(local_gradient, 0.1))
+            # local_gradient = tf.mul(reader, tf.matmul(tf.transpose(w), reader))
+            local_gradient = calc_gradient(X,w,Y)
+            gradients.append(tf.mul(local_gradient, eta))
 
 
     # we create an operator to aggregate the local gradients
@@ -90,7 +111,7 @@ with g.as_default():
 
     with tf.Session("grpc://vm-32-1:2222") as sess:
         sess.run(tf.initialize_all_variables())
-        for i in range(0, 10):
+        for i in range(0, 1):
             sess.run(assign_op)
             print w.eval()
         sess.close()
