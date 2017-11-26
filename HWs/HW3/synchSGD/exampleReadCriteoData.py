@@ -101,5 +101,5 @@ with g.as_default():
         gradient,X,Y =  sess.run([grad,dense_feature,label])
         print X.shape
         print Y.shape
-        print gradient
+        print gradient.shape
         # print sum(output)
