@@ -115,6 +115,6 @@ with g.as_default():
         tf.train.SummaryWriter("%s/synchSGD" % (os.environ.get("TF_LOG_DIR")), sess.graph)
         sess.run(tf.initialize_all_variables())
         for i in range(0, 1):
-            w_out = sess.run(assign_op)
-            print w_out.shape
+            sess.run(assign_op)
+            print w.eval()
         sess.close()
