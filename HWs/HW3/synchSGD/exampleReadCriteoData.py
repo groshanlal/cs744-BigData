@@ -68,18 +68,22 @@ with g.as_default():
         return tf.pack(X),tf.pack(Y)
    
     
-    # dense_feature0,label0 = get_datapoint_iter(file_dict[0])
-    # dense_feature1,label1 = get_datapoint_iter(file_dict[0])
+    def calc_gradient(X,W,Y):
+        error = tf.sigmoid(tf.multiply(Y,tf.matmul(X,W)))
+        print error.shape
+        error_m1 = tf.subtract(error,1)
+        print error_m1.shape
+        gradient = tf.multiply(Y,tf.matmul(X,error_m1))
+        print gradient.shape
+        return tf.reduce_sum(gradient)
 
-
-    # print dense_feature0
-    # print label0
-
-    # dense_feature = tf.pack([dense_feature0,dense_feature1])
-    # label = tf.pack([label0,label1])
+    w = tf.Variable(tf.zeros([num_features, 1]), name="model")
 
 
     dense_feature,label =  next_batch()
+
+    grad = calc_gradient(dense_feature,w,label)
+
    
     # as usual we create a session.
     sess = tf.Session()
@@ -91,7 +95,8 @@ with g.as_default():
 
     for i in range(0, 2):
         # every time we call run, a new data point is read from the files
-        X,Y =  sess.run([dense_feature,label])
+        gradient,X,Y =  sess.run([grad,dense_feature,label])
         print X.shape
         print Y.shape
+        print gradient.shape
         # print sum(output)
