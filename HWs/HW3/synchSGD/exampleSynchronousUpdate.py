@@ -52,10 +52,10 @@ with g.as_default():
         # since we parsed a VarLenFeatures, they are returned as SparseTensors.
         # To run operations on then, we first convert them to dense Tensors as below.
         dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
-                                       [num_features,],
+                                       [33762578,],
         #                               tf.constant([33762578, 1], dtype=tf.int64),
                                        tf.sparse_tensor_to_dense(value))
-        return (dense_feature,tf.cast(label, tf.float32))
+        return (tf.slice(dense_feature,[0,0],[s_batch,num_features]),tf.cast(label, tf.float32))
     ## END OF get_datapoint_iter
 
     def next_batch(id = 0):
