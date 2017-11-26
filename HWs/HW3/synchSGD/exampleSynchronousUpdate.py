@@ -89,7 +89,7 @@ with g.as_default():
     gradients = []
     for i in range(0, 5):
         with tf.device("/job:worker/task:%d" % i):
-            reader = tf.ones([num_features, 1], name="operator_%d" % i)
+            # reader = tf.ones([num_features, 1], name="operator_%d" % i)
             X,Y = next_batch(i)
 
             # not the gradient compuation here is a random operation. You need
@@ -99,8 +99,8 @@ with g.as_default():
             # local_gradient = tf.mul(reader, tf.matmul(tf.transpose(w), reader))
             local_gradient = calc_gradient(X,w,Y)
             print i,"> local_gradient:",local_gradient.get_shape()
-            # gradients.append(tf.mul(local_gradient, eta))
-            gradients.append(tf.mul(reader, eta))
+            gradients.append(tf.mul(local_gradient, eta))
+            # gradients.append(tf.mul(reader, eta))
 
 
     # we create an operator to aggregate the local gradients
