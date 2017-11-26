@@ -104,7 +104,7 @@ with g.as_default():
     # we create an operator to aggregate the local gradients
     with tf.device("/job:worker/task:0"):
         aggregator = tf.add_n(gradients)
-        agg_shape = tf.transpose(aggregator)
+        agg_shape = tf.reshape(aggregator,[num_features, 1])
         print "agg_shape:",agg_shape.get_shape()
         assign_op = w.assign_add(agg_shape)
 
