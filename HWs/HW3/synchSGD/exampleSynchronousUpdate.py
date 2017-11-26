@@ -54,7 +54,7 @@ with g.as_default():
                                        [num_features,],
         #                               tf.constant([33762578, 1], dtype=tf.int64),
                                        tf.sparse_tensor_to_dense(value))
-        return (dense_feature,label)
+        return (dense_feature,tf.cast(label, tf.float32))
     ## END OF get_datapoint_iter
 
     def next_batch(id = 0):
@@ -67,7 +67,6 @@ with g.as_default():
         # returns two tensors (s_batch,num_features) and (s_batch,1)
         return tf.pack(X),tf.pack(Y)
     # END OF next_batch
-
 
     def calc_gradient(X,W,Y):
         error = tf.sigmoid(tf.mul(Y,tf.matmul(X,W)))
