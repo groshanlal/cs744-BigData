@@ -70,17 +70,20 @@ with g.as_default():
     
     def calc_gradient(X,W,Y):
         error = tf.sigmoid(tf.mul(Y,tf.matmul(X,W)))
-        print error.get_shape()
+        print " error:",error.get_shape()
         error_m1 = error-1
-        print error_m1.get_shape()
+        print "error_m1:",error_m1.get_shape()
         gradient = tf.matmul(tf.transpose(X),tf.mul(Y,error_m1))
-        print gradient.get_shape()
+        print "gradient:",gradient.get_shape()
         return tf.reduce_sum(gradient)
 
     w = tf.Variable(tf.zeros([num_features, 1]), name="model")
 
 
     dense_feature,label =  next_batch()
+
+    print "dense_feature:",dense_feature.get_shape()
+    print "label:",label.get_shape()
 
     grad = calc_gradient(dense_feature,w,label)
 
@@ -93,7 +96,7 @@ with g.as_default():
     # Effectively, it spins up separate threads to read from the files
     tf.train.start_queue_runners(sess=sess)
 
-    for i in range(0, 2):
+    for i in range(0, 1):
         # every time we call run, a new data point is read from the files
         gradient,X,Y =  sess.run([grad,dense_feature,label])
         print X.shape
