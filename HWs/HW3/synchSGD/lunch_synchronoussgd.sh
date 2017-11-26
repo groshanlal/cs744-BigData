@@ -1,7 +1,7 @@
 #!/bin/bash
 export TF_LOG_DIR="/home/ubuntu/tf/logs"
 
-rm -rf ${TF_LOG_DIR}/example_distributed
+rm -rf ${TF_LOG_DIR}/synchSGD
 # tfdefs.sh has helper function to start process on all VMs
 # it contains definition for start_cluster and terminate_cluster
 source tfdefs.sh
