@@ -75,7 +75,7 @@ with g.as_default():
         print "error_m1:",error_m1.get_shape()
         gradient = tf.matmul(tf.transpose(X),tf.mul(Y,error_m1))
         print "gradient:",gradient.get_shape()
-        return tf.reduce_sum(gradient,axis=1)
+        return tf.reduce_sum(gradient,1)
 
     w = tf.Variable(tf.zeros([num_features, 1]), name="model")
 
