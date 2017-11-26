@@ -71,7 +71,7 @@ with g.as_default():
     def calc_gradient(X,W,Y):
         error = tf.sigmoid(tf.mul(Y,tf.matmul(X,W)))
         print error.get_shape()
-        error_m1 = tf.subtract(error,1)
+        error_m1 = error-1
         print error_m1.get_shape()
         gradient = tf.mul(Y,tf.matmul(X,error_m1))
         print gradient.get_shape()
