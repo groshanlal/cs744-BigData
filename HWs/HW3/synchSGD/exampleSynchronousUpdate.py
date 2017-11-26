@@ -55,7 +55,7 @@ with g.as_default():
                                        [33762578,],
         #                               tf.constant([33762578, 1], dtype=tf.int64),
                                        tf.sparse_tensor_to_dense(value))
-        return (tf.slice(dense_feature,[0,0],[s_batch,num_features]),tf.cast(label, tf.float32))
+        return (tf.slice(dense_feature,[0],[num_features]),tf.cast(label, tf.float32))
     ## END OF get_datapoint_iter
 
     def next_batch(id = 0):
