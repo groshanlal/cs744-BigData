@@ -55,7 +55,7 @@ with g.as_default():
                                        [num_features,],
         #                               tf.constant([33762578, 1], dtype=tf.int64),
                                        tf.sparse_tensor_to_dense(value))
-        return (dense_feature,label)
+        return (dense_feature,tf.cast(label, tf.float32))
 
 
     def next_batch():
