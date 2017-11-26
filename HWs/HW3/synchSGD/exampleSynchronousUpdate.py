@@ -1,6 +1,7 @@
 import tensorflow as tf
 import os
 
+tf.logging.set_verbosity(tf.logging.DEBUG)
 
 # number of features in the criteo dataset after one-hot encoding
 num_features = 33762578
