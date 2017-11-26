@@ -4,7 +4,7 @@ import os
 tf.logging.set_verbosity(tf.logging.DEBUG)
 
 # number of features in the criteo dataset after one-hot encoding
-num_features = 100#33762578
+num_features = 33762578
 s_batch = 20
 
 eta = 0.1
@@ -113,6 +113,6 @@ with g.as_default():
     with tf.Session("grpc://vm-32-1:2222") as sess:
         sess.run(tf.initialize_all_variables())
         for i in range(0, 1):
-            sess.run(assign_op)
-            print w.eval().shape
+            w_out = sess.run(assign_op)
+            print w_out.shape
         sess.close()
