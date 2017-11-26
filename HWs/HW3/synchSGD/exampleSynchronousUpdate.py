@@ -70,13 +70,11 @@ with g.as_default():
 
 
     def calc_gradient(X,W,Y):
-        error = tf.sigmoid(tf.multiply(Y,tf.matmul(X,W)))
-        print error.shape
-        error_m1 = tf.subtract(error,1)
-        print error_m1.shape
-        gradient = tf.multiply(Y,tf.matmul(X,error_m1))
-        print gradient.shape
-        return tf.reduce_sum(gradient)
+        error = tf.sigmoid(tf.mul(Y,tf.matmul(X,W)))
+        error_m1 = error-1
+        gradient = tf.matmul(tf.transpose(X),tf.mul(Y,error_m1))
+        # generate the local sum of the batch
+        return tf.reduce_sum(gradient,1)
     # END OF calc_gradient
 
 
