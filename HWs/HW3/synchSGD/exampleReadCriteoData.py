@@ -70,7 +70,7 @@ with g.as_default():
     
     def calc_gradient(X,W,Y):
         error = tf.sigmoid(tf.mul(Y,tf.matmul(X,W)))
-        print " error:",error.get_shape()
+        print "error:",error.get_shape()
         error_m1 = error-1
         print "error_m1:",error_m1.get_shape()
         gradient = tf.matmul(tf.transpose(X),tf.mul(Y,error_m1))
@@ -101,5 +101,5 @@ with g.as_default():
         gradient,X,Y =  sess.run([grad,dense_feature,label])
         print X.shape
         print Y.shape
-        print gradient.shape
+        print gradient
         # print sum(output)
