@@ -97,6 +97,7 @@ with g.as_default():
             # requires use of the model
             # local_gradient = tf.mul(reader, tf.matmul(tf.transpose(w), reader))
             local_gradient = calc_gradient(X,w,Y)
+            print i,"> local_gradient:",local_gradient.get_shape()
             gradients.append(tf.mul(local_gradient, eta))
 
 
