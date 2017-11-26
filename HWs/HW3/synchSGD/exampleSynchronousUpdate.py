@@ -117,4 +117,5 @@ with g.as_default():
         for i in range(0, 1):
             sess.run(assign_op)
             print w.eval()
+        print "END"
         sess.close()
