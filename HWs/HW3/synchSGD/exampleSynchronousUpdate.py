@@ -92,12 +92,14 @@ with g.as_default():
             # reader = tf.ones([num_features, 1], name="operator_%d" % i)
             X,Y = next_batch(i)
 
+            temp = tf.reduce_sum(X,1)
+
             # not the gradient compuation here is a random operation. You need
             # to use the right way (as described in assignment 3 desc).
             # we use this specific example to show that gradient computation
             # requires use of the model
             # local_gradient = tf.mul(reader, tf.matmul(tf.transpose(w), reader))
-            local_gradient = calc_gradient(X,w,Y)
+            local_gradient = temp #calc_gradient(X,w,Y)
             print i,"> local_gradient:",local_gradient.get_shape()
             gradients.append(tf.mul(local_gradient, eta))
             # gradients.append(tf.mul(reader, eta))
