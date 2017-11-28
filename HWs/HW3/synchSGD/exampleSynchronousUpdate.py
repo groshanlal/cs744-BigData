@@ -96,7 +96,7 @@ with g.as_default():
         with tf.device("/job:worker/task:%d" % i):
             
             X,Y = get_datapoint_iter(file_dict[i])
-            local_gradient calc_gradient(X,w,Y)
+            local_gradient = calc_gradient(X,w,Y)
             #tf.ones([10, 1], name="operator_%d" % i)
             # X,reader = get_datapoint_iter(file_dict[0])
             # not the gradient compuation here is a random operation. You need
