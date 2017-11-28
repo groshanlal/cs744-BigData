@@ -8,7 +8,7 @@ num_features = 33762578
 # These operators take as input list of filenames from which they read data.
 # On every invocation of the operator, some records are read and passed to the
 # downstream vertices as Tensors
-s_batch = 40
+s_batch = 2
 
 g = tf.Graph()
 
