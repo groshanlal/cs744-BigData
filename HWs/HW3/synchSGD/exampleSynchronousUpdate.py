@@ -87,8 +87,8 @@ with g.as_default():
     gradients = []
     for i in range(0, 5):
         with tf.device("/job:worker/task:%d" % i):
-            # reader = tf.ones([10, 1], name="operator_%d" % i)
-            X,reader = get_datapoint_iter(file_dict[0])
+            reader = tf.ones([10, 1], name="operator_%d" % i)
+            # X,reader = get_datapoint_iter(file_dict[0])
             # not the gradient compuation here is a random operation. You need
             # to use the right way (as described in assignment 3 desc).
             # we use this specific example to show that gradient computation
