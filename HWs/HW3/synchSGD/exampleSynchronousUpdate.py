@@ -125,11 +125,11 @@ with g.as_default():
 
 
     # we create an operator to aggregate the local gradients
-    with tf.device("/job:worker/task:0"):
-        aggregator = tf.add_n(gradients)
-        agg_shape = tf.reshape(aggregator,[num_features, 1])
-        print "agg_shape:",agg_shape.get_shape()
-        assign_op = w.assign_add(agg_shape)
+    # with tf.device("/job:worker/task:0"):
+    #     aggregator = tf.add_n(gradients)
+    #     agg_shape = tf.reshape(aggregator,[num_features, 1])
+    #     print "agg_shape:",agg_shape.get_shape()
+    #     assign_op = w.assign_add(agg_shape)
 
 
     with tf.Session("grpc://vm-32-1:2222") as sess:
@@ -137,7 +137,7 @@ with g.as_default():
         sess.run(tf.initialize_all_variables())
         print "running"
         for i in range(n_iter):
-            sess.run(assign_op)
-            print w.eval()
+            out = sess.run(gradients)
+            print out
         print "END"
         sess.close()
