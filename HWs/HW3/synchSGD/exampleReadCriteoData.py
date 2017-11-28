@@ -58,14 +58,22 @@ with g.as_default():
         return (dense_feature,tf.cast(label, tf.float32))
 
 
-    def next_batch():
-        X = []
-        Y = []
-        for i in range(s_batch):
-            x_,y_ = get_datapoint_iter(file_dict[0])
-            X.append(x_)
-            Y.append(y_)
-        return tf.pack(X),tf.pack(Y)
+    def next_batch(id = 0):
+        x_,y_ = get_datapoint_iter(file_dict[id])
+        min_after_dequeue = 100
+        capacity = min_after_dequeue + 3 * s_batch
+        example_batch, label_batch = tf.train.shuffle_batch(
+                [x_, y_], batch_size=s_batch, capacity=capacity,
+                min_after_dequeue=min_after_dequeue)
+
+        return example_batch, label_batch
+        # X = []
+        # Y = []
+        # for i in range(s_batch):
+        #     x_,y_ = get_datapoint_iter(file_dict[id])
+        #     X.append(x_)
+        #     Y.append(y_)
+        # return tf.pack(X),tf.pack(Y)
    
     
     def calc_gradient(X,W,Y):
