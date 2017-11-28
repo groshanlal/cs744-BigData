@@ -24,6 +24,8 @@ with g.as_default():
 
     def get_datapoint_iter(file_idx=[]):
         fileNames = map(lambda s: "/home/ubuntu/criteo-tfr-tiny/tfrecords"+s,file_idx)
+        # TFRecordReader creates an operator in the graph that reads data from queue
+        reader = tf.TFRecordReader()
         # We first define a filename queue comprising 5 files.
         # Include a read operator with the filenae queue to use. The output is a string
         # Tensor called serialized_example
@@ -72,7 +74,7 @@ with g.as_default():
           min_after_dequeue=min_after_dequeue)
 
 
-        
+
         return (example_batch,label_batch)
     ## END OF get_datapoint_iter
 
