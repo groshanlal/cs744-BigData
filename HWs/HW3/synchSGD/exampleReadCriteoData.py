@@ -8,7 +8,7 @@ num_features = 33762578
 # These operators take as input list of filenames from which they read data.
 # On every invocation of the operator, some records are read and passed to the
 # downstream vertices as Tensors
-s_batch = 1
+s_batch = 40
 
 g = tf.Graph()
 
@@ -29,14 +29,13 @@ with g.as_default():
 
     # Include a read operator with the filenae queue to use. The output is a string
     # Tensor called serialized_example
-    _, serialized_example = reader.read_up_to(filename_queue,s_batch)
+    _, serialized_example = reader.read(filename_queue)
 
-    print serialized_example
-    print "*****************"
+
     # The string tensors is essentially a Protobuf serialized string. With the
     # following fields: label, index, value. We provide the protobuf fields we are
     # interested in to parse the data. Note, feature here is a dict of tensors
-    features = tf.parse_example(serialized_example,
+    features = tf.parse_single_example(serialized_example,
                                        features={
                                         'label': tf.FixedLenFeature([1], dtype=tf.int64),
                                         'index' : tf.VarLenFeature(dtype=tf.int64),
@@ -44,8 +43,6 @@ with g.as_default():
                                        }
                                       )
 
-    print features
-    print "*****************"
     label = features['label']
     index = features['index']
     value = features['value']
@@ -55,7 +52,7 @@ with g.as_default():
     print label
     print index
     print value
-    print "*****************"
+
     # since we parsed a VarLenFeatures, they are returned as SparseTensors.
     # To run operations on then, we first convert them to dense Tensors as below.
     dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
@@ -63,7 +60,22 @@ with g.as_default():
     #                               tf.constant([33762578, 1], dtype=tf.int64),
                                    tf.sparse_tensor_to_dense(value))
 
-    print dense_feature
+
+
+    # min_after_dequeue defines how big a buffer we will randomly sample
+    #   from -- bigger means better shuffling but slower start up and more
+    #   memory used.
+    # capacity must be larger than min_after_dequeue and the amount larger
+    #   determines the maximum we will prefetch.  Recommendation:
+    #   min_after_dequeue + (num_threads + a small safety margin) * batch_size
+    min_after_dequeue = 10000
+    capacity = min_after_dequeue + 3 * batch_size
+    example_batch, label_batch = tf.train.shuffle_batch(
+      [dense_feature, label], batch_size=batch_size, capacity=capacity,
+      min_after_dequeue=min_after_dequeue)
+
+
+
     # as usual we create a session.
     sess = tf.Session()
     sess.run(tf.initialize_all_variables())
@@ -74,6 +86,7 @@ with g.as_default():
 
     for i in range(0, 20):
         # every time we call run, a new data point is read from the files
-        output =  sess.run(dense_feature)
+        output, lbl =  sess.run([example_batch,label_batch])
         print output.shape
         print sum(output)
+        print lbl
