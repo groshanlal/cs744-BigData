@@ -110,6 +110,7 @@ with g.as_default():
             # reader = tf.ones([num_features, 1], name="operator_%d" % i)
             X,Y = get_datapoint_iter(file_dict[i])#next_batch(i)
 
+            print i,"> X:",X.get_shape()
             temp = tf.reduce_sum(X,0)
 
             # not the gradient compuation here is a random operation. You need
