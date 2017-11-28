@@ -120,6 +120,7 @@ with g.as_default():
               [dense_feature[0:num_features], label_flt], batch_size=s_batch, capacity=capacity,
               min_after_dequeue=min_after_dequeue)
             ####################################################################################
+            print "Y.get_shape(): ",Y.get_shape()
             reader = tf.ones([10, 1], name="operator_%d" % i)
             # X,reader = get_datapoint_iter(file_dict[0])
             # not the gradient compuation here is a random operation. You need
