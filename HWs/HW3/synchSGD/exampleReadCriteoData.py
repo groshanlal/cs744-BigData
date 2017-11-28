@@ -31,13 +31,13 @@ with g.as_default():
 
         # Include a read operator with the filenae queue to use. The output is a string
         # Tensor called serialized_example
-        _, serialized_example = reader.read(filename_queue)
+        _, serialized_example = reader.read_up_to(filename_queue,s_batch)
 
 
         # The string tensors is essentially a Protobuf serialized string. With the
         # following fields: label, index, value. We provide the protobuf fields we are
         # interested in to parse the data. Note, feature here is a dict of tensors
-        features = tf.parse_single_example(serialized_example,
+        features = tf.parse_example(serialized_example,
                                            features={
                                             'label': tf.FixedLenFeature([1], dtype=tf.int64),
                                             'index' : tf.VarLenFeature(dtype=tf.int64),
@@ -89,7 +89,7 @@ with g.as_default():
     w = tf.Variable(tf.zeros([num_features, 1]), name="model")
 
 
-    dense_feature,label =  next_batch()
+    dense_feature,label =  get_datapoint_iter(file_dict[0]) #next_batch()
 
     print "dense_feature:",dense_feature.get_shape()
     print "label:",label.get_shape()
