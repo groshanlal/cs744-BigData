@@ -111,4 +111,5 @@ with g.as_default():
         print X.shape
         print Y.shape
         print gradient.shape
+        print Y
         # print sum(output)
