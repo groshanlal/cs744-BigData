@@ -88,5 +88,5 @@ with g.as_default():
         # every time we call run, a new data point is read from the files
         output, lbl =  sess.run([example_batch,label_batch])
         print output.shape
-        print sum(output)
+        # print sum(output)
         print lbl
