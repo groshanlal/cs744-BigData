@@ -29,7 +29,7 @@ with g.as_default():
         # We first define a filename queue comprising 5 files.
         # Include a read operator with the filenae queue to use. The output is a string
         # Tensor called serialized_example
-        _, serialized_example = reader.read(filename_queue)
+        _, serialized_example = reader.read(fileNames)
 
 
         # The string tensors is essentially a Protobuf serialized string. With the
