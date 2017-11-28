@@ -25,11 +25,6 @@ with g.as_default():
     def get_datapoint_iter(file_idx=[]):
         fileNames = map(lambda s: "/home/ubuntu/criteo-tfr-tiny/tfrecords"+s,file_idx)
         # We first define a filename queue comprising 5 files.
-        filename_queue = tf.train.string_input_producer(fileNames, num_epochs=None)
-
-         # TFRecordReader creates an operator in the graph that reads data from queue
-        reader = tf.TFRecordReader()
-
         # Include a read operator with the filenae queue to use. The output is a string
         # Tensor called serialized_example
         _, serialized_example = reader.read(filename_queue)
@@ -50,24 +45,41 @@ with g.as_default():
         index = features['index']
         value = features['value']
 
+        # These print statements are there for you see the type of the following
+        # variables
+        print label
+        print index
+        print value
+
         # since we parsed a VarLenFeatures, they are returned as SparseTensors.
         # To run operations on then, we first convert them to dense Tensors as below.
         dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
                                        [33762578,],
         #                               tf.constant([33762578, 1], dtype=tf.int64),
                                        tf.sparse_tensor_to_dense(value))
-        return (tf.slice(dense_feature,[0],[num_features]),tf.cast(label, tf.float32))
+
+        label_flt = tf.cast(label, tf.float32)
+        # min_after_dequeue defines how big a buffer we will randomly sample
+        #   from -- bigger means better shuffling but slower start up and more
+        #   memory used.
+        # capacity must be larger than min_after_dequeue and the amount larger
+        #   determines the maximum we will prefetch.  Recommendation:
+        #   min_after_dequeue + (num_threads + a small safety margin) * batch_size
+        min_after_dequeue = 10
+        capacity = min_after_dequeue + 3 * s_batch
+        example_batch, label_batch = tf.train.shuffle_batch(
+          [dense_feature[0:num_features], label_flt], batch_size=s_batch, capacity=capacity,
+          min_after_dequeue=min_after_dequeue)
+
+
+        
+        return (example_batch,label_batch)
     ## END OF get_datapoint_iter
 
     def next_batch(id = 0):
-        X = []
-        Y = []
-        for i in range(s_batch):
-            x_,y_ = get_datapoint_iter(file_dict[id])
-            X.append(x_)
-            Y.append(y_)
-        # returns two tensors (s_batch,num_features) and (s_batch,1)
-        return tf.pack(X),tf.pack(Y)
+        x_,y_ = get_datapoint_iter(file_dict[id])
+        return x_,y_ 
+        
     # END OF next_batch
 
     def calc_gradient(X,W,Y):
