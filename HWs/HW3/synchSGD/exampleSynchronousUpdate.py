@@ -2,7 +2,7 @@ import tensorflow as tf
 import os
 
 # number of features in the criteo dataset after one-hot encoding
-num_features = 33762578
+num_features = 10
 s_batch = 10
 
 file_dict = {0:["00","01","02","03","04"],
@@ -48,9 +48,9 @@ with g.as_default():
 
         # These print statements are there for you see the type of the following
         # variables
-        print label
-        print index
-        print value
+        # print label
+        # print index
+        # print value
 
         # since we parsed a VarLenFeatures, they are returned as SparseTensors.
         # To run operations on then, we first convert them to dense Tensors as below.
