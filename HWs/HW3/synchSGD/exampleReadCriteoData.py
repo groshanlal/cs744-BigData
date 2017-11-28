@@ -23,15 +23,10 @@ g = tf.Graph()
 
 with g.as_default():
 
-    def get_datapoint_iter():
+    def get_datapoint_iter(file_idx=[]):
+        fileNames = map(lambda s: "/home/ubuntu/criteo-tfr-tiny/tfrecords"+s,file_idx)
         # We first define a filename queue comprising 5 files.
-        filename_queue = tf.train.string_input_producer([
-            "/home/ubuntu/criteo-tfr-tiny/tfrecords00",
-            "/home/ubuntu/criteo-tfr-tiny/tfrecords01",
-            "/home/ubuntu/criteo-tfr-tiny/tfrecords02",
-            "/home/ubuntu/criteo-tfr-tiny/tfrecords03",
-            "/home/ubuntu/criteo-tfr-tiny/tfrecords04",
-        ], num_epochs=None)
+        filename_queue = tf.train.string_input_producer(fileNames, num_epochs=None)
 
 
         # TFRecordReader creates an operator in the graph that reads data from queue
@@ -101,7 +96,8 @@ with g.as_default():
 
     w = tf.Variable(tf.ones([num_features, 1]), name="model")
 
-    example_batch, label_batch = get_datapoint_iter()
+    example_batch, label_batch = get_datapoint_iter(file_dict[0] )
+
     grad = calc_gradient(example_batch,w,label_batch)
 
 
