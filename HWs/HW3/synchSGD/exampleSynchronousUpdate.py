@@ -24,12 +24,15 @@ with g.as_default():
 
     def get_datapoint_iter(file_idx=[]):
         fileNames = map(lambda s: "/home/ubuntu/criteo-tfr-tiny/tfrecords"+s,file_idx)
+        # We first define a filename queue comprising 5 files.
+        filename_queue = tf.train.string_input_producer(fileNames, num_epochs=None)
+        
         # TFRecordReader creates an operator in the graph that reads data from queue
         reader = tf.TFRecordReader()
         # We first define a filename queue comprising 5 files.
         # Include a read operator with the filenae queue to use. The output is a string
         # Tensor called serialized_example
-        _, serialized_example = reader.read(fileNames)
+        _, serialized_example = reader.read(filename_queue)
 
 
         # The string tensors is essentially a Protobuf serialized string. With the
