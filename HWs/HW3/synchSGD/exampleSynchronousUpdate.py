@@ -140,6 +140,7 @@ with g.as_default():
 
     with tf.Session("grpc://vm-32-1:2222") as sess:
         sess.run(tf.initialize_all_variables())
+        tf.train.start_queue_runners(sess=sess)
         for i in range(0, 10):
             sess.run(assign_op)
             print w.eval()
