@@ -8,7 +8,7 @@ num_features = 33762578
 # These operators take as input list of filenames from which they read data.
 # On every invocation of the operator, some records are read and passed to the
 # downstream vertices as Tensors
-
+s_batch = 40
 
 g = tf.Graph()
 
@@ -16,11 +16,11 @@ with g.as_default():
 
     # We first define a filename queue comprising 5 files.
     filename_queue = tf.train.string_input_producer([
-        "./data/criteo-tfr-tiny/tfrecords00",
-        "./data/criteo-tfr-tiny/tfrecords01",
-        "./data/criteo-tfr-tiny/tfrecords02",
-        "./data/criteo-tfr-tiny/tfrecords03",
-        "./data/criteo-tfr-tiny/tfrecords04",
+        "/home/ubuntu/criteo-tfr-tiny/tfrecords00",
+        "/home/ubuntu/criteo-tfr-tiny/tfrecords01",
+        "/home/ubuntu/criteo-tfr-tiny/tfrecords02",
+        "/home/ubuntu/criteo-tfr-tiny/tfrecords03",
+        "/home/ubuntu/criteo-tfr-tiny/tfrecords04",
     ], num_epochs=None)
 
 
@@ -29,13 +29,13 @@ with g.as_default():
 
     # Include a read operator with the filenae queue to use. The output is a string
     # Tensor called serialized_example
-    _, serialized_example = reader.read(filename_queue)
+    _, serialized_example = reader.read_up_to(filename_queue,s_batch)
 
 
     # The string tensors is essentially a Protobuf serialized string. With the
     # following fields: label, index, value. We provide the protobuf fields we are
     # interested in to parse the data. Note, feature here is a dict of tensors
-    features = tf.parse_single_example(serialized_example,
+    features = tf.parse_example(serialized_example,
                                        features={
                                         'label': tf.FixedLenFeature([1], dtype=tf.int64),
                                         'index' : tf.VarLenFeature(dtype=tf.int64),
@@ -43,6 +43,8 @@ with g.as_default():
                                        }
                                       )
 
+    print features
+    print "*****************"
     label = features['label']
     index = features['index']
     value = features['value']
