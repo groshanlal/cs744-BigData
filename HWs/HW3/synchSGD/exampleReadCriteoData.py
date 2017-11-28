@@ -68,7 +68,7 @@ with g.as_default():
     # capacity must be larger than min_after_dequeue and the amount larger
     #   determines the maximum we will prefetch.  Recommendation:
     #   min_after_dequeue + (num_threads + a small safety margin) * batch_size
-    min_after_dequeue = 10000
+    min_after_dequeue = 100
     capacity = min_after_dequeue + 3 * s_batch
     example_batch, label_batch = tf.train.shuffle_batch(
       [dense_feature[0:num_features], label], batch_size=s_batch, capacity=capacity,
