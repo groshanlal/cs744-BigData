@@ -2,11 +2,11 @@ import tensorflow as tf
 import os
 
 # number of features in the criteo dataset after one-hot encoding
-num_features = 10
-s_batch = 50
+num_features = 33762578
+s_batch = 2
 eta = .1
 
-iterations = 200
+iterations = 20
 
 
 file_dict = {0:["00","01","02","03","04"],
@@ -89,7 +89,7 @@ with g.as_default():
 
     # creating a model variable on task 0. This is a process running on node vm-48-1
     with tf.device("/job:worker/task:0"):
-        w = tf.Variable(tf.ones([10, 1]), name="model")
+        w = tf.Variable(tf.ones([num_features, 1]), name="model")
 
     # creating 5 reader operators to be placed on different operators
     # here, they emit predefined tensors. however, they can be defined as reader
