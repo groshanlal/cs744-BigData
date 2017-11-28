@@ -5,7 +5,7 @@ tf.logging.set_verbosity(tf.logging.DEBUG)
 
 # number of features in the criteo dataset after one-hot encoding
 num_features = 10
-s_batch = 10
+s_batch = 1
 n_iter = 1
 
 eta = 0.1
@@ -111,7 +111,7 @@ with g.as_default():
             X,Y = get_datapoint_iter(file_dict[i])#next_batch(i)
 
             print i,"> X:",X.get_shape()
-            temp = tf.reduce_sum(X,0)
+            temp = X#tf.reduce_sum(X,0)
 
             # not the gradient compuation here is a random operation. You need
             # to use the right way (as described in assignment 3 desc).
