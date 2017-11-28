@@ -26,8 +26,7 @@ with g.as_default():
         # TFRecordReader creates an operator in the graph that reads data from queue
         reader = tf.TFRecordReader()
 
-        # Include a read operator with the filenae queue to use. The output is a string
-        # Tensor called serialized_example
+        # Include a read operator with the filenae queue to use. The output is a string Tensor called serialized_example
         _, serialized_example = reader.read(filename_queue)
 
 
@@ -87,6 +86,40 @@ with g.as_default():
     gradients = []
     for i in range(0, 5):
         with tf.device("/job:worker/task:%d" % i):
+            #################################################################################
+            fileNames = map(lambda s: "/home/ubuntu/criteo-tfr-tiny/tfrecords"+s,file_dict[0])
+            # We first define a filename queue comprising 5 files.
+            filename_queue = tf.train.string_input_producer(fileNames, num_epochs=None)
+            # TFRecordReader creates an operator in the graph that reads data from queue
+            reader = tf.TFRecordReader()
+            # Include a read operator with the filenae queue to use. The output is a string Tensor called serialized_example
+            _, serialized_example = reader.read(filename_queue)
+
+            features = tf.parse_single_example(serialized_example,
+                                           features={
+                                            'label': tf.FixedLenFeature([1], dtype=tf.int64),
+                                            'index' : tf.VarLenFeature(dtype=tf.int64),
+                                            'value' : tf.VarLenFeature(dtype=tf.float32),
+                                           }
+                                          )
+
+            label = features['label']
+            index = features['index']
+            value = features['value']
+
+            dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
+                                           [33762578,],
+            #                               tf.constant([33762578, 1], dtype=tf.int64),
+                                           tf.sparse_tensor_to_dense(value))
+
+
+            label_flt = tf.cast(label, tf.float32)
+            min_after_dequeue = 10
+            capacity = min_after_dequeue + 3 * s_batch
+            X, Y = tf.train.shuffle_batch(
+              [dense_feature[0:num_features], label_flt], batch_size=s_batch, capacity=capacity,
+              min_after_dequeue=min_after_dequeue)
+            ####################################################################################
             reader = tf.ones([10, 1], name="operator_%d" % i)
             # X,reader = get_datapoint_iter(file_dict[0])
             # not the gradient compuation here is a random operation. You need
