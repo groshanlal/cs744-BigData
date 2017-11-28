@@ -1,7 +1,7 @@
 import tensorflow as tf
 
 # number of features in the criteo dataset after one-hot encoding
-num_features = 100#33762578
+num_features = 33762578
 
 
 # Here, we will show how to include reader operators in the TensorFlow graph.
