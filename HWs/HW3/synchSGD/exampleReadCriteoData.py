@@ -1,7 +1,7 @@
 import tensorflow as tf
 
 # number of features in the criteo dataset after one-hot encoding
-num_features = 33762578
+num_features = 100#33762578
 
 
 # Here, we will show how to include reader operators in the TensorFlow graph.
@@ -56,7 +56,7 @@ with g.as_default():
     # since we parsed a VarLenFeatures, they are returned as SparseTensors.
     # To run operations on then, we first convert them to dense Tensors as below.
     dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
-                                   [num_features,],
+                                   [33762578,],
     #                               tf.constant([33762578, 1], dtype=tf.int64),
                                    tf.sparse_tensor_to_dense(value))
 
@@ -71,7 +71,7 @@ with g.as_default():
     min_after_dequeue = 10000
     capacity = min_after_dequeue + 3 * s_batch
     example_batch, label_batch = tf.train.shuffle_batch(
-      [dense_feature, label], batch_size=s_batch, capacity=capacity,
+      [dense_feature[0:num_features], label], batch_size=s_batch, capacity=capacity,
       min_after_dequeue=min_after_dequeue)
 
 
