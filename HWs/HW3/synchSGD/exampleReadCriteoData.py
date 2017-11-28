@@ -74,6 +74,20 @@ with g.as_default():
       min_after_dequeue=min_after_dequeue)
 
 
+    def calc_gradient(X,W,Y):
+        error = tf.sigmoid(tf.mul(Y,tf.matmul(X,W)))
+        print "error:",error.get_shape()
+        error_m1 = error-1
+        print "error_m1:",error_m1.get_shape()
+        gradient = tf.matmul(tf.transpose(X),tf.mul(Y,error_m1))
+        print "gradient:",gradient.get_shape()
+        return tf.reduce_sum(gradient,1)
+
+    w = tf.Variable(tf.ones([num_features, 1]), name="model")
+
+
+    grad = calc_gradient(example_batch,w,label_batch)
+
 
     # as usual we create a session.
     sess = tf.Session()
@@ -85,7 +99,8 @@ with g.as_default():
 
     for i in range(0, 20):
         # every time we call run, a new data point is read from the files
-        output, lbl =  sess.run([example_batch,label_batch])
+        output, lbl,gr =  sess.run([example_batch,label_batch,grad])
         print output.shape
         # print sum(output)
         print lbl
+        print gr
