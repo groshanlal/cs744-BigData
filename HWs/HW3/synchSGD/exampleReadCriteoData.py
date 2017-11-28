@@ -55,7 +55,7 @@ with g.as_default():
     print label
     print index
     print value
-
+    print "*****************"
     # since we parsed a VarLenFeatures, they are returned as SparseTensors.
     # To run operations on then, we first convert them to dense Tensors as below.
     dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
