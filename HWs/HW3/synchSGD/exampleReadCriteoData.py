@@ -31,7 +31,8 @@ with g.as_default():
     # Tensor called serialized_example
     _, serialized_example = reader.read_up_to(filename_queue,s_batch)
 
-
+    print serialized_example
+    print "*****************"
     # The string tensors is essentially a Protobuf serialized string. With the
     # following fields: label, index, value. We provide the protobuf fields we are
     # interested in to parse the data. Note, feature here is a dict of tensors
@@ -62,7 +63,7 @@ with g.as_default():
     #                               tf.constant([33762578, 1], dtype=tf.int64),
                                    tf.sparse_tensor_to_dense(value))
 
-
+    print dense_feature
     # as usual we create a session.
     sess = tf.Session()
     sess.run(tf.initialize_all_variables())
