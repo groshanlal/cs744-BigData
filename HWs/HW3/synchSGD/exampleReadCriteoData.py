@@ -61,7 +61,6 @@ with g.as_default():
                                    tf.sparse_tensor_to_dense(value))
 
 
-
     # min_after_dequeue defines how big a buffer we will randomly sample
     #   from -- bigger means better shuffling but slower start up and more
     #   memory used.
