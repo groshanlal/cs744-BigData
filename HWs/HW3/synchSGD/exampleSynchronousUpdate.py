@@ -26,7 +26,7 @@ with g.as_default():
         fileNames = map(lambda s: "/home/ubuntu/criteo-tfr-tiny/tfrecords"+s,file_idx)
         # We first define a filename queue comprising 5 files.
         filename_queue = tf.train.string_input_producer(fileNames, num_epochs=None)
-        
+
         # TFRecordReader creates an operator in the graph that reads data from queue
         reader = tf.TFRecordReader()
         # We first define a filename queue comprising 5 files.
@@ -110,7 +110,7 @@ with g.as_default():
             # reader = tf.ones([num_features, 1], name="operator_%d" % i)
             X,Y = get_datapoint_iter(file_dict[i])#next_batch(i)
 
-            temp = X#tf.reduce_sum(X,0)
+            temp = tf.reduce_sum(X,0)
 
             # not the gradient compuation here is a random operation. You need
             # to use the right way (as described in assignment 3 desc).
