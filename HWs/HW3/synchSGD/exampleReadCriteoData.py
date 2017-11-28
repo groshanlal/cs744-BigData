@@ -61,6 +61,7 @@ with g.as_default():
                                    tf.sparse_tensor_to_dense(value))
 
 
+    label_flt = tf.cast(label, tf.float32)
     # min_after_dequeue defines how big a buffer we will randomly sample
     #   from -- bigger means better shuffling but slower start up and more
     #   memory used.
@@ -70,7 +71,7 @@ with g.as_default():
     min_after_dequeue = 10
     capacity = min_after_dequeue + 3 * s_batch
     example_batch, label_batch = tf.train.shuffle_batch(
-      [dense_feature[0:num_features], label], batch_size=s_batch, capacity=capacity,
+      [dense_feature[0:num_features], label_flt], batch_size=s_batch, capacity=capacity,
       min_after_dequeue=min_after_dequeue)
 
 
