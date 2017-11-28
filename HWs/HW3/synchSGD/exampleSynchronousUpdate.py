@@ -80,6 +80,22 @@ with g.as_default():
         w = tf.Variable(tf.ones([10, 1]), name="model")
 
 
+    ##########
+    min_after_dequeue = 10
+    capacity = min_after_dequeue + 3 * s_batch      
+    ##########
+    fileNames = []
+    filename_queue = []
+    reader = []
+    serialized_example = []
+    features = []
+    label = []
+    index = []
+    value = []
+    dense_feature = []
+    label_flt = []
+    ##########
+
     # creating 5 reader operators to be placed on different operators
     # here, they emit predefined tensors. however, they can be defined as reader
     # operators as done in "exampleReadCriteoData.py"
@@ -87,15 +103,15 @@ with g.as_default():
     for i in range(0, 5):
         with tf.device("/job:worker/task:%d" % i):
             #################################################################################
-            fileNames = map(lambda s: "/home/ubuntu/criteo-tfr-tiny/tfrecords"+s,file_dict[0])
+            fileNames[i] = map(lambda s: "/home/ubuntu/criteo-tfr-tiny/tfrecords"+s,file_dict[0])
             # We first define a filename queue comprising 5 files.
-            filename_queue = tf.train.string_input_producer(fileNames, num_epochs=None)
+            filename_queue[i] = tf.train.string_input_producer(fileNames[i], num_epochs=None)
             # TFRecordReader creates an operator in the graph that reads data from queue
-            reader = tf.TFRecordReader()
+            reader[i] = tf.TFRecordReader()
             # Include a read operator with the filenae queue to use. The output is a string Tensor called serialized_example
-            _, serialized_example = reader.read(filename_queue)
+            _, serialized_example[i] = reader[i].read(filename_queue[i])
 
-            features = tf.parse_single_example(serialized_example,
+            features[i] = tf.parse_single_example(serialized_example[i],
                                            features={
                                             'label': tf.FixedLenFeature([1], dtype=tf.int64),
                                             'index' : tf.VarLenFeature(dtype=tf.int64),
@@ -103,25 +119,24 @@ with g.as_default():
                                            }
                                           )
 
-            label = features['label']
-            index = features['index']
-            value = features['value']
+            label[i] = features[i]['label']
+            index[i] = features[i]['index']
+            value[i] = features[i]['value']
 
-            dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
+            dense_feature[i] = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index[i]),
                                            [33762578,],
             #                               tf.constant([33762578, 1], dtype=tf.int64),
-                                           tf.sparse_tensor_to_dense(value))
+                                           tf.sparse_tensor_to_dense(value[i]))
 
 
-            label_flt = tf.cast(label, tf.float32)
-            min_after_dequeue = 10
-            capacity = min_after_dequeue + 3 * s_batch
-            X, Y = tf.train.shuffle_batch(
-              [dense_feature[0:num_features], label_flt], batch_size=s_batch, capacity=capacity,
+            label_flt[i] = tf.cast(label[i], tf.float32)
+            
+            X[i], Y[i] = tf.train.shuffle_batch(
+              [dense_feature[i][0:num_features], label_flt[i]], batch_size=s_batch, capacity=capacity,
               min_after_dequeue=min_after_dequeue)
             ####################################################################################
-            print "Y.get_shape(): ",Y.get_shape()
-            reader = Y#tf.ones([10, 1], name="operator_%d" % i)
+            print "Y.get_shape(): ",Y[i].get_shape()
+            reader = Y[i]#tf.ones([10, 1], name="operator_%d" % i)
             # X,reader = get_datapoint_iter(file_dict[0])
             # not the gradient compuation here is a random operation. You need
             # to use the right way (as described in assignment 3 desc).
