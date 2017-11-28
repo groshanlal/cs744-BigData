@@ -2,13 +2,22 @@ import tensorflow as tf
 
 # number of features in the criteo dataset after one-hot encoding
 num_features = 33762578
-
+s_batch = 2
 
 # Here, we will show how to include reader operators in the TensorFlow graph.
 # These operators take as input list of filenames from which they read data.
 # On every invocation of the operator, some records are read and passed to the
 # downstream vertices as Tensors
-s_batch = 2
+
+
+file_dict = {0:["00","01","02","03","04"],
+             1:["05","06","07","08","09"],
+             2:["10","11","12","13","14"],
+             3:["15","16","17","18","19"],
+             4:["20","21"],
+            -1:["22"]}
+
+
 
 g = tf.Graph()
 
