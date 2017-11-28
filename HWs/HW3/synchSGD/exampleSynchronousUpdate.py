@@ -3,8 +3,11 @@ import os
 
 # number of features in the criteo dataset after one-hot encoding
 num_features = 10
-s_batch = 10
+s_batch = 50
 eta = .1
+
+iterations = 200
+
 
 file_dict = {0:["00","01","02","03","04"],
              1:["05","06","07","08","09"],
@@ -118,7 +121,8 @@ with g.as_default():
     with tf.Session("grpc://vm-32-1:2222") as sess:
         sess.run(tf.initialize_all_variables())
         tf.train.start_queue_runners(sess=sess)
-        for i in range(0, 10):
+        for i in range(iterations):
             sess.run(assign_op)
             print w.eval()
+
         sess.close()
