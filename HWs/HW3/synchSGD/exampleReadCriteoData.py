@@ -2,7 +2,7 @@ import tensorflow as tf
 
 # number of features in the criteo dataset after one-hot encoding
 num_features = 33762578
-s_batch = 2
+s_batch = 20
 
 # Here, we will show how to include reader operators in the TensorFlow graph.
 # These operators take as input list of filenames from which they read data.
@@ -59,21 +59,21 @@ with g.as_default():
 
 
     def next_batch(id = 0):
-        x_,y_ = get_datapoint_iter(file_dict[id])
-        min_after_dequeue = 100
-        capacity = min_after_dequeue + 3 * s_batch
-        example_batch, label_batch = tf.train.shuffle_batch(
-                [x_, y_], batch_size=s_batch, capacity=capacity,
-                min_after_dequeue=min_after_dequeue)
+        # x_,y_ = get_datapoint_iter(file_dict[id])
+        # min_after_dequeue = 100
+        # capacity = min_after_dequeue + 3 * s_batch
+        # example_batch, label_batch = tf.train.shuffle_batch(
+        #         [x_, y_], batch_size=s_batch, capacity=capacity,
+        #         min_after_dequeue=min_after_dequeue)
 
-        return example_batch, label_batch
-        # X = []
-        # Y = []
-        # for i in range(s_batch):
-        #     x_,y_ = get_datapoint_iter(file_dict[id])
-        #     X.append(x_)
-        #     Y.append(y_)
-        # return tf.pack(X),tf.pack(Y)
+        # return example_batch, label_batch
+        X = []
+        Y = []
+        for i in range(s_batch):
+            x_,y_ = get_datapoint_iter(file_dict[id])
+            X.append(x_)
+            Y.append(y_)
+        return tf.pack(X),tf.pack(Y)
    
     
     def calc_gradient(X,W,Y):
