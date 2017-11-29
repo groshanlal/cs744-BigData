@@ -115,7 +115,7 @@ with g.as_default():
 
     ###########################################################
     def calc_precision(W,X,Y):
-        diffs = tf.sign(tf.mul(tf.matmul(W,X),Y))
+        diffs = tf.sign(tf.mul(tf.matmul(X,W),Y))
         precision = tf.reduce_sum((diffs+1)/2)
         return precision
 
