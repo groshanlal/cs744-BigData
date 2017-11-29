@@ -8,6 +8,7 @@ eta = .1
 
 iterations = 20
 
+s_test = 1000;
 
 file_dict = {0:["00","01","02","03","04"],
              1:["05","06","07","08","09"],
@@ -21,7 +22,7 @@ g = tf.Graph()
 
 with g.as_default():
 
-    def get_datapoint_iter(file_idx=[]):
+    def get_datapoint_iter(file_idx=[],batch_size = s_batch):
         fileNames = map(lambda s: "/home/ubuntu/criteo-tfr-tiny/tfrecords"+s,file_idx)
         # We first define a filename queue comprising 5 files.
         filename_queue = tf.train.string_input_producer(fileNames, num_epochs=None)
@@ -72,9 +73,9 @@ with g.as_default():
         #   determines the maximum we will prefetch.  Recommendation:
         #   min_after_dequeue + (num_threads + a small safety margin) * batch_size
         min_after_dequeue = 10
-        capacity = min_after_dequeue + 3 * s_batch
+        capacity = min_after_dequeue + 3 * batch_size
         example_batch, label_batch = tf.train.shuffle_batch(
-          [dense_feature[0:num_features], label_flt], batch_size=s_batch, capacity=capacity,
+          [dense_feature[0:num_features], label_flt], batch_size=batch_size, capacity=capacity,
           min_after_dequeue=min_after_dequeue)
 
         return example_batch, label_batch
@@ -98,7 +99,7 @@ with g.as_default():
     for i in range(0, 5):
         with tf.device("/job:worker/task:%d" % i):
             # read the data
-            X,Y = get_datapoint_iter(file_dict[i])
+            X,Y = get_datapoint_iter(file_dict[i],batch_size=s_batch)
             # calculate the gradient
             local_gradient = calc_gradient(X,w,Y)
             # multiple the gradient with the learning rate and submit it to update the model
@@ -112,12 +113,26 @@ with g.as_default():
         #
         assign_op = w.assign_add(agg_shape)
 
+    ###########################################################
+    def calc_precision(W,X,Y):
+        diffs = tf.sign(tf.mul(tf.matmul(W,X),Y))
+        precision = tf.reduce_sum((diffs+1)/2)
+        return precision
 
+    with tf.device("/job:worker/task:0"):
+        test_X,test_Y = get_datapoint_iter(file_dict[-1],batch_size = s_test)
+        precision = calc_precision(w,test_X,test_Y)
+
+    ###########################################################
     with tf.Session("grpc://vm-32-1:2222") as sess:
         sess.run(tf.initialize_all_variables())
         tf.train.start_queue_runners(sess=sess)
         for i in range(iterations):
+            print ""
             sess.run(assign_op)
-            print w.eval()
+
+            if i>1 and i%10 == 0:
+                print precision.eval()
+            # print w.eval()
 
         sess.close()
