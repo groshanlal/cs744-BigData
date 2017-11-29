@@ -128,11 +128,11 @@ with g.as_default():
         sess.run(tf.initialize_all_variables())
         tf.train.start_queue_runners(sess=sess)
         for i in range(iterations):
-            print ""
+            print "Step ",i
             sess.run(assign_op)
 
-            if i>1 and i%10 == 0:
-                print precision.eval()
+            if i>1 and i%2 == 0:
+                print "precision: ",precision.eval()
             # print w.eval()
 
         sess.close()
