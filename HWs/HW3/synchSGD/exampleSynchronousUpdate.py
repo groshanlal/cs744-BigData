@@ -116,7 +116,7 @@ with g.as_default():
     ###########################################################
     def calc_precision(W,X,Y):
         diffs = tf.sign(tf.mul(tf.matmul(X,W),Y))
-        precision = tf.reduce_sum((diffs+1)/2)
+        precision = tf.reduce_sum((diffs+1)/2)/s_test
         return precision
 
     with tf.device("/job:worker/task:0"):
@@ -132,7 +132,7 @@ with g.as_default():
             sess.run(assign_op)
 
             if i>1 and i%2 == 0:
-                print "precision: ",precision.eval()
+                print "precision: ",precision.eval()/
             # print w.eval()
 
         sess.close()
