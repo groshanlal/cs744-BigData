@@ -87,7 +87,7 @@ with g.as_default():
         gradient = tf.matmul(tf.transpose(X),tf.mul(Y,error_m1))
         return tf.reduce_sum(gradient,1)
 
-    # creating a model variable on task 0. This is a process running on node vm-48-1
+    # creating a model variable on task 0. This is a process running on node vm-32-1
     with tf.device("/job:worker/task:0"):
         w = tf.Variable(tf.ones([num_features, 1]), name="model")
 
@@ -97,16 +97,11 @@ with g.as_default():
     gradients = []
     for i in range(0, 5):
         with tf.device("/job:worker/task:%d" % i):
-            
+            # read the data
             X,Y = get_datapoint_iter(file_dict[i])
+            # calculate the gradient
             local_gradient = calc_gradient(X,w,Y)
-            #tf.ones([10, 1], name="operator_%d" % i)
-            # X,reader = get_datapoint_iter(file_dict[0])
-            # not the gradient compuation here is a random operation. You need
-            # to use the right way (as described in assignment 3 desc).
-            # we use this specific example to show that gradient computation
-            # requires use of the model
-            #local_gradient = tf.mul(reader, tf.matmul(tf.transpose(w), reader))
+            # multiple the gradient with the learning rate and submit it to update the model
             gradients.append(tf.mul(local_gradient, eta))
 
 
