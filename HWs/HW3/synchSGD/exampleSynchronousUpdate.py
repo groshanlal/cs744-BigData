@@ -132,7 +132,7 @@ with g.as_default():
             sess.run(assign_op)
 
             if i>1 and i%2 == 0:
-                print "precision: ",precision.eval()/
+                print "precision: ",precision.eval()
             # print w.eval()
 
         sess.close()
