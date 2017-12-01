@@ -94,7 +94,7 @@ with g.as_default():
         return tf.reduce_sum(gradient,1)
 
     def sparse_matmul(indices, values, B):
-        nonzeros = tf.gather(B,indices.values,axis=0)
+        nonzeros = tf.gather(B,indices.values)
         return tf.matmul(values.values,nonzeros)
 
 
