@@ -94,10 +94,11 @@ with g.as_default():
         return tf.reduce_sum(gradient,1)
 
     def sparse_matmul(indices, values, B):
-        nonzeros = tf.gather(B,indices.values)
-        print "nonzeros:",nonzeros.get_shape()
-        print "indices:",indices.values
-        return tf.matmul(values.values,nonzeros)
+        # nonzeros = tf.gather(B,indices.values)
+        # print "nonzeros:",nonzeros.get_shape()
+        # print "indices:",indices.values
+        # return tf.matmul(values.values,nonzeros)
+        return tf.sparse_tensor_dense_matmul(indices, values, B)
 
 
     w = tf.Variable(tf.ones([num_features, 1]), name="model")
