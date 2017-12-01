@@ -57,8 +57,8 @@ with g.as_default():
         # These print statements are there for you see the type of the following
         # variables
         print label
-        print index
-        print value
+        print index.values
+        print value.values
 
         # since we parsed a VarLenFeatures, they are returned as SparseTensors.
         # To run operations on then, we first convert them to dense Tensors as below.
@@ -69,7 +69,7 @@ with g.as_default():
 
         # value.indices = index.values
         index_int64 = tf.cast(index.values,tf.int64)
-        combined_values = tf.SparseTensorValue(indices=index.values,
+        combined_values = tf.SparseTensor(indices=index.values,
                                                 values=value.values,
                                                 dense_shape=[1,num_features])
 
