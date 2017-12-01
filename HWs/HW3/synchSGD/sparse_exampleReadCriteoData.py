@@ -2,7 +2,7 @@ import tensorflow as tf
 
 # number of features in the criteo dataset after one-hot encoding
 num_features = 33762578
-s_batch = 2
+s_batch = 20
 iterations = 1;
 
 
