@@ -94,24 +94,22 @@ with g.as_default():
 
 
     def calc_gradient(X,W,Y):
-        error = tf.sigmoid(tf.mul(Y,tf.matmul(X,W)))
+        pred = tf.sparse_tensor_dense_matmul(X, W)
+        error = tf.sigmoid(tf.mul(Y,pred))
         error_m1 = error-1
-        gradient = tf.matmul(tf.transpose(X),tf.mul(Y,error_m1))
+
+        error_Y = tf.mul(Y,error_m1)
+        X_T = tf.sparse_transpose(X)
+
+        gradient = tf.sparse_tensor_dense_matmul(X_T,error_Y)
         return tf.reduce_sum(gradient,1)
 
-    def sparse_matmul(A, B):
-        # nonzeros = tf.gather(B,indices.values)
-        # print "nonzeros:",nonzeros.get_shape()
-        # print "indices:",indices.values
-        # return tf.matmul(values.values,nonzeros)
-        return tf.sparse_tensor_dense_matmul(A, B)
-
-
+   
     w = tf.Variable(tf.ones([num_features, 1]), name="model")
 
     value_batch,label_batch = get_datapoint_iter(file_dict[0] )
 
-    grad = sparse_matmul(value_batch,w)
+    grad = calc_gradient(value_batch,w,label_batch)
 
     print "grad type:",grad
     # as usual we create a session.
