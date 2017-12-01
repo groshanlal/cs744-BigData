@@ -8,7 +8,7 @@ eta = .1
 
 iterations = 20
 
-s_test = 4;
+s_test = 20;
 
 file_dict = {0:["00","01","02","03","04"],
              1:["05","06","07","08","09"],
@@ -118,7 +118,9 @@ with g.as_default():
 
     ###########################################################
     def calc_precision(W,X,Y):
-        diffs = tf.sign(tf.mul(tf.matmul(X,W),Y))
+        pred = tf.sparse_tensor_dense_matmul(X, W)
+        diffs = tf.sign(tf.mul(Y,pred))
+
         precision = tf.reduce_sum((diffs+1)/2)/s_test
         return precision
 
