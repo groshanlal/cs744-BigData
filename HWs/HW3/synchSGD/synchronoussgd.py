@@ -22,7 +22,7 @@ g = tf.Graph()
 
 with g.as_default():
 
-    def get_datapoint_iter(file_idx=[],batch_size):
+    def get_datapoint_iter(file_idx=[],batch_size=s_batch):
         fileNames = map(lambda s: "/home/ubuntu/criteo-tfr-tiny/tfrecords"+s,file_idx)
         # We first define a filename queue comprising 5 files.
         filename_queue = tf.train.string_input_producer(fileNames, num_epochs=None)
