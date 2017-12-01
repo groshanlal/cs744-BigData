@@ -67,7 +67,7 @@ with g.as_default():
         # #                               tf.constant([33762578, 1], dtype=tf.int64),
         #                                tf.sparse_tensor_to_dense(value))
 
-
+        value.indices = index.values
         label_flt = tf.cast(label, tf.float32)
         # min_after_dequeue defines how big a buffer we will randomly sample
         #   from -- bigger means better shuffling but slower start up and more
@@ -77,11 +77,11 @@ with g.as_default():
         #   min_after_dequeue + (num_threads + a small safety margin) * batch_size
         min_after_dequeue = 10
         capacity = min_after_dequeue + 3 * s_batch
-        index_batch, value_batch,label_batch = tf.train.shuffle_batch(
-          [index, value, label_flt], batch_size=s_batch, capacity=capacity,
+        value_batch,label_batch = tf.train.shuffle_batch(
+          [value, label_flt], batch_size=s_batch, capacity=capacity,
           min_after_dequeue=min_after_dequeue)
 
-        return index_batch, value_batch,label_batch
+        return value_batch,label_batch
 
 
     def calc_gradient(X,W,Y):
@@ -103,9 +103,9 @@ with g.as_default():
 
     w = tf.Variable(tf.ones([num_features, 1]), name="model")
 
-    index_batch, value_batch,label_batch = get_datapoint_iter(file_dict[0] )
+    value_batch,label_batch = get_datapoint_iter(file_dict[0] )
 
-    grad = sparse_matmul(index_batch, value_batch,w)
+    # grad = sparse_matmul(index_batch, value_batch,w)
 
 
     # as usual we create a session.
@@ -118,9 +118,9 @@ with g.as_default():
 
     for i in range(iterations):
         # every time we call run, a new data point is read from the files
-        idx, val, lbl,grd =  sess.run([index_batch, value_batch,label_batch,grad])
-        print "idx:",idx
+        # idx, val, lbl,grd =  sess.run([index_batch, value_batch,label_batch,grad])
+         val, lbl =  sess.run([value_batch,label_batch])
         print "valeus:",val
         # print sum(output)
         print "labels",lbl
-        print "grd",grd
+        # print "grd",grd
