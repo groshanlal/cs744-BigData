@@ -95,6 +95,8 @@ with g.as_default():
 
     def sparse_matmul(indices, values, B):
         nonzeros = tf.gather(B,indices.values)
+        print "nonzeros:",nonzeros.get_shape()
+        print "indices:",indices.values
         return tf.matmul(values.values,nonzeros)
 
 
