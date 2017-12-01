@@ -22,7 +22,7 @@ g = tf.Graph()
 
 with g.as_default():
 
-    def get_datapoint_iter(file_idx=[]):
+    def get_datapoint_iter(file_idx=[],batch_size):
         fileNames = map(lambda s: "/home/ubuntu/criteo-tfr-tiny/tfrecords"+s,file_idx)
         # We first define a filename queue comprising 5 files.
         filename_queue = tf.train.string_input_producer(fileNames, num_epochs=None)
@@ -70,9 +70,9 @@ with g.as_default():
         #   determines the maximum we will prefetch.  Recommendation:
         #   min_after_dequeue + (num_threads + a small safety margin) * batch_size
         min_after_dequeue = 10
-        capacity = min_after_dequeue + 3 * s_batch
+        capacity = min_after_dequeue + 3 * batch_size
         value_batch,label_batch = tf.train.shuffle_batch(
-          [combined_values, label_flt], batch_size=s_batch, capacity=capacity,
+          [combined_values, label_flt], batch_size=batch_size, capacity=capacity,
           min_after_dequeue=min_after_dequeue)
 
         return value_batch,label_batch
@@ -89,6 +89,7 @@ with g.as_default():
 
         gradient = tf.sparse_tensor_dense_matmul(X_T,error_Y)
         return tf.reduce_sum(gradient,1)
+
 
     # creating a model variable on task 0. This is a process running on node vm-32-1
     with tf.device("/job:worker/task:0"):
@@ -113,7 +114,7 @@ with g.as_default():
         aggregator = tf.add_n(gradients)
         agg_shape = tf.reshape(aggregator,[num_features, 1])
         #
-        assign_op = w.assign_add(agg_shape)
+        assign_op = w.assign_add(agg_sape)
 
     ###########################################################
     def calc_precision(W,X,Y):
