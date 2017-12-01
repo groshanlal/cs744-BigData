@@ -1,14 +1,16 @@
 import tensorflow as tf
-import os
 
 # number of features in the criteo dataset after one-hot encoding
 num_features = 33762578
-s_batch = 2
-eta = .1
+s_batch = 1
+iterations = 1;
 
-iterations = 20
 
-s_test = 4;
+# Here, we will show how to include reader operators in the TensorFlow graph.
+# These operators take as input list of filenames from which they read data.
+# On every invocation of the operator, some records are read and passed to the
+# downstream vertices as Tensors
+
 
 file_dict = {0:["00","01","02","03","04"],
              1:["05","06","07","08","09"],
@@ -18,11 +20,12 @@ file_dict = {0:["00","01","02","03","04"],
             -1:["22"]}
 
 
+
 g = tf.Graph()
 
 with g.as_default():
 
-    def get_datapoint_iter(file_idx=[],batch_size = s_batch):
+    def get_datapoint_iter(file_idx=[]):
         fileNames = map(lambda s: "/home/ubuntu/criteo-tfr-tiny/tfrecords"+s,file_idx)
         # We first define a filename queue comprising 5 files.
         filename_queue = tf.train.string_input_producer(fileNames, num_epochs=None)
@@ -59,10 +62,10 @@ with g.as_default():
 
         # since we parsed a VarLenFeatures, they are returned as SparseTensors.
         # To run operations on then, we first convert them to dense Tensors as below.
-        dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
-                                       [33762578,],
-        #                               tf.constant([33762578, 1], dtype=tf.int64),
-                                       tf.sparse_tensor_to_dense(value))
+        # dense_feature = tf.sparse_to_dense(tf.sparse_tensor_to_dense(index),
+        #                                [33762578,],
+        # #                               tf.constant([33762578, 1], dtype=tf.int64),
+        #                                tf.sparse_tensor_to_dense(value))
 
 
         label_flt = tf.cast(label, tf.float32)
@@ -73,68 +76,46 @@ with g.as_default():
         #   determines the maximum we will prefetch.  Recommendation:
         #   min_after_dequeue + (num_threads + a small safety margin) * batch_size
         min_after_dequeue = 10
-        capacity = min_after_dequeue + 3 * batch_size
-        example_batch, label_batch = tf.train.shuffle_batch(
-          [dense_feature[0:num_features], label_flt], batch_size=batch_size, capacity=capacity,
+        capacity = min_after_dequeue + 3 * s_batch
+        index_batch, value_batch,label_batch = tf.train.shuffle_batch(
+          [index, value, label_flt], batch_size=s_batch, capacity=capacity,
           min_after_dequeue=min_after_dequeue)
 
-        return example_batch, label_batch
-
+        return index_batch, value_batch,label_batch
 
 
     def calc_gradient(X,W,Y):
         error = tf.sigmoid(tf.mul(Y,tf.matmul(X,W)))
+        print "error:",error.get_shape()
         error_m1 = error-1
+        print "error_m1:",error_m1.get_shape()
         gradient = tf.matmul(tf.transpose(X),tf.mul(Y,error_m1))
+        print "gradient:",gradient.get_shape()
         return tf.reduce_sum(gradient,1)
 
-    # creating a model variable on task 0. This is a process running on node vm-32-1
-    with tf.device("/job:worker/task:0"):
-        w = tf.Variable(tf.ones([num_features, 1]), name="model")
-
-    # creating 5 reader operators to be placed on different operators
-    # here, they emit predefined tensors. however, they can be defined as reader
-    # operators as done in "exampleReadCriteoData.py"
-    gradients = []
-    for i in range(0, 5):
-        with tf.device("/job:worker/task:%d" % i):
-            # read the data
-            X,Y = get_datapoint_iter(file_dict[i],batch_size=s_batch)
-            # calculate the gradient
-            local_gradient = calc_gradient(X,w,Y)
-            # multiple the gradient with the learning rate and submit it to update the model
-            gradients.append(tf.mul(local_gradient, eta))
+    def sparse_matmul(indices, values, B):
+        pass
 
 
-    # we create an operator to aggregate the local gradients
-    with tf.device("/job:worker/task:0"):
-        aggregator = tf.add_n(gradients)
-        agg_shape = tf.reshape(aggregator,[num_features, 1])
-        #
-        assign_op = w.assign_add(agg_shape)
+    w = tf.Variable(tf.ones([num_features, 1]), name="model")
 
-    ###########################################################
-    def calc_precision(W,X,Y):
-        diffs = tf.sign(tf.mul(tf.matmul(X,W),Y))
-        precision = tf.reduce_sum((diffs+1)/2)/s_test
-        return precision
+    index_batch, value_batch,label_batch = get_datapoint_iter(file_dict[0] )
 
-    with tf.device("/job:worker/task:0"):
-        test_X,test_Y = get_datapoint_iter(file_dict[-1],batch_size = s_test)
-        precision = calc_precision(w,test_X,test_Y)
+    # grad = calc_gradient(example_batch,w,label_batch)
 
-    ###########################################################
-    with tf.Session("grpc://vm-32-1:2222") as sess:
-        sess.run(tf.initialize_all_variables())
-        # this is new command and is used to initialize the queue based readers.
-        # Effectively, it spins up separate threads to read from the files
-        tf.train.start_queue_runners(sess=sess)
-        for i in range(iterations):
-            print "Step ",i
-            sess.run(assign_op)
 
-            if i>1 and i%2 == 0:
-                print "precision: ",precision.eval()
-            # print w.eval()
+    # as usual we create a session.
+    sess = tf.Session()
+    sess.run(tf.initialize_all_variables())
 
-        sess.close()
+    # this is new command and is used to initialize the queue based readers.
+    # Effectively, it spins up separate threads to read from the files
+    tf.train.start_queue_runners(sess=sess)
+
+    for i in range(iterations):
+        # every time we call run, a new data point is read from the files
+        idx, val, lbl =  sess.run([index_batch, value_batch,label_batch])
+        print idx
+        print val
+        # print sum(output)
+        print lbl
