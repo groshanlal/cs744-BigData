@@ -95,11 +95,8 @@ with g.as_default():
 
     def calc_gradient(X,W,Y):
         error = tf.sigmoid(tf.mul(Y,tf.matmul(X,W)))
-        print "error:",error.get_shape()
         error_m1 = error-1
-        print "error_m1:",error_m1.get_shape()
         gradient = tf.matmul(tf.transpose(X),tf.mul(Y,error_m1))
-        print "gradient:",gradient.get_shape()
         return tf.reduce_sum(gradient,1)
 
     def sparse_matmul(A, B):
@@ -116,7 +113,7 @@ with g.as_default():
 
     grad = sparse_matmul(value_batch,w)
 
-
+    print "grad type:",grad
     # as usual we create a session.
     sess = tf.Session()
     sess.run(tf.initialize_all_variables())
