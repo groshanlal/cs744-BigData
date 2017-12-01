@@ -69,9 +69,9 @@ with g.as_default():
 
         # value.indices = index.values
         index_int64 = tf.cast(index.values,tf.int64)
-        combined_values = tf.SparseTensor(index.values,
-                                            value.values,
-                                                [1,num_features])
+        combined_values = tf.SparseTensor(indices=index.values,
+                                                values=value.values,
+                                                shape=[1,num_features])
 
 
         label_flt = tf.cast(label, tf.float32)
