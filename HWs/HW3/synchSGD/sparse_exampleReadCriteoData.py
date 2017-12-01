@@ -69,9 +69,11 @@ with g.as_default():
 
         # value.indices = index.values
         index_int64 = tf.cast(index.values,tf.int64)
-        combined_values = tf.SparseTensorValue(index_int64,value.values,[1,num_features])
+        combined_values = tf.SparseTensorValue(indices=index.values,
+                                                values=value.values,
+                                                dense_shape=[1,num_features])
 
-        
+
         label_flt = tf.cast(label, tf.float32)
         # min_after_dequeue defines how big a buffer we will randomly sample
         #   from -- bigger means better shuffling but slower start up and more
