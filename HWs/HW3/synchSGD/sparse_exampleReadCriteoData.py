@@ -102,19 +102,19 @@ with g.as_default():
         print "gradient:",gradient.get_shape()
         return tf.reduce_sum(gradient,1)
 
-    def sparse_matmul(indices, values, B):
+    def sparse_matmul(A, B):
         # nonzeros = tf.gather(B,indices.values)
         # print "nonzeros:",nonzeros.get_shape()
         # print "indices:",indices.values
         # return tf.matmul(values.values,nonzeros)
-        return tf.sparse_tensor_dense_matmul(indices, values, B)
+        return tf.sparse_tensor_dense_matmul(A, B)
 
 
     w = tf.Variable(tf.ones([num_features, 1]), name="model")
 
     value_batch,label_batch = get_datapoint_iter(file_dict[0] )
 
-    # grad = sparse_matmul(index_batch, value_batch,w)
+    grad = sparse_matmul(value_batch,w)
 
 
     # as usual we create a session.
@@ -128,8 +128,9 @@ with g.as_default():
     for i in range(iterations):
         # every time we call run, a new data point is read from the files
         # idx, val, lbl,grd =  sess.run([index_batch, value_batch,label_batch,grad])
-        val, lbl =  sess.run([value_batch,label_batch])
-        print "valeus:",val.shape
+        val, lbl,grd =  sess.run([value_batch,label_batch,grad])
+        print "valeus:",val
         # print sum(output)
-        print "labels",lbl.shape
-        # print "grd",grd
+        print "labels",lbl
+
+        print "grd",grd
