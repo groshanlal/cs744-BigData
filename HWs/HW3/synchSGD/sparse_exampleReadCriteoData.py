@@ -69,10 +69,10 @@ with g.as_default():
 
         # value.indices = index.values
         index_shaped = tf.reshape(index.values,[-1, 1])
-        value_shaped = tf.reshape(value.values,[-1, 1])
+        value_shaped = value.values#tf.reshape(value.values,[-1, 1])
         combined_values = tf.SparseTensor(indices=index_shaped,
-                                                values=value_shaped,
-                                                shape=[1,num_features])
+                                        values=value_shaped,
+                                        shape=[1,num_features])
 
 
         label_flt = tf.cast(label, tf.float32)
