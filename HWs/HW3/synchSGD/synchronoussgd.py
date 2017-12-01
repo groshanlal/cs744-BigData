@@ -133,7 +133,9 @@ with g.as_default():
         sess.run(tf.initialize_all_variables())
         # this is new command and is used to initialize the queue based readers.
         # Effectively, it spins up separate threads to read from the files
-        tf.train.start_queue_runners(sess=sess)
+        coord = tf.train.Coordinator()
+        threads = tf.train.start_queue_runners(sess=sess, coord=coord)
+        # tf.train.start_queue_runners(sess=sess)
         for i in range(iterations):
             print "Step ",i
             sess.run(assign_op)
@@ -141,5 +143,6 @@ with g.as_default():
             if i>1 and i%2 == 0:
                 print "precision: ",precision.eval()
             # print w.eval()
-
+        coord.request_stop()
+        coord.join(threads, stop_grace_period_secs=5)
         sess.close()
