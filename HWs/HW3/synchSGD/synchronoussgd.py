@@ -114,7 +114,7 @@ with g.as_default():
         aggregator = tf.add_n(gradients)
         agg_shape = tf.reshape(aggregator,[num_features, 1])
         #
-        assign_op = w.assign_add(agg_sape)
+        assign_op = w.assign_add(agg_shape)
 
     ###########################################################
     def calc_precision(W,X,Y):
