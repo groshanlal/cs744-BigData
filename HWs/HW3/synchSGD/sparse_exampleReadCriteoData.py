@@ -115,7 +115,7 @@ with g.as_default():
     for i in range(iterations):
         # every time we call run, a new data point is read from the files
         idx, val, lbl =  sess.run([index_batch, value_batch,label_batch])
-        print "idx:"idx
+        print "idx:",idx
         print "valeus:",val
         # print sum(output)
         print "labels",lbl
