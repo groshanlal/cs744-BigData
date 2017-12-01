@@ -1,16 +1,14 @@
 import tensorflow as tf
+import os
 
 # number of features in the criteo dataset after one-hot encoding
 num_features = 33762578
-s_batch = 20
-iterations = 1;
+s_batch = 2
+eta = .1
 
+iterations = 20
 
-# Here, we will show how to include reader operators in the TensorFlow graph.
-# These operators take as input list of filenames from which they read data.
-# On every invocation of the operator, some records are read and passed to the
-# downstream vertices as Tensors
-
+s_test = 4;
 
 file_dict = {0:["00","01","02","03","04"],
              1:["05","06","07","08","09"],
@@ -18,7 +16,6 @@ file_dict = {0:["00","01","02","03","04"],
              3:["15","16","17","18","19"],
              4:["20","21"],
             -1:["22"]}
-
 
 
 g = tf.Graph()
@@ -81,6 +78,7 @@ with g.as_default():
         return value_batch,label_batch
 
 
+
     def calc_gradient(X,W,Y):
         pred = tf.sparse_tensor_dense_matmul(X, W)
         error = tf.sigmoid(tf.mul(Y,pred))
@@ -92,28 +90,53 @@ with g.as_default():
         gradient = tf.sparse_tensor_dense_matmul(X_T,error_Y)
         return tf.reduce_sum(gradient,1)
 
-   
-    w = tf.Variable(tf.ones([num_features, 1]), name="model")
+    # creating a model variable on task 0. This is a process running on node vm-32-1
+    with tf.device("/job:worker/task:0"):
+        w = tf.Variable(tf.ones([num_features, 1]), name="model")
 
-    value_batch,label_batch = get_datapoint_iter(file_dict[0] )
+    # creating 5 reader operators to be placed on different operators
+    # here, they emit predefined tensors. however, they can be defined as reader
+    # operators as done in "exampleReadCriteoData.py"
+    gradients = []
+    for i in range(0, 5):
+        with tf.device("/job:worker/task:%d" % i):
+            # read the data
+            X,Y = get_datapoint_iter(file_dict[i],batch_size=s_batch)
+            # calculate the gradient
+            local_gradient = calc_gradient(X,w,Y)
+            # multiple the gradient with the learning rate and submit it to update the model
+            gradients.append(tf.mul(local_gradient, eta))
 
-    grad = calc_gradient(value_batch,w,label_batch)
 
-    print "grad type:",grad
-    # as usual we create a session.
-    sess = tf.Session()
-    sess.run(tf.initialize_all_variables())
+    # we create an operator to aggregate the local gradients
+    with tf.device("/job:worker/task:0"):
+        aggregator = tf.add_n(gradients)
+        agg_shape = tf.reshape(aggregator,[num_features, 1])
+        #
+        assign_op = w.assign_add(agg_shape)
 
-    # this is new command and is used to initialize the queue based readers.
-    # Effectively, it spins up separate threads to read from the files
-    tf.train.start_queue_runners(sess=sess)
+    ###########################################################
+    def calc_precision(W,X,Y):
+        diffs = tf.sign(tf.mul(tf.matmul(X,W),Y))
+        precision = tf.reduce_sum((diffs+1)/2)/s_test
+        return precision
 
-    for i in range(iterations):
-        # every time we call run, a new data point is read from the files
-        # idx, val, lbl,grd =  sess.run([index_batch, value_batch,label_batch,grad])
-        val, lbl,grd =  sess.run([value_batch,label_batch,grad])
-        print "valeus:",val
-        # print sum(output)
-        print "labels",lbl
+    with tf.device("/job:worker/task:0"):
+        test_X,test_Y = get_datapoint_iter(file_dict[-1],batch_size = s_test)
+        precision = calc_precision(w,test_X,test_Y)
 
-        print "grd",grd
+    ###########################################################
+    with tf.Session("grpc://vm-32-1:2222") as sess:
+        sess.run(tf.initialize_all_variables())
+        # this is new command and is used to initialize the queue based readers.
+        # Effectively, it spins up separate threads to read from the files
+        tf.train.start_queue_runners(sess=sess)
+        for i in range(iterations):
+            print "Step ",i
+            sess.run(assign_op)
+
+            if i>1 and i%2 == 0:
+                print "precision: ",precision.eval()
+            # print w.eval()
+
+        sess.close()

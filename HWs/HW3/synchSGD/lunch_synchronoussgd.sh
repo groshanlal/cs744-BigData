@@ -15,7 +15,8 @@ echo "Executing the distributed tensorflow job from exampleSynchronousUpdate.py"
 # launch a session to run the Graph
 
 
-python exampleSynchronousUpdate.py
+# python exampleSynchronousUpdate.py
+python synchronoussgd.py
 
 # defined in tfdefs.sh to terminate the cluster
 terminate_cluster
