@@ -129,7 +129,7 @@ with g.as_default():
         # every time we call run, a new data point is read from the files
         # idx, val, lbl,grd =  sess.run([index_batch, value_batch,label_batch,grad])
         val, lbl =  sess.run([value_batch,label_batch])
-        print "valeus:",val
+        print "valeus:",val.shape
         # print sum(output)
-        print "labels",lbl
+        print "labels",lbl.shape
         # print "grd",grd
