@@ -2,7 +2,7 @@ import tensorflow as tf
 
 # number of features in the criteo dataset after one-hot encoding
 num_features = 33762578
-s_batch = 1
+s_batch = 2
 iterations = 1;
 
 
@@ -56,9 +56,9 @@ with g.as_default():
 
         # These print statements are there for you see the type of the following
         # variables
-        print label
-        print index.values
-        print value.values
+        # print label
+        # print index.values
+        # print value.values
 
         # since we parsed a VarLenFeatures, they are returned as SparseTensors.
         # To run operations on then, we first convert them to dense Tensors as below.
@@ -67,7 +67,7 @@ with g.as_default():
         # #                               tf.constant([33762578, 1], dtype=tf.int64),
         #                                tf.sparse_tensor_to_dense(value))
 
-        # value.indices = index.values
+        # combine the two sparseTensors into one that will be used in gradient calcaulation
         index_shaped = tf.reshape(index.values,[-1, 1])
         value_shaped = tf.reshape(value.values,[-1])
         combined_values = tf.sparse_transpose( 
