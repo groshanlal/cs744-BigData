@@ -3,7 +3,7 @@ import os
 
 # number of features in the criteo dataset after one-hot encoding
 num_features = 33762578
-s_batch = 2
+s_batch = 10
 eta = .1
 
 iterations = 20
