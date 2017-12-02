@@ -1,4 +1,5 @@
 import tensorflow as tf
+from tensorflow.python.client import timeline
 import numpy as np
 import os
 
@@ -178,7 +179,7 @@ with g.as_default():
 
             # print w.eval()
         # Create the Timeline object, and write it to a json file
-        fetched_timeline = tf.python.client.timeline.Timeline(
+        fetched_timeline = timeline.Timeline(
                                 run_metadata.step_stats)
         chrome_trace = fetched_timeline.generate_chrome_trace_format()
         with open('timeline_01.json', 'w') as f:
