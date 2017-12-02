@@ -1,0 +1,2972 @@
+{
+    "traceEvents": [
+        {
+            "ph": "M",
+            "args": {
+                "name": "Allocators"
+            },
+            "pid": 0,
+            "name": "process_name"
+        },
+        {
+            "ph": "M",
+            "args": {
+                "name": "/job:worker/replica:0/task:1/cpu:0 Compute"
+            },
+            "pid": 1,
+            "name": "process_name"
+        },
+        {
+            "ph": "M",
+            "args": {
+                "name": "/job:worker/replica:0/task:1/cpu:0 Tensors"
+            },
+            "pid": 2,
+            "name": "process_name"
+        },
+        {
+            "ph": "M",
+            "args": {
+                "name": "/job:worker/replica:0/task:2/cpu:0 Compute"
+            },
+            "pid": 3,
+            "name": "process_name"
+        },
+        {
+            "ph": "M",
+            "args": {
+                "name": "/job:worker/replica:0/task:2/cpu:0 Tensors"
+            },
+            "pid": 4,
+            "name": "process_name"
+        },
+        {
+            "ph": "M",
+            "args": {
+                "name": "/job:worker/replica:0/task:3/cpu:0 Compute"
+            },
+            "pid": 5,
+            "name": "process_name"
+        },
+        {
+            "ph": "M",
+            "args": {
+                "name": "/job:worker/replica:0/task:3/cpu:0 Tensors"
+            },
+            "pid": 6,
+            "name": "process_name"
+        },
+        {
+            "ph": "M",
+            "args": {
+                "name": "/job:worker/replica:0/task:4/cpu:0 Compute"
+            },
+            "pid": 7,
+            "name": "process_name"
+        },
+        {
+            "ph": "M",
+            "args": {
+                "name": "/job:worker/replica:0/task:4/cpu:0 Tensors"
+            },
+            "pid": 8,
+            "name": "process_name"
+        },
+        {
+            "ph": "M",
+            "args": {
+                "name": "/job:worker/replica:0/task:0/cpu:0 Compute"
+            },
+            "pid": 9,
+            "name": "process_name"
+        },
+        {
+            "ph": "M",
+            "args": {
+                "name": "/job:worker/replica:0/task:0/cpu:0 Tensors"
+            },
+            "pid": 10,
+            "name": "process_name"
+        },
+        {
+            "name": "NoOp",
+            "args": {
+                "name": "_SOURCE",
+                "op": "NoOp"
+            },
+            "pid": 1,
+            "ts": 1512179750270825,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 22
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "Mul_5/y",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1512179750270877,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 21
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "Sum_1/reduction_indices",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1512179750270902,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 15
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "SparseTranspose_3/transpose_1/Range/start",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1512179750270920,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "sub_1/y",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1512179750270930,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 6
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "shuffle_batch_1/n",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1512179750270941,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "RandomShuffleQueue",
+            "args": {
+                "name": "shuffle_batch_1/random_shuffle_queue",
+                "op": "RandomShuffleQueue"
+            },
+            "pid": 1,
+            "ts": 1512179750271065,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 13
+        },
+        {
+            "name": "QueueDequeueMany",
+            "args": {
+                "input0": "shuffle_batch_1/random_shuffle_queue",
+                "input1": "shuffle_batch_1/n",
+                "name": "shuffle_batch_1",
+                "op": "QueueDequeueMany"
+            },
+            "pid": 1,
+            "ts": 1512179750271083,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 279
+        },
+        {
+            "name": "DeserializeManySparse",
+            "args": {
+                "input0": "shuffle_batch_1",
+                "name": "shuffle_batch_1/DeserializeManySparse",
+                "op": "DeserializeManySparse"
+            },
+            "pid": 1,
+            "ts": 1512179750271423,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 388
+        },
+        {
+            "name": "Rank",
+            "args": {
+                "input0": "shuffle_batch_1/DeserializeManySparse",
+                "name": "SparseTranspose_3/transpose/Rank",
+                "op": "Rank"
+            },
+            "pid": 1,
+            "ts": 1512179750271819,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 12
+        },
+        {
+            "name": "Size",
+            "args": {
+                "input0": "shuffle_batch_1/DeserializeManySparse:2",
+                "name": "SparseTranspose_3/Rank",
+                "op": "Size"
+            },
+            "pid": 1,
+            "ts": 1512179750271838,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_3/Rank",
+                "input1": "SparseTranspose_3/sub/y",
+                "name": "SparseTranspose_3/sub",
+                "op": "Sub"
+            },
+            "pid": 1,
+            "ts": 1512179750271849,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 19
+        },
+        {
+            "name": "Range",
+            "args": {
+                "input2": "SparseTranspose_3/range/delta",
+                "input0": "SparseTranspose_3/range/start",
+                "input1": "SparseTranspose_3/Rank",
+                "name": "SparseTranspose_3/range",
+                "op": "Range"
+            },
+            "pid": 1,
+            "ts": 1512179750271874,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 9
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_3/sub",
+                "input1": "SparseTranspose_3/range",
+                "name": "SparseTranspose_3/sub_1",
+                "op": "Sub"
+            },
+            "pid": 1,
+            "ts": 1512179750271887,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 11
+        },
+        {
+            "name": "Gather",
+            "args": {
+                "input0": "shuffle_batch_1/DeserializeManySparse:2",
+                "input1": "SparseTranspose_3/sub_1",
+                "name": "SparseTranspose_3/Gather_1",
+                "op": "Gather"
+            },
+            "pid": 1,
+            "ts": 1512179750271901,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 12
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "SparseTranspose_3/Gather_1",
+                "name": "SparseTranspose_3/Identity",
+                "op": "Identity"
+            },
+            "pid": 1,
+            "ts": 1512179750271918,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
+        },
+        {
+            "name": "Range",
+            "args": {
+                "input2": "SparseTranspose_3/transpose/Range/delta",
+                "input0": "SparseTranspose_3/transpose/Range/start",
+                "input1": "SparseTranspose_3/transpose/Rank",
+                "name": "SparseTranspose_3/transpose/Range",
+                "op": "Range"
+            },
+            "pid": 1,
+            "ts": 1512179750271883,
+            "cat": "Op",
+            "tid": 1,
+            "ph": "X",
+            "dur": 36
+        },
+        {
+            "name": "SparseTranspose_3/transpose/Rank",
+            "pid": 1,
+            "ts": 1512179750271831,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "s",
+            "id": 0
+        },
+        {
+            "name": "SparseTranspose_3/transpose/Rank",
+            "pid": 1,
+            "ts": 1512179750271883,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "t",
+            "id": 0
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_3/transpose/Rank",
+                "input1": "SparseTranspose_3/transpose/sub/y",
+                "name": "SparseTranspose_3/transpose/sub",
+                "op": "Sub"
+            },
+            "pid": 1,
+            "ts": 1512179750271928,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_3/transpose/sub",
+                "input1": "SparseTranspose_3/transpose/Range",
+                "name": "SparseTranspose_3/transpose/sub_1",
+                "op": "Sub"
+            },
+            "pid": 1,
+            "ts": 1512179750271941,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 9
+        },
+        {
+            "name": "SparseTranspose_3/transpose/Range",
+            "pid": 1,
+            "ts": 1512179750271919,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "s",
+            "id": 1
+        },
+        {
+            "name": "SparseTranspose_3/transpose/Range",
+            "pid": 1,
+            "ts": 1512179750271941,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "t",
+            "id": 1
+        },
+        {
+            "name": "Transpose",
+            "args": {
+                "input0": "shuffle_batch_1/DeserializeManySparse",
+                "input1": "SparseTranspose_3/transpose/sub_1",
+                "name": "SparseTranspose_3/transpose",
+                "op": "Transpose"
+            },
+            "pid": 1,
+            "ts": 1512179750271954,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 51
+        },
+        {
+            "name": "Gather",
+            "args": {
+                "input0": "SparseTranspose_3/transpose",
+                "input1": "SparseTranspose_3/sub_1",
+                "name": "SparseTranspose_3/Gather",
+                "op": "Gather"
+            },
+            "pid": 1,
+            "ts": 1512179750272010,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 14
+        },
+        {
+            "name": "Rank",
+            "args": {
+                "input0": "SparseTranspose_3/Gather",
+                "name": "SparseTranspose_3/transpose_1/Rank",
+                "op": "Rank"
+            },
+            "pid": 1,
+            "ts": 1512179750272028,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Range",
+            "args": {
+                "input2": "SparseTranspose_3/transpose_1/Range/delta",
+                "input0": "SparseTranspose_3/transpose_1/Range/start",
+                "input1": "SparseTranspose_3/transpose_1/Rank",
+                "name": "SparseTranspose_3/transpose_1/Range",
+                "op": "Range"
+            },
+            "pid": 1,
+            "ts": 1512179750272053,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 20
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_3/transpose_1/Rank",
+                "input1": "SparseTranspose_3/transpose_1/sub/y",
+                "name": "SparseTranspose_3/transpose_1/sub",
+                "op": "Sub"
+            },
+            "pid": 1,
+            "ts": 1512179750272048,
+            "cat": "Op",
+            "tid": 1,
+            "ph": "X",
+            "dur": 136
+        },
+        {
+            "name": "SparseTranspose_3/transpose_1/Rank",
+            "pid": 1,
+            "ts": 1512179750272033,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "s",
+            "id": 2
+        },
+        {
+            "name": "SparseTranspose_3/transpose_1/Rank",
+            "pid": 1,
+            "ts": 1512179750272048,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "t",
+            "id": 2
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_3/transpose_1/sub",
+                "input1": "SparseTranspose_3/transpose_1/Range",
+                "name": "SparseTranspose_3/transpose_1/sub_1",
+                "op": "Sub"
+            },
+            "pid": 1,
+            "ts": 1512179750272189,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 10
+        },
+        {
+            "name": "SparseTranspose_3/transpose_1/sub",
+            "pid": 1,
+            "ts": 1512179750272184,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "s",
+            "id": 3
+        },
+        {
+            "name": "SparseTranspose_3/transpose_1/sub",
+            "pid": 1,
+            "ts": 1512179750272189,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "t",
+            "id": 3
+        },
+        {
+            "name": "Transpose",
+            "args": {
+                "input0": "SparseTranspose_3/Gather",
+                "input1": "SparseTranspose_3/transpose_1/sub_1",
+                "name": "SparseTranspose_3/transpose_1",
+                "op": "Transpose"
+            },
+            "pid": 1,
+            "ts": 1512179750272203,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 43
+        },
+        {
+            "name": "SparseReorder",
+            "args": {
+                "input2": "SparseTranspose_3/Gather_1",
+                "input0": "SparseTranspose_3/transpose_1",
+                "input1": "shuffle_batch_1/DeserializeManySparse:1",
+                "name": "SparseTranspose_3/SparseReorder",
+                "op": "SparseReorder"
+            },
+            "pid": 1,
+            "ts": 1512179750272251,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 348
+        },
+        {
+            "name": "SparseTensorDenseMatMul",
+            "args": {
+                "input2": "shuffle_batch_1/DeserializeManySparse:2",
+                "input3": "model/read_S7",
+                "input0": "shuffle_batch_1/DeserializeManySparse",
+                "input1": "shuffle_batch_1/DeserializeManySparse:1",
+                "name": "SparseTensorDenseMatMul_2/SparseTensorDenseMatMul",
+                "op": "SparseTensorDenseMatMul"
+            },
+            "pid": 1,
+            "ts": 1512179754670842,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 87
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "shuffle_batch_1:1",
+                "input1": "SparseTensorDenseMatMul_2/SparseTensorDenseMatMul",
+                "name": "Mul_3",
+                "op": "Mul"
+            },
+            "pid": 1,
+            "ts": 1512179754670940,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 27
+        },
+        {
+            "name": "Sigmoid",
+            "args": {
+                "input0": "Mul_3",
+                "name": "Sigmoid_1",
+                "op": "Sigmoid"
+            },
+            "pid": 1,
+            "ts": 1512179754670970,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 10
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "Sigmoid_1",
+                "input1": "sub_1/y",
+                "name": "sub_1",
+                "op": "Sub"
+            },
+            "pid": 1,
+            "ts": 1512179754670983,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 18
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "shuffle_batch_1:1",
+                "input1": "sub_1",
+                "name": "Mul_4",
+                "op": "Mul"
+            },
+            "pid": 1,
+            "ts": 1512179754671005,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
+        },
+        {
+            "name": "SparseTensorDenseMatMul",
+            "args": {
+                "input2": "SparseTranspose_3/Identity",
+                "input3": "Mul_4",
+                "input0": "SparseTranspose_3/SparseReorder",
+                "input1": "SparseTranspose_3/SparseReorder:1",
+                "name": "SparseTensorDenseMatMul_3/SparseTensorDenseMatMul",
+                "op": "SparseTensorDenseMatMul"
+            },
+            "pid": 1,
+            "ts": 1512179754671015,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 69677
+        },
+        {
+            "name": "Sum",
+            "args": {
+                "input0": "SparseTensorDenseMatMul_3/SparseTensorDenseMatMul",
+                "input1": "Sum_1/reduction_indices",
+                "name": "Sum_1",
+                "op": "Sum"
+            },
+            "pid": 1,
+            "ts": 1512179754740754,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 33
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "Sum_1",
+                "input1": "Mul_5/y",
+                "name": "Mul_5",
+                "op": "Mul"
+            },
+            "pid": 1,
+            "ts": 1512179754740793,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 39292
+        },
+        {
+            "name": "NoOp",
+            "args": {
+                "name": "_SINK",
+                "op": "NoOp"
+            },
+            "pid": 1,
+            "ts": 1512179754780275,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 10
+        },
+        {
+            "name": "NoOp",
+            "args": {
+                "name": "_SOURCE",
+                "op": "NoOp"
+            },
+            "pid": 3,
+            "ts": 1512179750339217,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 22
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "Mul_8/y",
+                "op": "Const"
+            },
+            "pid": 3,
+            "ts": 1512179750339292,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 23
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "Sum_2/reduction_indices",
+                "op": "Const"
+            },
+            "pid": 3,
+            "ts": 1512179750339319,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 9
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "SparseTranspose_5/transpose_1/Range/start",
+                "op": "Const"
+            },
+            "pid": 3,
+            "ts": 1512179750339331,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 24
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "sub_2/y",
+                "op": "Const"
+            },
+            "pid": 3,
+            "ts": 1512179750339358,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "shuffle_batch_2/n",
+                "op": "Const"
+            },
+            "pid": 3,
+            "ts": 1512179750339369,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "RandomShuffleQueue",
+            "args": {
+                "name": "shuffle_batch_2/random_shuffle_queue",
+                "op": "RandomShuffleQueue"
+            },
+            "pid": 3,
+            "ts": 1512179750339386,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 50
+        },
+        {
+            "name": "QueueDequeueMany",
+            "args": {
+                "input0": "shuffle_batch_2/random_shuffle_queue",
+                "input1": "shuffle_batch_2/n",
+                "name": "shuffle_batch_2",
+                "op": "QueueDequeueMany"
+            },
+            "pid": 3,
+            "ts": 1512179750339448,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 169
+        },
+        {
+            "name": "DeserializeManySparse",
+            "args": {
+                "input0": "shuffle_batch_2",
+                "name": "shuffle_batch_2/DeserializeManySparse",
+                "op": "DeserializeManySparse"
+            },
+            "pid": 3,
+            "ts": 1512179750339713,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 433
+        },
+        {
+            "name": "Rank",
+            "args": {
+                "input0": "shuffle_batch_2/DeserializeManySparse",
+                "name": "SparseTranspose_5/transpose/Rank",
+                "op": "Rank"
+            },
+            "pid": 3,
+            "ts": 1512179750340157,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 16
+        },
+        {
+            "name": "Size",
+            "args": {
+                "input0": "shuffle_batch_2/DeserializeManySparse:2",
+                "name": "SparseTranspose_5/Rank",
+                "op": "Size"
+            },
+            "pid": 3,
+            "ts": 1512179750340181,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 10
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_5/Rank",
+                "input1": "SparseTranspose_5/sub/y",
+                "name": "SparseTranspose_5/sub",
+                "op": "Sub"
+            },
+            "pid": 3,
+            "ts": 1512179750340198,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 36
+        },
+        {
+            "name": "Range",
+            "args": {
+                "input2": "SparseTranspose_5/range/delta",
+                "input0": "SparseTranspose_5/range/start",
+                "input1": "SparseTranspose_5/Rank",
+                "name": "SparseTranspose_5/range",
+                "op": "Range"
+            },
+            "pid": 3,
+            "ts": 1512179750340242,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 16
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_5/sub",
+                "input1": "SparseTranspose_5/range",
+                "name": "SparseTranspose_5/sub_1",
+                "op": "Sub"
+            },
+            "pid": 3,
+            "ts": 1512179750340266,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 50
+        },
+        {
+            "name": "Gather",
+            "args": {
+                "input0": "shuffle_batch_2/DeserializeManySparse:2",
+                "input1": "SparseTranspose_5/sub_1",
+                "name": "SparseTranspose_5/Gather_1",
+                "op": "Gather"
+            },
+            "pid": 3,
+            "ts": 1512179750340323,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 19
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "SparseTranspose_5/Gather_1",
+                "name": "SparseTranspose_5/Identity",
+                "op": "Identity"
+            },
+            "pid": 3,
+            "ts": 1512179750340349,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 11
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_5/transpose/Rank",
+                "input1": "SparseTranspose_5/transpose/sub/y",
+                "name": "SparseTranspose_5/transpose/sub",
+                "op": "Sub"
+            },
+            "pid": 3,
+            "ts": 1512179750340366,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 12
+        },
+        {
+            "name": "Range",
+            "args": {
+                "input2": "SparseTranspose_5/transpose/Range/delta",
+                "input0": "SparseTranspose_5/transpose/Range/start",
+                "input1": "SparseTranspose_5/transpose/Rank",
+                "name": "SparseTranspose_5/transpose/Range",
+                "op": "Range"
+            },
+            "pid": 3,
+            "ts": 1512179750340385,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 12
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_5/transpose/sub",
+                "input1": "SparseTranspose_5/transpose/Range",
+                "name": "SparseTranspose_5/transpose/sub_1",
+                "op": "Sub"
+            },
+            "pid": 3,
+            "ts": 1512179750340405,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 13
+        },
+        {
+            "name": "Transpose",
+            "args": {
+                "input0": "shuffle_batch_2/DeserializeManySparse",
+                "input1": "SparseTranspose_5/transpose/sub_1",
+                "name": "SparseTranspose_5/transpose",
+                "op": "Transpose"
+            },
+            "pid": 3,
+            "ts": 1512179750340424,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 77
+        },
+        {
+            "name": "Gather",
+            "args": {
+                "input0": "SparseTranspose_5/transpose",
+                "input1": "SparseTranspose_5/sub_1",
+                "name": "SparseTranspose_5/Gather",
+                "op": "Gather"
+            },
+            "pid": 3,
+            "ts": 1512179750340508,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 22
+        },
+        {
+            "name": "Rank",
+            "args": {
+                "input0": "SparseTranspose_5/Gather",
+                "name": "SparseTranspose_5/transpose_1/Rank",
+                "op": "Rank"
+            },
+            "pid": 3,
+            "ts": 1512179750340536,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 10
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_5/transpose_1/Rank",
+                "input1": "SparseTranspose_5/transpose_1/sub/y",
+                "name": "SparseTranspose_5/transpose_1/sub",
+                "op": "Sub"
+            },
+            "pid": 3,
+            "ts": 1512179750340553,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 12
+        },
+        {
+            "name": "Range",
+            "args": {
+                "input2": "SparseTranspose_5/transpose_1/Range/delta",
+                "input0": "SparseTranspose_5/transpose_1/Range/start",
+                "input1": "SparseTranspose_5/transpose_1/Rank",
+                "name": "SparseTranspose_5/transpose_1/Range",
+                "op": "Range"
+            },
+            "pid": 3,
+            "ts": 1512179750340571,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 11
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_5/transpose_1/sub",
+                "input1": "SparseTranspose_5/transpose_1/Range",
+                "name": "SparseTranspose_5/transpose_1/sub_1",
+                "op": "Sub"
+            },
+            "pid": 3,
+            "ts": 1512179750340590,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 14
+        },
+        {
+            "name": "Transpose",
+            "args": {
+                "input0": "SparseTranspose_5/Gather",
+                "input1": "SparseTranspose_5/transpose_1/sub_1",
+                "name": "SparseTranspose_5/transpose_1",
+                "op": "Transpose"
+            },
+            "pid": 3,
+            "ts": 1512179750340610,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 69
+        },
+        {
+            "name": "SparseReorder",
+            "args": {
+                "input2": "SparseTranspose_5/Gather_1",
+                "input0": "SparseTranspose_5/transpose_1",
+                "input1": "shuffle_batch_2/DeserializeManySparse:1",
+                "name": "SparseTranspose_5/SparseReorder",
+                "op": "SparseReorder"
+            },
+            "pid": 3,
+            "ts": 1512179750340685,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 285
+        },
+        {
+            "name": "SparseTensorDenseMatMul",
+            "args": {
+                "input2": "shuffle_batch_2/DeserializeManySparse:2",
+                "input3": "model/read_S5",
+                "input0": "shuffle_batch_2/DeserializeManySparse",
+                "input1": "shuffle_batch_2/DeserializeManySparse:1",
+                "name": "SparseTensorDenseMatMul_4/SparseTensorDenseMatMul",
+                "op": "SparseTensorDenseMatMul"
+            },
+            "pid": 3,
+            "ts": 1512179752551403,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 948
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "shuffle_batch_2:1",
+                "input1": "SparseTensorDenseMatMul_4/SparseTensorDenseMatMul",
+                "name": "Mul_6",
+                "op": "Mul"
+            },
+            "pid": 3,
+            "ts": 1512179752552370,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 29
+        },
+        {
+            "name": "Sigmoid",
+            "args": {
+                "input0": "Mul_6",
+                "name": "Sigmoid_2",
+                "op": "Sigmoid"
+            },
+            "pid": 3,
+            "ts": 1512179752552404,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 11
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "Sigmoid_2",
+                "input1": "sub_2/y",
+                "name": "sub_2",
+                "op": "Sub"
+            },
+            "pid": 3,
+            "ts": 1512179752552418,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 31
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "shuffle_batch_2:1",
+                "input1": "sub_2",
+                "name": "Mul_7",
+                "op": "Mul"
+            },
+            "pid": 3,
+            "ts": 1512179752552454,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 15
+        },
+        {
+            "name": "SparseTensorDenseMatMul",
+            "args": {
+                "input2": "SparseTranspose_5/Identity",
+                "input3": "Mul_7",
+                "input0": "SparseTranspose_5/SparseReorder",
+                "input1": "SparseTranspose_5/SparseReorder:1",
+                "name": "SparseTensorDenseMatMul_5/SparseTensorDenseMatMul",
+                "op": "SparseTensorDenseMatMul"
+            },
+            "pid": 3,
+            "ts": 1512179752552474,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 84167
+        },
+        {
+            "name": "Sum",
+            "args": {
+                "input0": "SparseTensorDenseMatMul_5/SparseTensorDenseMatMul",
+                "input1": "Sum_2/reduction_indices",
+                "name": "Sum_2",
+                "op": "Sum"
+            },
+            "pid": 3,
+            "ts": 1512179752636683,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 35
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "Sum_2",
+                "input1": "Mul_8/y",
+                "name": "Mul_8",
+                "op": "Mul"
+            },
+            "pid": 3,
+            "ts": 1512179752636723,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 43491
+        },
+        {
+            "name": "NoOp",
+            "args": {
+                "name": "_SINK",
+                "op": "NoOp"
+            },
+            "pid": 3,
+            "ts": 1512179752680363,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 9
+        },
+        {
+            "name": "NoOp",
+            "args": {
+                "name": "_SOURCE",
+                "op": "NoOp"
+            },
+            "pid": 5,
+            "ts": 1512179750397646,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 27
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "Mul_11/y",
+                "op": "Const"
+            },
+            "pid": 5,
+            "ts": 1512179750397699,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 29
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "Sum_3/reduction_indices",
+                "op": "Const"
+            },
+            "pid": 5,
+            "ts": 1512179750397732,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "SparseTranspose_7/transpose_1/Range/start",
+                "op": "Const"
+            },
+            "pid": 5,
+            "ts": 1512179750397741,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "sub_3/y",
+                "op": "Const"
+            },
+            "pid": 5,
+            "ts": 1512179750397747,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "shuffle_batch_3/n",
+                "op": "Const"
+            },
+            "pid": 5,
+            "ts": 1512179750397760,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "RandomShuffleQueue",
+            "args": {
+                "name": "shuffle_batch_3/random_shuffle_queue",
+                "op": "RandomShuffleQueue"
+            },
+            "pid": 5,
+            "ts": 1512179750397877,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 14
+        },
+        {
+            "name": "QueueDequeueMany",
+            "args": {
+                "input0": "shuffle_batch_3/random_shuffle_queue",
+                "input1": "shuffle_batch_3/n",
+                "name": "shuffle_batch_3",
+                "op": "QueueDequeueMany"
+            },
+            "pid": 5,
+            "ts": 1512179750397895,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 145
+        },
+        {
+            "name": "DeserializeManySparse",
+            "args": {
+                "input0": "shuffle_batch_3",
+                "name": "shuffle_batch_3/DeserializeManySparse",
+                "op": "DeserializeManySparse"
+            },
+            "pid": 5,
+            "ts": 1512179750398090,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 358
+        },
+        {
+            "name": "Rank",
+            "args": {
+                "input0": "shuffle_batch_3/DeserializeManySparse",
+                "name": "SparseTranspose_7/transpose/Rank",
+                "op": "Rank"
+            },
+            "pid": 5,
+            "ts": 1512179750398455,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 11
+        },
+        {
+            "name": "Size",
+            "args": {
+                "input0": "shuffle_batch_3/DeserializeManySparse:2",
+                "name": "SparseTranspose_7/Rank",
+                "op": "Size"
+            },
+            "pid": 5,
+            "ts": 1512179750398471,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_7/Rank",
+                "input1": "SparseTranspose_7/sub/y",
+                "name": "SparseTranspose_7/sub",
+                "op": "Sub"
+            },
+            "pid": 5,
+            "ts": 1512179750398479,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 19
+        },
+        {
+            "name": "Range",
+            "args": {
+                "input2": "SparseTranspose_7/range/delta",
+                "input0": "SparseTranspose_7/range/start",
+                "input1": "SparseTranspose_7/Rank",
+                "name": "SparseTranspose_7/range",
+                "op": "Range"
+            },
+            "pid": 5,
+            "ts": 1512179750398502,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_7/sub",
+                "input1": "SparseTranspose_7/range",
+                "name": "SparseTranspose_7/sub_1",
+                "op": "Sub"
+            },
+            "pid": 5,
+            "ts": 1512179750398514,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 9
+        },
+        {
+            "name": "Gather",
+            "args": {
+                "input0": "shuffle_batch_3/DeserializeManySparse:2",
+                "input1": "SparseTranspose_7/sub_1",
+                "name": "SparseTranspose_7/Gather_1",
+                "op": "Gather"
+            },
+            "pid": 5,
+            "ts": 1512179750398526,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 10
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "SparseTranspose_7/Gather_1",
+                "name": "SparseTranspose_7/Identity",
+                "op": "Identity"
+            },
+            "pid": 5,
+            "ts": 1512179750398539,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_7/transpose/Rank",
+                "input1": "SparseTranspose_7/transpose/sub/y",
+                "name": "SparseTranspose_7/transpose/sub",
+                "op": "Sub"
+            },
+            "pid": 5,
+            "ts": 1512179750398547,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Range",
+            "args": {
+                "input2": "SparseTranspose_7/transpose/Range/delta",
+                "input0": "SparseTranspose_7/transpose/Range/start",
+                "input1": "SparseTranspose_7/transpose/Rank",
+                "name": "SparseTranspose_7/transpose/Range",
+                "op": "Range"
+            },
+            "pid": 5,
+            "ts": 1512179750398556,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_7/transpose/sub",
+                "input1": "SparseTranspose_7/transpose/Range",
+                "name": "SparseTranspose_7/transpose/sub_1",
+                "op": "Sub"
+            },
+            "pid": 5,
+            "ts": 1512179750398565,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 6
+        },
+        {
+            "name": "Transpose",
+            "args": {
+                "input0": "shuffle_batch_3/DeserializeManySparse",
+                "input1": "SparseTranspose_7/transpose/sub_1",
+                "name": "SparseTranspose_7/transpose",
+                "op": "Transpose"
+            },
+            "pid": 5,
+            "ts": 1512179750398574,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 49
+        },
+        {
+            "name": "Gather",
+            "args": {
+                "input0": "SparseTranspose_7/transpose",
+                "input1": "SparseTranspose_7/sub_1",
+                "name": "SparseTranspose_7/Gather",
+                "op": "Gather"
+            },
+            "pid": 5,
+            "ts": 1512179750398627,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 19
+        },
+        {
+            "name": "Rank",
+            "args": {
+                "input0": "SparseTranspose_7/Gather",
+                "name": "SparseTranspose_7/transpose_1/Rank",
+                "op": "Rank"
+            },
+            "pid": 5,
+            "ts": 1512179750398649,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_7/transpose_1/Rank",
+                "input1": "SparseTranspose_7/transpose_1/sub/y",
+                "name": "SparseTranspose_7/transpose_1/sub",
+                "op": "Sub"
+            },
+            "pid": 5,
+            "ts": 1512179750398658,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 6
+        },
+        {
+            "name": "Range",
+            "args": {
+                "input2": "SparseTranspose_7/transpose_1/Range/delta",
+                "input0": "SparseTranspose_7/transpose_1/Range/start",
+                "input1": "SparseTranspose_7/transpose_1/Rank",
+                "name": "SparseTranspose_7/transpose_1/Range",
+                "op": "Range"
+            },
+            "pid": 5,
+            "ts": 1512179750398667,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_7/transpose_1/sub",
+                "input1": "SparseTranspose_7/transpose_1/Range",
+                "name": "SparseTranspose_7/transpose_1/sub_1",
+                "op": "Sub"
+            },
+            "pid": 5,
+            "ts": 1512179750398675,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Transpose",
+            "args": {
+                "input0": "SparseTranspose_7/Gather",
+                "input1": "SparseTranspose_7/transpose_1/sub_1",
+                "name": "SparseTranspose_7/transpose_1",
+                "op": "Transpose"
+            },
+            "pid": 5,
+            "ts": 1512179750398683,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 70
+        },
+        {
+            "name": "SparseReorder",
+            "args": {
+                "input2": "SparseTranspose_7/Gather_1",
+                "input0": "SparseTranspose_7/transpose_1",
+                "input1": "shuffle_batch_3/DeserializeManySparse:1",
+                "name": "SparseTranspose_7/SparseReorder",
+                "op": "SparseReorder"
+            },
+            "pid": 5,
+            "ts": 1512179750398759,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 218
+        },
+        {
+            "name": "SparseTensorDenseMatMul",
+            "args": {
+                "input2": "shuffle_batch_3/DeserializeManySparse:2",
+                "input3": "model/read_S3",
+                "input0": "shuffle_batch_3/DeserializeManySparse",
+                "input1": "shuffle_batch_3/DeserializeManySparse:1",
+                "name": "SparseTensorDenseMatMul_6/SparseTensorDenseMatMul",
+                "op": "SparseTensorDenseMatMul"
+            },
+            "pid": 5,
+            "ts": 1512179754391727,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 2209
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "shuffle_batch_3:1",
+                "input1": "SparseTensorDenseMatMul_6/SparseTensorDenseMatMul",
+                "name": "Mul_9",
+                "op": "Mul"
+            },
+            "pid": 5,
+            "ts": 1512179754393958,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 33
+        },
+        {
+            "name": "Sigmoid",
+            "args": {
+                "input0": "Mul_9",
+                "name": "Sigmoid_3",
+                "op": "Sigmoid"
+            },
+            "pid": 5,
+            "ts": 1512179754393996,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 9
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "Sigmoid_3",
+                "input1": "sub_3/y",
+                "name": "sub_3",
+                "op": "Sub"
+            },
+            "pid": 5,
+            "ts": 1512179754394008,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 13
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "shuffle_batch_3:1",
+                "input1": "sub_3",
+                "name": "Mul_10",
+                "op": "Mul"
+            },
+            "pid": 5,
+            "ts": 1512179754394032,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 9
+        },
+        {
+            "name": "SparseTensorDenseMatMul",
+            "args": {
+                "input2": "SparseTranspose_7/Identity",
+                "input3": "Mul_10",
+                "input0": "SparseTranspose_7/SparseReorder",
+                "input1": "SparseTranspose_7/SparseReorder:1",
+                "name": "SparseTensorDenseMatMul_7/SparseTensorDenseMatMul",
+                "op": "SparseTensorDenseMatMul"
+            },
+            "pid": 5,
+            "ts": 1512179754394045,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 80911
+        },
+        {
+            "name": "Sum",
+            "args": {
+                "input0": "SparseTensorDenseMatMul_7/SparseTensorDenseMatMul",
+                "input1": "Sum_3/reduction_indices",
+                "name": "Sum_3",
+                "op": "Sum"
+            },
+            "pid": 5,
+            "ts": 1512179754474998,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 24
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "Sum_3",
+                "input1": "Mul_11/y",
+                "name": "Mul_11",
+                "op": "Mul"
+            },
+            "pid": 5,
+            "ts": 1512179754475025,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 42445
+        },
+        {
+            "name": "NoOp",
+            "args": {
+                "name": "_SINK",
+                "op": "NoOp"
+            },
+            "pid": 5,
+            "ts": 1512179754517595,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 6
+        },
+        {
+            "name": "NoOp",
+            "args": {
+                "name": "_SOURCE",
+                "op": "NoOp"
+            },
+            "pid": 7,
+            "ts": 1512179750334434,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 26
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "Mul_14/y",
+                "op": "Const"
+            },
+            "pid": 7,
+            "ts": 1512179750334486,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 30
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "Sum_4/reduction_indices",
+                "op": "Const"
+            },
+            "pid": 7,
+            "ts": 1512179750334519,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 9
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "SparseTranspose_9/transpose_1/Range/start",
+                "op": "Const"
+            },
+            "pid": 7,
+            "ts": 1512179750334530,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "sub_4/y",
+                "op": "Const"
+            },
+            "pid": 7,
+            "ts": 1512179750334543,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "shuffle_batch_4/n",
+                "op": "Const"
+            },
+            "pid": 7,
+            "ts": 1512179750334552,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 6
+        },
+        {
+            "name": "RandomShuffleQueue",
+            "args": {
+                "name": "shuffle_batch_4/random_shuffle_queue",
+                "op": "RandomShuffleQueue"
+            },
+            "pid": 7,
+            "ts": 1512179750334716,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 14
+        },
+        {
+            "name": "QueueDequeueMany",
+            "args": {
+                "input0": "shuffle_batch_4/random_shuffle_queue",
+                "input1": "shuffle_batch_4/n",
+                "name": "shuffle_batch_4",
+                "op": "QueueDequeueMany"
+            },
+            "pid": 7,
+            "ts": 1512179750334735,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 135
+        },
+        {
+            "name": "DeserializeManySparse",
+            "args": {
+                "input0": "shuffle_batch_4",
+                "name": "shuffle_batch_4/DeserializeManySparse",
+                "op": "DeserializeManySparse"
+            },
+            "pid": 7,
+            "ts": 1512179750334921,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 322
+        },
+        {
+            "name": "Rank",
+            "args": {
+                "input0": "shuffle_batch_4/DeserializeManySparse",
+                "name": "SparseTranspose_9/transpose/Rank",
+                "op": "Rank"
+            },
+            "pid": 7,
+            "ts": 1512179750335249,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 9
+        },
+        {
+            "name": "Size",
+            "args": {
+                "input0": "shuffle_batch_4/DeserializeManySparse:2",
+                "name": "SparseTranspose_9/Rank",
+                "op": "Size"
+            },
+            "pid": 7,
+            "ts": 1512179750335264,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 6
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_9/Rank",
+                "input1": "SparseTranspose_9/sub/y",
+                "name": "SparseTranspose_9/sub",
+                "op": "Sub"
+            },
+            "pid": 7,
+            "ts": 1512179750335274,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 37
+        },
+        {
+            "name": "Range",
+            "args": {
+                "input2": "SparseTranspose_9/range/delta",
+                "input0": "SparseTranspose_9/range/start",
+                "input1": "SparseTranspose_9/Rank",
+                "name": "SparseTranspose_9/range",
+                "op": "Range"
+            },
+            "pid": 7,
+            "ts": 1512179750335316,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 10
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_9/sub",
+                "input1": "SparseTranspose_9/range",
+                "name": "SparseTranspose_9/sub_1",
+                "op": "Sub"
+            },
+            "pid": 7,
+            "ts": 1512179750335330,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 11
+        },
+        {
+            "name": "Gather",
+            "args": {
+                "input0": "shuffle_batch_4/DeserializeManySparse:2",
+                "input1": "SparseTranspose_9/sub_1",
+                "name": "SparseTranspose_9/Gather_1",
+                "op": "Gather"
+            },
+            "pid": 7,
+            "ts": 1512179750335345,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 24
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "SparseTranspose_9/Gather_1",
+                "name": "SparseTranspose_9/Identity",
+                "op": "Identity"
+            },
+            "pid": 7,
+            "ts": 1512179750335373,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_9/transpose/Rank",
+                "input1": "SparseTranspose_9/transpose/sub/y",
+                "name": "SparseTranspose_9/transpose/sub",
+                "op": "Sub"
+            },
+            "pid": 7,
+            "ts": 1512179750335383,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
+        },
+        {
+            "name": "Range",
+            "args": {
+                "input2": "SparseTranspose_9/transpose/Range/delta",
+                "input0": "SparseTranspose_9/transpose/Range/start",
+                "input1": "SparseTranspose_9/transpose/Rank",
+                "name": "SparseTranspose_9/transpose/Range",
+                "op": "Range"
+            },
+            "pid": 7,
+            "ts": 1512179750335394,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_9/transpose/sub",
+                "input1": "SparseTranspose_9/transpose/Range",
+                "name": "SparseTranspose_9/transpose/sub_1",
+                "op": "Sub"
+            },
+            "pid": 7,
+            "ts": 1512179750335406,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
+        },
+        {
+            "name": "Transpose",
+            "args": {
+                "input0": "shuffle_batch_4/DeserializeManySparse",
+                "input1": "SparseTranspose_9/transpose/sub_1",
+                "name": "SparseTranspose_9/transpose",
+                "op": "Transpose"
+            },
+            "pid": 7,
+            "ts": 1512179750335417,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 63
+        },
+        {
+            "name": "Gather",
+            "args": {
+                "input0": "SparseTranspose_9/transpose",
+                "input1": "SparseTranspose_9/sub_1",
+                "name": "SparseTranspose_9/Gather",
+                "op": "Gather"
+            },
+            "pid": 7,
+            "ts": 1512179750335484,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 21
+        },
+        {
+            "name": "Rank",
+            "args": {
+                "input0": "SparseTranspose_9/Gather",
+                "name": "SparseTranspose_9/transpose_1/Rank",
+                "op": "Rank"
+            },
+            "pid": 7,
+            "ts": 1512179750335509,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 6
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_9/transpose_1/Rank",
+                "input1": "SparseTranspose_9/transpose_1/sub/y",
+                "name": "SparseTranspose_9/transpose_1/sub",
+                "op": "Sub"
+            },
+            "pid": 7,
+            "ts": 1512179750335520,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
+        },
+        {
+            "name": "Range",
+            "args": {
+                "input2": "SparseTranspose_9/transpose_1/Range/delta",
+                "input0": "SparseTranspose_9/transpose_1/Range/start",
+                "input1": "SparseTranspose_9/transpose_1/Rank",
+                "name": "SparseTranspose_9/transpose_1/Range",
+                "op": "Range"
+            },
+            "pid": 7,
+            "ts": 1512179750335531,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 6
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_9/transpose_1/sub",
+                "input1": "SparseTranspose_9/transpose_1/Range",
+                "name": "SparseTranspose_9/transpose_1/sub_1",
+                "op": "Sub"
+            },
+            "pid": 7,
+            "ts": 1512179750335540,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
+        },
+        {
+            "name": "Transpose",
+            "args": {
+                "input0": "SparseTranspose_9/Gather",
+                "input1": "SparseTranspose_9/transpose_1/sub_1",
+                "name": "SparseTranspose_9/transpose_1",
+                "op": "Transpose"
+            },
+            "pid": 7,
+            "ts": 1512179750335551,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 52
+        },
+        {
+            "name": "SparseReorder",
+            "args": {
+                "input2": "SparseTranspose_9/Gather_1",
+                "input0": "SparseTranspose_9/transpose_1",
+                "input1": "shuffle_batch_4/DeserializeManySparse:1",
+                "name": "SparseTranspose_9/SparseReorder",
+                "op": "SparseReorder"
+            },
+            "pid": 7,
+            "ts": 1512179750335606,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 214
+        },
+        {
+            "name": "SparseTensorDenseMatMul",
+            "args": {
+                "input2": "shuffle_batch_4/DeserializeManySparse:2",
+                "input3": "model/read_S1",
+                "input0": "shuffle_batch_4/DeserializeManySparse",
+                "input1": "shuffle_batch_4/DeserializeManySparse:1",
+                "name": "SparseTensorDenseMatMul_8/SparseTensorDenseMatMul",
+                "op": "SparseTensorDenseMatMul"
+            },
+            "pid": 7,
+            "ts": 1512179752462272,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 856
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "shuffle_batch_4:1",
+                "input1": "SparseTensorDenseMatMul_8/SparseTensorDenseMatMul",
+                "name": "Mul_12",
+                "op": "Mul"
+            },
+            "pid": 7,
+            "ts": 1512179752463146,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 47
+        },
+        {
+            "name": "Sigmoid",
+            "args": {
+                "input0": "Mul_12",
+                "name": "Sigmoid_4",
+                "op": "Sigmoid"
+            },
+            "pid": 7,
+            "ts": 1512179752463199,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 11
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "Sigmoid_4",
+                "input1": "sub_4/y",
+                "name": "sub_4",
+                "op": "Sub"
+            },
+            "pid": 7,
+            "ts": 1512179752463214,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 12
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "shuffle_batch_4:1",
+                "input1": "sub_4",
+                "name": "Mul_13",
+                "op": "Mul"
+            },
+            "pid": 7,
+            "ts": 1512179752463231,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
+        },
+        {
+            "name": "SparseTensorDenseMatMul",
+            "args": {
+                "input2": "SparseTranspose_9/Identity",
+                "input3": "Mul_13",
+                "input0": "SparseTranspose_9/SparseReorder",
+                "input1": "SparseTranspose_9/SparseReorder:1",
+                "name": "SparseTensorDenseMatMul_9/SparseTensorDenseMatMul",
+                "op": "SparseTensorDenseMatMul"
+            },
+            "pid": 7,
+            "ts": 1512179752463243,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 47928
+        },
+        {
+            "name": "Sum",
+            "args": {
+                "input0": "SparseTensorDenseMatMul_9/SparseTensorDenseMatMul",
+                "input1": "Sum_4/reduction_indices",
+                "name": "Sum_4",
+                "op": "Sum"
+            },
+            "pid": 7,
+            "ts": 1512179752511232,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 25
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "Sum_4",
+                "input1": "Mul_14/y",
+                "name": "Mul_14",
+                "op": "Mul"
+            },
+            "pid": 7,
+            "ts": 1512179752511262,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 18585
+        },
+        {
+            "name": "NoOp",
+            "args": {
+                "name": "_SINK",
+                "op": "NoOp"
+            },
+            "pid": 7,
+            "ts": 1512179752530001,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 10
+        },
+        {
+            "name": "NoOp",
+            "args": {
+                "name": "_SOURCE",
+                "op": "NoOp"
+            },
+            "pid": 9,
+            "ts": 1512179750334828,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 28
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "Reshape_10/shape",
+                "op": "Const"
+            },
+            "pid": 9,
+            "ts": 1512179750334880,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 19
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "Mul_2/y",
+                "op": "Const"
+            },
+            "pid": 9,
+            "ts": 1512179750334903,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 13
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "Sum/reduction_indices",
+                "op": "Const"
+            },
+            "pid": 9,
+            "ts": 1512179750334922,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 9
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "SparseTranspose_1/transpose_1/Range/start",
+                "op": "Const"
+            },
+            "pid": 9,
+            "ts": 1512179750334933,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 6
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "sub/y",
+                "op": "Const"
+            },
+            "pid": 9,
+            "ts": 1512179750334944,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "shuffle_batch/n",
+                "op": "Const"
+            },
+            "pid": 9,
+            "ts": 1512179750334952,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Variable",
+            "args": {
+                "name": "model",
+                "op": "Variable"
+            },
+            "pid": 9,
+            "ts": 1512179750335111,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 16
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "model",
+                "name": "model/read",
+                "op": "Identity"
+            },
+            "pid": 9,
+            "ts": 1512179750335131,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 10
+        },
+        {
+            "name": "RandomShuffleQueue",
+            "args": {
+                "name": "shuffle_batch/random_shuffle_queue",
+                "op": "RandomShuffleQueue"
+            },
+            "pid": 9,
+            "ts": 1512179750335214,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
+        },
+        {
+            "name": "QueueDequeueMany",
+            "args": {
+                "input0": "shuffle_batch/random_shuffle_queue",
+                "input1": "shuffle_batch/n",
+                "name": "shuffle_batch",
+                "op": "QueueDequeueMany"
+            },
+            "pid": 9,
+            "ts": 1512179750335225,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 191
+        },
+        {
+            "name": "DeserializeManySparse",
+            "args": {
+                "input0": "shuffle_batch",
+                "name": "shuffle_batch/DeserializeManySparse",
+                "op": "DeserializeManySparse"
+            },
+            "pid": 9,
+            "ts": 1512179750335465,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 396
+        },
+        {
+            "name": "Rank",
+            "args": {
+                "input0": "shuffle_batch/DeserializeManySparse",
+                "name": "SparseTranspose_1/transpose/Rank",
+                "op": "Rank"
+            },
+            "pid": 9,
+            "ts": 1512179750335867,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 20
+        },
+        {
+            "name": "Size",
+            "args": {
+                "input0": "shuffle_batch/DeserializeManySparse:2",
+                "name": "SparseTranspose_1/Rank",
+                "op": "Size"
+            },
+            "pid": 9,
+            "ts": 1512179750335893,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 17
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_1/Rank",
+                "input1": "SparseTranspose_1/sub/y",
+                "name": "SparseTranspose_1/sub",
+                "op": "Sub"
+            },
+            "pid": 9,
+            "ts": 1512179750335915,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 41
+        },
+        {
+            "name": "Range",
+            "args": {
+                "input2": "SparseTranspose_1/range/delta",
+                "input0": "SparseTranspose_1/range/start",
+                "input1": "SparseTranspose_1/Rank",
+                "name": "SparseTranspose_1/range",
+                "op": "Range"
+            },
+            "pid": 9,
+            "ts": 1512179750335961,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 10
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_1/sub",
+                "input1": "SparseTranspose_1/range",
+                "name": "SparseTranspose_1/sub_1",
+                "op": "Sub"
+            },
+            "pid": 9,
+            "ts": 1512179750335975,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 13
+        },
+        {
+            "name": "Gather",
+            "args": {
+                "input0": "shuffle_batch/DeserializeManySparse:2",
+                "input1": "SparseTranspose_1/sub_1",
+                "name": "SparseTranspose_1/Gather_1",
+                "op": "Gather"
+            },
+            "pid": 9,
+            "ts": 1512179750335992,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 25
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "SparseTranspose_1/Gather_1",
+                "name": "SparseTranspose_1/Identity",
+                "op": "Identity"
+            },
+            "pid": 9,
+            "ts": 1512179750336021,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 6
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_1/transpose/Rank",
+                "input1": "SparseTranspose_1/transpose/sub/y",
+                "name": "SparseTranspose_1/transpose/sub",
+                "op": "Sub"
+            },
+            "pid": 9,
+            "ts": 1512179750336031,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
+        },
+        {
+            "name": "Range",
+            "args": {
+                "input2": "SparseTranspose_1/transpose/Range/delta",
+                "input0": "SparseTranspose_1/transpose/Range/start",
+                "input1": "SparseTranspose_1/transpose/Rank",
+                "name": "SparseTranspose_1/transpose/Range",
+                "op": "Range"
+            },
+            "pid": 9,
+            "ts": 1512179750336042,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_1/transpose/sub",
+                "input1": "SparseTranspose_1/transpose/Range",
+                "name": "SparseTranspose_1/transpose/sub_1",
+                "op": "Sub"
+            },
+            "pid": 9,
+            "ts": 1512179750336053,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
+        },
+        {
+            "name": "Transpose",
+            "args": {
+                "input0": "shuffle_batch/DeserializeManySparse",
+                "input1": "SparseTranspose_1/transpose/sub_1",
+                "name": "SparseTranspose_1/transpose",
+                "op": "Transpose"
+            },
+            "pid": 9,
+            "ts": 1512179750336065,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 99
+        },
+        {
+            "name": "SparseTensorDenseMatMul",
+            "args": {
+                "input2": "shuffle_batch/DeserializeManySparse:2",
+                "input3": "model/read",
+                "input0": "shuffle_batch/DeserializeManySparse",
+                "input1": "shuffle_batch/DeserializeManySparse:1",
+                "name": "SparseTensorDenseMatMul/SparseTensorDenseMatMul",
+                "op": "SparseTensorDenseMatMul"
+            },
+            "pid": 9,
+            "ts": 1512179750336036,
+            "cat": "Op",
+            "tid": 1,
+            "ph": "X",
+            "dur": 210
+        },
+        {
+            "name": "shuffle_batch/DeserializeManySparse",
+            "pid": 9,
+            "ts": 1512179750335861,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "s",
+            "id": 4
+        },
+        {
+            "name": "shuffle_batch/DeserializeManySparse",
+            "pid": 9,
+            "ts": 1512179750336036,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "t",
+            "id": 4
+        },
+        {
+            "name": "shuffle_batch/DeserializeManySparse:1",
+            "pid": 9,
+            "ts": 1512179750335861,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "s",
+            "id": 5
+        },
+        {
+            "name": "shuffle_batch/DeserializeManySparse:1",
+            "pid": 9,
+            "ts": 1512179750336036,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "t",
+            "id": 5
+        },
+        {
+            "name": "shuffle_batch/DeserializeManySparse:2",
+            "pid": 9,
+            "ts": 1512179750335861,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "s",
+            "id": 6
+        },
+        {
+            "name": "shuffle_batch/DeserializeManySparse:2",
+            "pid": 9,
+            "ts": 1512179750336036,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "t",
+            "id": 6
+        },
+        {
+            "name": "model/read",
+            "pid": 9,
+            "ts": 1512179750335141,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "s",
+            "id": 7
+        },
+        {
+            "name": "model/read",
+            "pid": 9,
+            "ts": 1512179750336036,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "t",
+            "id": 7
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "shuffle_batch:1",
+                "input1": "SparseTensorDenseMatMul/SparseTensorDenseMatMul",
+                "name": "Mul",
+                "op": "Mul"
+            },
+            "pid": 9,
+            "ts": 1512179750336262,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 48
+        },
+        {
+            "name": "SparseTensorDenseMatMul/SparseTensorDenseMatMul",
+            "pid": 9,
+            "ts": 1512179750336246,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "s",
+            "id": 8
+        },
+        {
+            "name": "SparseTensorDenseMatMul/SparseTensorDenseMatMul",
+            "pid": 9,
+            "ts": 1512179750336262,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "t",
+            "id": 8
+        },
+        {
+            "name": "Sigmoid",
+            "args": {
+                "input0": "Mul",
+                "name": "Sigmoid",
+                "op": "Sigmoid"
+            },
+            "pid": 9,
+            "ts": 1512179750336315,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 31
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "Sigmoid",
+                "input1": "sub/y",
+                "name": "sub",
+                "op": "Sub"
+            },
+            "pid": 9,
+            "ts": 1512179750336350,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 25
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "shuffle_batch:1",
+                "input1": "sub",
+                "name": "Mul_1",
+                "op": "Mul"
+            },
+            "pid": 9,
+            "ts": 1512179750336380,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 9
+        },
+        {
+            "name": "Gather",
+            "args": {
+                "input0": "SparseTranspose_1/transpose",
+                "input1": "SparseTranspose_1/sub_1",
+                "name": "SparseTranspose_1/Gather",
+                "op": "Gather"
+            },
+            "pid": 9,
+            "ts": 1512179750336725,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 28
+        },
+        {
+            "name": "Rank",
+            "args": {
+                "input0": "SparseTranspose_1/Gather",
+                "name": "SparseTranspose_1/transpose_1/Rank",
+                "op": "Rank"
+            },
+            "pid": 9,
+            "ts": 1512179750336759,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_1/transpose_1/Rank",
+                "input1": "SparseTranspose_1/transpose_1/sub/y",
+                "name": "SparseTranspose_1/transpose_1/sub",
+                "op": "Sub"
+            },
+            "pid": 9,
+            "ts": 1512179750336778,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 9
+        },
+        {
+            "name": "Range",
+            "args": {
+                "input2": "SparseTranspose_1/transpose_1/Range/delta",
+                "input0": "SparseTranspose_1/transpose_1/Range/start",
+                "input1": "SparseTranspose_1/transpose_1/Rank",
+                "name": "SparseTranspose_1/transpose_1/Range",
+                "op": "Range"
+            },
+            "pid": 9,
+            "ts": 1512179750336792,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_1/transpose_1/sub",
+                "input1": "SparseTranspose_1/transpose_1/Range",
+                "name": "SparseTranspose_1/transpose_1/sub_1",
+                "op": "Sub"
+            },
+            "pid": 9,
+            "ts": 1512179750336804,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 9
+        },
+        {
+            "name": "Transpose",
+            "args": {
+                "input0": "SparseTranspose_1/Gather",
+                "input1": "SparseTranspose_1/transpose_1/sub_1",
+                "name": "SparseTranspose_1/transpose_1",
+                "op": "Transpose"
+            },
+            "pid": 9,
+            "ts": 1512179750336818,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 48
+        },
+        {
+            "name": "SparseReorder",
+            "args": {
+                "input2": "SparseTranspose_1/Gather_1",
+                "input0": "SparseTranspose_1/transpose_1",
+                "input1": "shuffle_batch/DeserializeManySparse:1",
+                "name": "SparseTranspose_1/SparseReorder",
+                "op": "SparseReorder"
+            },
+            "pid": 9,
+            "ts": 1512179750336870,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 231
+        },
+        {
+            "name": "SparseTensorDenseMatMul",
+            "args": {
+                "input2": "SparseTranspose_1/Identity",
+                "input3": "Mul_1",
+                "input0": "SparseTranspose_1/SparseReorder",
+                "input1": "SparseTranspose_1/SparseReorder:1",
+                "name": "SparseTensorDenseMatMul_1/SparseTensorDenseMatMul",
+                "op": "SparseTensorDenseMatMul"
+            },
+            "pid": 9,
+            "ts": 1512179750337107,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 51979
+        },
+        {
+            "name": "Sum",
+            "args": {
+                "input0": "SparseTensorDenseMatMul_1/SparseTensorDenseMatMul",
+                "input1": "Sum/reduction_indices",
+                "name": "Sum",
+                "op": "Sum"
+            },
+            "pid": 9,
+            "ts": 1512179750389117,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 27
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "Sum",
+                "input1": "Mul_2/y",
+                "name": "Mul_2",
+                "op": "Mul"
+            },
+            "pid": 9,
+            "ts": 1512179750389149,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 27856
+        },
+        {
+            "name": "AddN",
+            "args": {
+                "input2": "Mul_8_S11",
+                "input3": "Mul_11_S13",
+                "input0": "Mul_2",
+                "input1": "Mul_5_S9",
+                "name": "AddN",
+                "input4": "Mul_14_S15",
+                "op": "AddN"
+            },
+            "pid": 9,
+            "ts": 1512179757372686,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 66967
+        },
+        {
+            "name": "Reshape",
+            "args": {
+                "input0": "AddN",
+                "input1": "Reshape_10/shape",
+                "name": "Reshape_10",
+                "op": "Reshape"
+            },
+            "pid": 9,
+            "ts": 1512179757439692,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 20
+        },
+        {
+            "name": "AssignAdd",
+            "args": {
+                "input0": "model",
+                "input1": "Reshape_10",
+                "name": "AssignAdd",
+                "op": "AssignAdd"
+            },
+            "pid": 9,
+            "ts": 1512179757439717,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 18145
+        },
+        {
+            "name": "NoOp",
+            "args": {
+                "name": "_SINK",
+                "op": "NoOp"
+            },
+            "pid": 9,
+            "ts": 1512179757457922,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 6
+        }
+    ]
+}
