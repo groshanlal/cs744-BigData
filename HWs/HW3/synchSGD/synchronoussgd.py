@@ -115,6 +115,8 @@ with g.as_default():
     with tf.device("/job:worker/task:0"):
         aggregator = tf.add_n(gradients)
         agg_shape = tf.reshape(aggregator,[num_features, 1])
+
+        update_log = tf.reduce_mean(tf.abs(agg_shape) )
         #
         assign_op = w.assign_add(agg_shape)
 
@@ -162,14 +164,25 @@ with g.as_default():
             # print "precision vector:",out_prec
             print "total precision:", np.mean(out_prec), "max:", np.max(out_prec)
         ###################################################################
+        # main loop of training
         for i in range(iterations):
+            options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
+            run_metadata = tf.RunMetadata()
             print "Step ",i
-            sess.run(assign_op)
+            ulog,_ = sess.run(update_log,assign_op,options=options, run_metadata=run_metadata)
+            print "ulog ", ulog
 
+            # start testing period
             if i%( train_test_ratio/(5*s_batch) ) == 0:
                 report_precision();
 
             # print w.eval()
+        # Create the Timeline object, and write it to a json file
+        fetched_timeline = tensorflow.python.client.timeline.Timeline(
+                                run_metadata.step_stats)
+        chrome_trace = fetched_timeline.generate_chrome_trace_format()
+        with open('timeline_01.json', 'w') as f:
+            f.write(chrome_trace)
 
         coord.request_stop()
         coord.join(threads, stop_grace_period_secs=5)
