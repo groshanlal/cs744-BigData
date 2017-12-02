@@ -150,6 +150,7 @@ with g.as_default():
         print "# of testing iterations per testing period:------", total_tests/s_test
         print "======================================================"
         def report_precision():
+            print "------------reporting precision------------"
             # with tf.device("/job:worker/task:0"):
             #     test_X,test_Y = get_datapoint_iter(file_dict[-1],batch_size = s_test)
             #     precision = calc_precision(w,test_X,test_Y)
