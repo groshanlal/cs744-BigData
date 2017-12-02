@@ -169,8 +169,8 @@ with g.as_default():
             options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
             run_metadata = tf.RunMetadata()
             print "Step ",i
-            ulog,_ = sess.run(update_log,assign_op,options=options, run_metadata=run_metadata)
-            print "ulog ", ulog
+            sess.run(assign_op,options=options, run_metadata=run_metadata)
+            # print "ulog ", ulog
 
             # start testing period
             if i%( train_test_ratio/(5*s_batch) ) == 0:
