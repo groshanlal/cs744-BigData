@@ -82,8 +82,6 @@ with g.as_default():
 
         return value_batch,label_batch
 
-
-
     def calc_gradient(X,W,Y):
         pred = tf.sparse_tensor_dense_matmul(X, W)
         error = tf.sigmoid(tf.mul(Y,pred))
@@ -94,7 +92,6 @@ with g.as_default():
 
         gradient = tf.sparse_tensor_dense_matmul(X_T,error_Y)
         return tf.reduce_sum(gradient,1)
-
 
     # creating a model variable on task 0. This is a process running on node vm-32-1
     with tf.device("/job:worker/task:0"):
@@ -150,6 +147,8 @@ with g.as_default():
         print "# training iterations before each testing period:",( train_test_ratio/(5*s_batch) )
         print "# of testing iterations per testing period:------", total_tests/s_test
         print "======================================================"
+
+        # utility function to report the precision during training 
         def report_precision():
             print "------------reporting precision------------"
             # with tf.device("/job:worker/task:0"):
@@ -160,8 +159,8 @@ with g.as_default():
             for j in range(total_tests/s_test):
                 out_prec.append(precision.eval())
                 #print "precision: ",out_prec[j]
-            print "precision vector:",out_prec
-            print "total precision:", np.mean(out_prec)
+            # print "precision vector:",out_prec
+            print "total precision:", np.mean(out_prec), "max:", np.max(out_prec)
         ###################################################################
         for i in range(iterations):
             print "Step ",i
