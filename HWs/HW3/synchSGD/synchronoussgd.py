@@ -4,10 +4,11 @@ import os
 # number of features in the criteo dataset after one-hot encoding
 num_features = 33762578 # DO NOT CHANGE THIS VALUE
 
-s_batch = 20
+s_batch = 10
 eta = .1
 train_test_ratio = 1000
-iterations = 200
+total_trains = 10000
+iterations = total_trains/(5*s_batch)
 
 
 s_test = 20;
