@@ -9,7 +9,7 @@ num_features = 33762578 # DO NOT CHANGE THIS VALUE
 s_batch = 100
 eta = .1
 train_test_ratio = 2000
-total_trains = 2001
+total_trains = 20001
 iterations = total_trains/(5*s_batch)
 
 
