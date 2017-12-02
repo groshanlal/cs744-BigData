@@ -9,7 +9,7 @@ num_features = 33762578 # DO NOT CHANGE THIS VALUE
 s_batch = 40
 eta = .1
 train_test_ratio = 2000
-total_trains = 100001
+total_trains = 2001
 iterations = total_trains/(5*s_batch)
 
 
@@ -22,6 +22,18 @@ file_dict = {0:["00","01","02","03","04"],
              3:["15","16","17","18","19"],
              4:["20","21"],
             -1:["22"]}
+
+
+def print_specs():
+    print "====================Inforamtion======================="
+    print "test_train_ratio:--------------------------------",train_test_ratio
+    print "training batch size per iteration:---------------", s_batch
+    print "testing batch size per iteration:----------------", s_test
+    print "total size of test set:--------------------------",total_tests
+    print "total training iterations:-----------------------",iterations
+    print "# training iterations before each testing period:",( train_test_ratio/(5*s_batch) )
+    print "# of iterations per testing period:--------------", total_tests/s_test
+    print "======================================================"
 
 
 g = tf.Graph()
@@ -135,22 +147,14 @@ with g.as_default():
 
     ###########################################################
     with tf.Session("grpc://vm-32-1:2222") as sess:
+        # print the model specification to terminal 
+        print_specs()
+
         sess.run(tf.initialize_all_variables())
-        # this is new command and is used to initialize the queue based readers.
-        # Effectively, it spins up separate threads to read from the files
-        coord = tf.train.Coordinator()
-        threads = tf.train.start_queue_runners(sess=sess, coord=coord)
+        
         # tf.train.start_queue_runners(sess=sess)
 
-        print "====================Inforamtion======================="
-        print "test_train_ratio:--------------------------------",train_test_ratio
-        print "training batch size per iteration:---------------", s_batch
-        print "testing batch size per iteration:----------------", s_test
-        print "total size of test set:--------------------------",total_tests
-        print "total training iterations:-----------------------",iterations
-        print "# training iterations before each testing period:",( train_test_ratio/(5*s_batch) )
-        print "# of iterations per testing period:------", total_tests/s_test
-        print "======================================================"
+        
 
         # utility function to report the precision during training 
         def report_precision():
@@ -166,6 +170,12 @@ with g.as_default():
             # print "precision vector:",out_prec
             print "total precision:", np.mean(out_prec), "max:", np.max(out_prec)
         ###################################################################
+
+        # this is new command and is used to initialize the queue based readers.
+        # Effectively, it spins up separate threads to read from the files
+        coord = tf.train.Coordinator()
+        threads = tf.train.start_queue_runners(sess=sess, coord=coord)
+
         # main loop of training
         for i in range(iterations):
             options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
