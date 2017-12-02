@@ -154,10 +154,9 @@ with g.as_default():
             #     test_X,test_Y = get_datapoint_iter(file_dict[-1],batch_size = s_test)
             #     precision = calc_precision(w,test_X,test_Y)
 
-
             out_prec = []
             for j in range(total_tests/s_test):
-                out_prec[j] = precision.eval()
+                out_prec.append(precision.eval())
                 #print "precision: ",out_prec[j]
             print "precision vector:",out_prec
             print "total precision:", np.mean(out_prec)
