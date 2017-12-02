@@ -95,7 +95,7 @@ with g.as_default():
 
     # creating a model variable on task 0. This is a process running on node vm-32-1
     with tf.device("/job:worker/task:0"):
-        w = tf.Variable(tf.ones([num_features, 1]), name="model")
+        w = tf.Variable(tf.ones([num_features, 1])*.1, name="model")
 
     # creating 5 reader operators to be placed on different operators
     # here, they emit predefined tensors. however, they can be defined as reader
