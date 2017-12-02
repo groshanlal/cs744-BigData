@@ -140,20 +140,20 @@ with g.as_default():
         threads = tf.train.start_queue_runners(sess=sess, coord=coord)
         # tf.train.start_queue_runners(sess=sess)
 
-        print "Inforamtion:"
-        print "test_train_ratio:",train_test_ratio
-        print "training batch size per iteration:", s_batch
-        print "testing batch size per iteration:", s_test
-        print "total size of test set:",total_tests
-        print "# testing iterations before each testing period:",( train_test_ratio/(5*s_batch) )
-        print "# of testing iterations per testing period:", total_tests/s_test
+        print "====================Inforamtion======================="
+        print "test_train_ratio:--------------------------------",train_test_ratio
+        print "training batch size per iteration:---------------", s_batch
+        print "testing batch size per iteration:----------------", s_test
+        print "total size of test set:--------------------------",total_tests
+        print "# training iterations before each testing period:",( train_test_ratio/(5*s_batch) )
+        print "# of testing iterations per testing period:------", total_tests/s_test
 
         def report_precision():
             with tf.device("/job:worker/task:0"):
                 test_X,test_Y = get_datapoint_iter(file_dict[-1],batch_size = s_test)
                 precision = calc_precision(w,test_X,test_Y)
 
-            
+
             out_prec = []
             for j in range(total_tests/s_test):
                 out_prec[j] = precision.eval()
