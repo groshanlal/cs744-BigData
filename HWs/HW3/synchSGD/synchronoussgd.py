@@ -183,11 +183,13 @@ with g.as_default():
             
             run_metadata = tf.RunMetadata()
             print "Step ",i
-            sess.run(assign_op,options=options, run_metadata=run_metadata)
+            sess.run(assign_op)
+            # sess.run(assign_op,options=options, run_metadata=run_metadata)
             # print "ulog ", ulog
 
             # start testing period
             if i%( train_test_ratio/(5*s_batch) ) == 0:
+                print "update log:",update_log.eval()
                 report_precision();
 
             # print w.eval()
