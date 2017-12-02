@@ -95,11 +95,11 @@
                 "op": "NoOp"
             },
             "pid": 1,
-            "ts": 1512179750270825,
+            "ts": 1512188347230981,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 22
+            "dur": 23
         },
         {
             "name": "Const",
@@ -108,11 +108,11 @@
                 "op": "Const"
             },
             "pid": 1,
-            "ts": 1512179750270877,
+            "ts": 1512188347231054,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 21
+            "dur": 27
         },
         {
             "name": "Const",
@@ -121,11 +121,11 @@
                 "op": "Const"
             },
             "pid": 1,
-            "ts": 1512179750270902,
+            "ts": 1512188347231087,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 15
+            "dur": 14
         },
         {
             "name": "Const",
@@ -134,11 +134,11 @@
                 "op": "Const"
             },
             "pid": 1,
-            "ts": 1512179750270920,
+            "ts": 1512188347231105,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 8
+            "dur": 10
         },
         {
             "name": "Const",
@@ -147,11 +147,11 @@
                 "op": "Const"
             },
             "pid": 1,
-            "ts": 1512179750270930,
+            "ts": 1512188347231119,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 6
+            "dur": 8
         },
         {
             "name": "Const",
@@ -160,11 +160,11 @@
                 "op": "Const"
             },
             "pid": 1,
-            "ts": 1512179750270941,
+            "ts": 1512188347231133,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 4
+            "dur": 8
         },
         {
             "name": "RandomShuffleQueue",
@@ -173,11 +173,11 @@
                 "op": "RandomShuffleQueue"
             },
             "pid": 1,
-            "ts": 1512179750271065,
+            "ts": 1512188347231270,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 13
+            "dur": 16
         },
         {
             "name": "QueueDequeueMany",
@@ -188,11 +188,11 @@
                 "op": "QueueDequeueMany"
             },
             "pid": 1,
-            "ts": 1512179750271083,
+            "ts": 1512188347231290,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 279
+            "dur": 535
         },
         {
             "name": "DeserializeManySparse",
@@ -202,11 +202,11 @@
                 "op": "DeserializeManySparse"
             },
             "pid": 1,
-            "ts": 1512179750271423,
+            "ts": 1512188347231899,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 388
+            "dur": 1412
         },
         {
             "name": "Rank",
@@ -216,11 +216,11 @@
                 "op": "Rank"
             },
             "pid": 1,
-            "ts": 1512179750271819,
+            "ts": 1512188347233322,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 12
+            "dur": 13
         },
         {
             "name": "Size",
@@ -230,11 +230,11 @@
                 "op": "Size"
             },
             "pid": 1,
-            "ts": 1512179750271838,
+            "ts": 1512188347233364,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 7
+            "dur": 8
         },
         {
             "name": "Sub",
@@ -245,11 +245,11 @@
                 "op": "Sub"
             },
             "pid": 1,
-            "ts": 1512179750271849,
+            "ts": 1512188347233382,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 19
+            "dur": 20
         },
         {
             "name": "Range",
@@ -261,11 +261,11 @@
                 "op": "Range"
             },
             "pid": 1,
-            "ts": 1512179750271874,
+            "ts": 1512188347233407,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 9
+            "dur": 18
         },
         {
             "name": "Sub",
@@ -276,40 +276,11 @@
                 "op": "Sub"
             },
             "pid": 1,
-            "ts": 1512179750271887,
-            "cat": "Op",
-            "tid": 0,
-            "ph": "X",
-            "dur": 11
-        },
-        {
-            "name": "Gather",
-            "args": {
-                "input0": "shuffle_batch_1/DeserializeManySparse:2",
-                "input1": "SparseTranspose_3/sub_1",
-                "name": "SparseTranspose_3/Gather_1",
-                "op": "Gather"
-            },
-            "pid": 1,
-            "ts": 1512179750271901,
+            "ts": 1512188347233440,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
             "dur": 12
-        },
-        {
-            "name": "Identity",
-            "args": {
-                "input0": "SparseTranspose_3/Gather_1",
-                "name": "SparseTranspose_3/Identity",
-                "op": "Identity"
-            },
-            "pid": 1,
-            "ts": 1512179750271918,
-            "cat": "Op",
-            "tid": 0,
-            "ph": "X",
-            "dur": 7
         },
         {
             "name": "Range",
@@ -321,16 +292,16 @@
                 "op": "Range"
             },
             "pid": 1,
-            "ts": 1512179750271883,
+            "ts": 1512188347233414,
             "cat": "Op",
             "tid": 1,
             "ph": "X",
-            "dur": 36
+            "dur": 39
         },
         {
             "name": "SparseTranspose_3/transpose/Rank",
             "pid": 1,
-            "ts": 1512179750271831,
+            "ts": 1512188347233335,
             "cat": "DataFlow",
             "tid": 0,
             "ph": "s",
@@ -339,11 +310,40 @@
         {
             "name": "SparseTranspose_3/transpose/Rank",
             "pid": 1,
-            "ts": 1512179750271883,
+            "ts": 1512188347233414,
             "cat": "DataFlow",
             "tid": 1,
             "ph": "t",
             "id": 0
+        },
+        {
+            "name": "Gather",
+            "args": {
+                "input0": "shuffle_batch_1/DeserializeManySparse:2",
+                "input1": "SparseTranspose_3/sub_1",
+                "name": "SparseTranspose_3/Gather_1",
+                "op": "Gather"
+            },
+            "pid": 1,
+            "ts": 1512188347233456,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 14
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "SparseTranspose_3/Gather_1",
+                "name": "SparseTranspose_3/Identity",
+                "op": "Identity"
+            },
+            "pid": 1,
+            "ts": 1512188347233475,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 12
         },
         {
             "name": "Sub",
@@ -354,11 +354,29 @@
                 "op": "Sub"
             },
             "pid": 1,
-            "ts": 1512179750271928,
+            "ts": 1512188347233469,
             "cat": "Op",
-            "tid": 0,
+            "tid": 1,
             "ph": "X",
-            "dur": 8
+            "dur": 23
+        },
+        {
+            "name": "SparseTranspose_3/transpose/Rank",
+            "pid": 1,
+            "ts": 1512188347233335,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "s",
+            "id": 1
+        },
+        {
+            "name": "SparseTranspose_3/transpose/Rank",
+            "pid": 1,
+            "ts": 1512188347233469,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "t",
+            "id": 1
         },
         {
             "name": "Sub",
@@ -369,29 +387,47 @@
                 "op": "Sub"
             },
             "pid": 1,
-            "ts": 1512179750271941,
+            "ts": 1512188347233498,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 9
+            "dur": 11
         },
         {
-            "name": "SparseTranspose_3/transpose/Range",
+            "name": "SparseTranspose_3/transpose/sub",
             "pid": 1,
-            "ts": 1512179750271919,
+            "ts": 1512188347233492,
             "cat": "DataFlow",
             "tid": 1,
             "ph": "s",
-            "id": 1
+            "id": 2
+        },
+        {
+            "name": "SparseTranspose_3/transpose/sub",
+            "pid": 1,
+            "ts": 1512188347233498,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "t",
+            "id": 2
         },
         {
             "name": "SparseTranspose_3/transpose/Range",
             "pid": 1,
-            "ts": 1512179750271941,
+            "ts": 1512188347233453,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "s",
+            "id": 3
+        },
+        {
+            "name": "SparseTranspose_3/transpose/Range",
+            "pid": 1,
+            "ts": 1512188347233498,
             "cat": "DataFlow",
             "tid": 0,
             "ph": "t",
-            "id": 1
+            "id": 3
         },
         {
             "name": "Transpose",
@@ -402,11 +438,11 @@
                 "op": "Transpose"
             },
             "pid": 1,
-            "ts": 1512179750271954,
+            "ts": 1512188347233516,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 51
+            "dur": 313
         },
         {
             "name": "Gather",
@@ -417,11 +453,11 @@
                 "op": "Gather"
             },
             "pid": 1,
-            "ts": 1512179750272010,
+            "ts": 1512188347233842,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 14
+            "dur": 39
         },
         {
             "name": "Rank",
@@ -431,11 +467,26 @@
                 "op": "Rank"
             },
             "pid": 1,
-            "ts": 1512179750272028,
+            "ts": 1512188347233915,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 5
+            "dur": 11
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_3/transpose_1/Rank",
+                "input1": "SparseTranspose_3/transpose_1/sub/y",
+                "name": "SparseTranspose_3/transpose_1/sub",
+                "op": "Sub"
+            },
+            "pid": 1,
+            "ts": 1512188347233976,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 31
         },
         {
             "name": "Range",
@@ -447,44 +498,11 @@
                 "op": "Range"
             },
             "pid": 1,
-            "ts": 1512179750272053,
+            "ts": 1512188347234013,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 20
-        },
-        {
-            "name": "Sub",
-            "args": {
-                "input0": "SparseTranspose_3/transpose_1/Rank",
-                "input1": "SparseTranspose_3/transpose_1/sub/y",
-                "name": "SparseTranspose_3/transpose_1/sub",
-                "op": "Sub"
-            },
-            "pid": 1,
-            "ts": 1512179750272048,
-            "cat": "Op",
-            "tid": 1,
-            "ph": "X",
-            "dur": 136
-        },
-        {
-            "name": "SparseTranspose_3/transpose_1/Rank",
-            "pid": 1,
-            "ts": 1512179750272033,
-            "cat": "DataFlow",
-            "tid": 0,
-            "ph": "s",
-            "id": 2
-        },
-        {
-            "name": "SparseTranspose_3/transpose_1/Rank",
-            "pid": 1,
-            "ts": 1512179750272048,
-            "cat": "DataFlow",
-            "tid": 1,
-            "ph": "t",
-            "id": 2
+            "dur": 10
         },
         {
             "name": "Sub",
@@ -495,29 +513,11 @@
                 "op": "Sub"
             },
             "pid": 1,
-            "ts": 1512179750272189,
+            "ts": 1512188347234028,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 10
-        },
-        {
-            "name": "SparseTranspose_3/transpose_1/sub",
-            "pid": 1,
-            "ts": 1512179750272184,
-            "cat": "DataFlow",
-            "tid": 1,
-            "ph": "s",
-            "id": 3
-        },
-        {
-            "name": "SparseTranspose_3/transpose_1/sub",
-            "pid": 1,
-            "ts": 1512179750272189,
-            "cat": "DataFlow",
-            "tid": 0,
-            "ph": "t",
-            "id": 3
+            "dur": 11
         },
         {
             "name": "Transpose",
@@ -528,11 +528,11 @@
                 "op": "Transpose"
             },
             "pid": 1,
-            "ts": 1512179750272203,
+            "ts": 1512188347234043,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 43
+            "dur": 308
         },
         {
             "name": "SparseReorder",
@@ -544,11 +544,11 @@
                 "op": "SparseReorder"
             },
             "pid": 1,
-            "ts": 1512179750272251,
+            "ts": 1512188347234419,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 348
+            "dur": 1533
         },
         {
             "name": "SparseTensorDenseMatMul",
@@ -561,11 +561,11 @@
                 "op": "SparseTensorDenseMatMul"
             },
             "pid": 1,
-            "ts": 1512179754670842,
+            "ts": 1512188349861442,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 87
+            "dur": 1202
         },
         {
             "name": "Mul",
@@ -576,11 +576,11 @@
                 "op": "Mul"
             },
             "pid": 1,
-            "ts": 1512179754670940,
+            "ts": 1512188349862658,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 27
+            "dur": 24
         },
         {
             "name": "Sigmoid",
@@ -590,11 +590,11 @@
                 "op": "Sigmoid"
             },
             "pid": 1,
-            "ts": 1512179754670970,
+            "ts": 1512188349862685,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 10
+            "dur": 7
         },
         {
             "name": "Sub",
@@ -605,11 +605,11 @@
                 "op": "Sub"
             },
             "pid": 1,
-            "ts": 1512179754670983,
+            "ts": 1512188349862695,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 18
+            "dur": 13
         },
         {
             "name": "Mul",
@@ -620,11 +620,11 @@
                 "op": "Mul"
             },
             "pid": 1,
-            "ts": 1512179754671005,
+            "ts": 1512188349862712,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 7
+            "dur": 5
         },
         {
             "name": "SparseTensorDenseMatMul",
@@ -637,11 +637,11 @@
                 "op": "SparseTensorDenseMatMul"
             },
             "pid": 1,
-            "ts": 1512179754671015,
+            "ts": 1512188349862720,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 69677
+            "dur": 49878
         },
         {
             "name": "Sum",
@@ -652,11 +652,11 @@
                 "op": "Sum"
             },
             "pid": 1,
-            "ts": 1512179754740754,
+            "ts": 1512188349912637,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 33
+            "dur": 21
         },
         {
             "name": "Mul",
@@ -667,11 +667,11 @@
                 "op": "Mul"
             },
             "pid": 1,
-            "ts": 1512179754740793,
+            "ts": 1512188349912661,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 39292
+            "dur": 27955
         },
         {
             "name": "NoOp",
@@ -680,11 +680,11 @@
                 "op": "NoOp"
             },
             "pid": 1,
-            "ts": 1512179754780275,
+            "ts": 1512188349940765,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 10
+            "dur": 7
         },
         {
             "name": "NoOp",
@@ -693,11 +693,11 @@
                 "op": "NoOp"
             },
             "pid": 3,
-            "ts": 1512179750339217,
+            "ts": 1512188347299294,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 22
+            "dur": 34
         },
         {
             "name": "Const",
@@ -706,7 +706,7 @@
                 "op": "Const"
             },
             "pid": 3,
-            "ts": 1512179750339292,
+            "ts": 1512188347299357,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
@@ -719,11 +719,11 @@
                 "op": "Const"
             },
             "pid": 3,
-            "ts": 1512179750339319,
+            "ts": 1512188347299384,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 9
+            "dur": 12
         },
         {
             "name": "Const",
@@ -732,11 +732,11 @@
                 "op": "Const"
             },
             "pid": 3,
-            "ts": 1512179750339331,
+            "ts": 1512188347299406,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 24
+            "dur": 8
         },
         {
             "name": "Const",
@@ -745,24 +745,11 @@
                 "op": "Const"
             },
             "pid": 3,
-            "ts": 1512179750339358,
+            "ts": 1512188347299418,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
             "dur": 7
-        },
-        {
-            "name": "Const",
-            "args": {
-                "name": "shuffle_batch_2/n",
-                "op": "Const"
-            },
-            "pid": 3,
-            "ts": 1512179750339369,
-            "cat": "Op",
-            "tid": 0,
-            "ph": "X",
-            "dur": 5
         },
         {
             "name": "RandomShuffleQueue",
@@ -771,11 +758,24 @@
                 "op": "RandomShuffleQueue"
             },
             "pid": 3,
-            "ts": 1512179750339386,
+            "ts": 1512188347299379,
+            "cat": "Op",
+            "tid": 1,
+            "ph": "X",
+            "dur": 52
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "shuffle_batch_2/n",
+                "op": "Const"
+            },
+            "pid": 3,
+            "ts": 1512188347299429,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 50
+            "dur": 7
         },
         {
             "name": "QueueDequeueMany",
@@ -786,11 +786,29 @@
                 "op": "QueueDequeueMany"
             },
             "pid": 3,
-            "ts": 1512179750339448,
+            "ts": 1512188347299636,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 169
+            "dur": 372
+        },
+        {
+            "name": "shuffle_batch_2/random_shuffle_queue",
+            "pid": 3,
+            "ts": 1512188347299431,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "s",
+            "id": 4
+        },
+        {
+            "name": "shuffle_batch_2/random_shuffle_queue",
+            "pid": 3,
+            "ts": 1512188347299636,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "t",
+            "id": 4
         },
         {
             "name": "DeserializeManySparse",
@@ -800,11 +818,11 @@
                 "op": "DeserializeManySparse"
             },
             "pid": 3,
-            "ts": 1512179750339713,
+            "ts": 1512188347300088,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 433
+            "dur": 1331
         },
         {
             "name": "Rank",
@@ -814,7 +832,7 @@
                 "op": "Rank"
             },
             "pid": 3,
-            "ts": 1512179750340157,
+            "ts": 1512188347301426,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
@@ -828,11 +846,11 @@
                 "op": "Size"
             },
             "pid": 3,
-            "ts": 1512179750340181,
+            "ts": 1512188347301447,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 10
+            "dur": 5
         },
         {
             "name": "Sub",
@@ -843,11 +861,11 @@
                 "op": "Sub"
             },
             "pid": 3,
-            "ts": 1512179750340198,
+            "ts": 1512188347301456,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 36
+            "dur": 16
         },
         {
             "name": "Range",
@@ -859,11 +877,11 @@
                 "op": "Range"
             },
             "pid": 3,
-            "ts": 1512179750340242,
+            "ts": 1512188347301476,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 16
+            "dur": 8
         },
         {
             "name": "Sub",
@@ -874,11 +892,11 @@
                 "op": "Sub"
             },
             "pid": 3,
-            "ts": 1512179750340266,
+            "ts": 1512188347301488,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 50
+            "dur": 10
         },
         {
             "name": "Gather",
@@ -889,11 +907,11 @@
                 "op": "Gather"
             },
             "pid": 3,
-            "ts": 1512179750340323,
+            "ts": 1512188347301501,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 19
+            "dur": 10
         },
         {
             "name": "Identity",
@@ -903,11 +921,11 @@
                 "op": "Identity"
             },
             "pid": 3,
-            "ts": 1512179750340349,
+            "ts": 1512188347301515,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 11
+            "dur": 5
         },
         {
             "name": "Sub",
@@ -918,11 +936,11 @@
                 "op": "Sub"
             },
             "pid": 3,
-            "ts": 1512179750340366,
+            "ts": 1512188347301524,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 12
+            "dur": 5
         },
         {
             "name": "Range",
@@ -934,11 +952,11 @@
                 "op": "Range"
             },
             "pid": 3,
-            "ts": 1512179750340385,
+            "ts": 1512188347301533,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 12
+            "dur": 5
         },
         {
             "name": "Sub",
@@ -949,11 +967,11 @@
                 "op": "Sub"
             },
             "pid": 3,
-            "ts": 1512179750340405,
+            "ts": 1512188347301542,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 13
+            "dur": 27
         },
         {
             "name": "Transpose",
@@ -964,11 +982,11 @@
                 "op": "Transpose"
             },
             "pid": 3,
-            "ts": 1512179750340424,
+            "ts": 1512188347301573,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 77
+            "dur": 380
         },
         {
             "name": "Gather",
@@ -979,11 +997,11 @@
                 "op": "Gather"
             },
             "pid": 3,
-            "ts": 1512179750340508,
+            "ts": 1512188347301960,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 22
+            "dur": 99
         },
         {
             "name": "Rank",
@@ -993,11 +1011,11 @@
                 "op": "Rank"
             },
             "pid": 3,
-            "ts": 1512179750340536,
+            "ts": 1512188347302064,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 10
+            "dur": 18
         },
         {
             "name": "Sub",
@@ -1008,11 +1026,11 @@
                 "op": "Sub"
             },
             "pid": 3,
-            "ts": 1512179750340553,
+            "ts": 1512188347302156,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 12
+            "dur": 15
         },
         {
             "name": "Range",
@@ -1024,11 +1042,11 @@
                 "op": "Range"
             },
             "pid": 3,
-            "ts": 1512179750340571,
+            "ts": 1512188347302177,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 11
+            "dur": 8
         },
         {
             "name": "Sub",
@@ -1039,11 +1057,11 @@
                 "op": "Sub"
             },
             "pid": 3,
-            "ts": 1512179750340590,
+            "ts": 1512188347302190,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 14
+            "dur": 10
         },
         {
             "name": "Transpose",
@@ -1054,11 +1072,11 @@
                 "op": "Transpose"
             },
             "pid": 3,
-            "ts": 1512179750340610,
+            "ts": 1512188347302204,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 69
+            "dur": 479
         },
         {
             "name": "SparseReorder",
@@ -1070,11 +1088,11 @@
                 "op": "SparseReorder"
             },
             "pid": 3,
-            "ts": 1512179750340685,
+            "ts": 1512188347302691,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 285
+            "dur": 1205
         },
         {
             "name": "SparseTensorDenseMatMul",
@@ -1087,11 +1105,11 @@
                 "op": "SparseTensorDenseMatMul"
             },
             "pid": 3,
-            "ts": 1512179752551403,
+            "ts": 1512188349916869,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 948
+            "dur": 204
         },
         {
             "name": "Mul",
@@ -1102,11 +1120,11 @@
                 "op": "Mul"
             },
             "pid": 3,
-            "ts": 1512179752552370,
+            "ts": 1512188349917084,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 29
+            "dur": 23
         },
         {
             "name": "Sigmoid",
@@ -1116,7 +1134,7 @@
                 "op": "Sigmoid"
             },
             "pid": 3,
-            "ts": 1512179752552404,
+            "ts": 1512188349917111,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
@@ -1131,11 +1149,11 @@
                 "op": "Sub"
             },
             "pid": 3,
-            "ts": 1512179752552418,
+            "ts": 1512188349917126,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 31
+            "dur": 14
         },
         {
             "name": "Mul",
@@ -1146,11 +1164,11 @@
                 "op": "Mul"
             },
             "pid": 3,
-            "ts": 1512179752552454,
+            "ts": 1512188349917145,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 15
+            "dur": 10
         },
         {
             "name": "SparseTensorDenseMatMul",
@@ -1163,11 +1181,11 @@
                 "op": "SparseTensorDenseMatMul"
             },
             "pid": 3,
-            "ts": 1512179752552474,
+            "ts": 1512188349917158,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 84167
+            "dur": 46692
         },
         {
             "name": "Sum",
@@ -1178,11 +1196,11 @@
                 "op": "Sum"
             },
             "pid": 3,
-            "ts": 1512179752636683,
+            "ts": 1512188349963880,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 35
+            "dur": 20
         },
         {
             "name": "Mul",
@@ -1193,11 +1211,11 @@
                 "op": "Mul"
             },
             "pid": 3,
-            "ts": 1512179752636723,
+            "ts": 1512188349963903,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 43491
+            "dur": 38263
         },
         {
             "name": "NoOp",
@@ -1206,11 +1224,11 @@
                 "op": "NoOp"
             },
             "pid": 3,
-            "ts": 1512179752680363,
+            "ts": 1512188350002289,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 9
+            "dur": 8
         },
         {
             "name": "NoOp",
@@ -1219,11 +1237,11 @@
                 "op": "NoOp"
             },
             "pid": 5,
-            "ts": 1512179750397646,
+            "ts": 1512188347358304,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 27
+            "dur": 73
         },
         {
             "name": "Const",
@@ -1232,11 +1250,11 @@
                 "op": "Const"
             },
             "pid": 5,
-            "ts": 1512179750397699,
+            "ts": 1512188347358414,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 29
+            "dur": 24
         },
         {
             "name": "Const",
@@ -1245,11 +1263,11 @@
                 "op": "Const"
             },
             "pid": 5,
-            "ts": 1512179750397732,
+            "ts": 1512188347358442,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 7
+            "dur": 12
         },
         {
             "name": "Const",
@@ -1258,37 +1276,11 @@
                 "op": "Const"
             },
             "pid": 5,
-            "ts": 1512179750397741,
+            "ts": 1512188347358457,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 5
-        },
-        {
-            "name": "Const",
-            "args": {
-                "name": "sub_3/y",
-                "op": "Const"
-            },
-            "pid": 5,
-            "ts": 1512179750397747,
-            "cat": "Op",
-            "tid": 0,
-            "ph": "X",
-            "dur": 5
-        },
-        {
-            "name": "Const",
-            "args": {
-                "name": "shuffle_batch_3/n",
-                "op": "Const"
-            },
-            "pid": 5,
-            "ts": 1512179750397760,
-            "cat": "Op",
-            "tid": 0,
-            "ph": "X",
-            "dur": 3
+            "dur": 11
         },
         {
             "name": "RandomShuffleQueue",
@@ -1297,11 +1289,37 @@
                 "op": "RandomShuffleQueue"
             },
             "pid": 5,
-            "ts": 1512179750397877,
+            "ts": 1512188347358418,
+            "cat": "Op",
+            "tid": 1,
+            "ph": "X",
+            "dur": 47
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "sub_3/y",
+                "op": "Const"
+            },
+            "pid": 5,
+            "ts": 1512188347358471,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 14
+            "dur": 8
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "shuffle_batch_3/n",
+                "op": "Const"
+            },
+            "pid": 5,
+            "ts": 1512188347358483,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
         },
         {
             "name": "QueueDequeueMany",
@@ -1312,11 +1330,29 @@
                 "op": "QueueDequeueMany"
             },
             "pid": 5,
-            "ts": 1512179750397895,
+            "ts": 1512188347358494,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 145
+            "dur": 486
+        },
+        {
+            "name": "shuffle_batch_3/random_shuffle_queue",
+            "pid": 5,
+            "ts": 1512188347358465,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "s",
+            "id": 5
+        },
+        {
+            "name": "shuffle_batch_3/random_shuffle_queue",
+            "pid": 5,
+            "ts": 1512188347358494,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "t",
+            "id": 5
         },
         {
             "name": "DeserializeManySparse",
@@ -1326,11 +1362,11 @@
                 "op": "DeserializeManySparse"
             },
             "pid": 5,
-            "ts": 1512179750398090,
+            "ts": 1512188347359039,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 358
+            "dur": 2138
         },
         {
             "name": "Rank",
@@ -1340,11 +1376,11 @@
                 "op": "Rank"
             },
             "pid": 5,
-            "ts": 1512179750398455,
+            "ts": 1512188347361204,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 11
+            "dur": 37
         },
         {
             "name": "Size",
@@ -1354,11 +1390,11 @@
                 "op": "Size"
             },
             "pid": 5,
-            "ts": 1512179750398471,
+            "ts": 1512188347361277,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 5
+            "dur": 24
         },
         {
             "name": "Sub",
@@ -1369,11 +1405,11 @@
                 "op": "Sub"
             },
             "pid": 5,
-            "ts": 1512179750398479,
+            "ts": 1512188347361307,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 19
+            "dur": 29
         },
         {
             "name": "Range",
@@ -1385,70 +1421,11 @@
                 "op": "Range"
             },
             "pid": 5,
-            "ts": 1512179750398502,
+            "ts": 1512188347361341,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 8
-        },
-        {
-            "name": "Sub",
-            "args": {
-                "input0": "SparseTranspose_7/sub",
-                "input1": "SparseTranspose_7/range",
-                "name": "SparseTranspose_7/sub_1",
-                "op": "Sub"
-            },
-            "pid": 5,
-            "ts": 1512179750398514,
-            "cat": "Op",
-            "tid": 0,
-            "ph": "X",
-            "dur": 9
-        },
-        {
-            "name": "Gather",
-            "args": {
-                "input0": "shuffle_batch_3/DeserializeManySparse:2",
-                "input1": "SparseTranspose_7/sub_1",
-                "name": "SparseTranspose_7/Gather_1",
-                "op": "Gather"
-            },
-            "pid": 5,
-            "ts": 1512179750398526,
-            "cat": "Op",
-            "tid": 0,
-            "ph": "X",
-            "dur": 10
-        },
-        {
-            "name": "Identity",
-            "args": {
-                "input0": "SparseTranspose_7/Gather_1",
-                "name": "SparseTranspose_7/Identity",
-                "op": "Identity"
-            },
-            "pid": 5,
-            "ts": 1512179750398539,
-            "cat": "Op",
-            "tid": 0,
-            "ph": "X",
-            "dur": 5
-        },
-        {
-            "name": "Sub",
-            "args": {
-                "input0": "SparseTranspose_7/transpose/Rank",
-                "input1": "SparseTranspose_7/transpose/sub/y",
-                "name": "SparseTranspose_7/transpose/sub",
-                "op": "Sub"
-            },
-            "pid": 5,
-            "ts": 1512179750398547,
-            "cat": "Op",
-            "tid": 0,
-            "ph": "X",
-            "dur": 5
+            "dur": 14
         },
         {
             "name": "Range",
@@ -1460,11 +1437,106 @@
                 "op": "Range"
             },
             "pid": 5,
-            "ts": 1512179750398556,
+            "ts": 1512188347361307,
+            "cat": "Op",
+            "tid": 1,
+            "ph": "X",
+            "dur": 48
+        },
+        {
+            "name": "SparseTranspose_7/transpose/Rank",
+            "pid": 5,
+            "ts": 1512188347361241,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "s",
+            "id": 6
+        },
+        {
+            "name": "SparseTranspose_7/transpose/Rank",
+            "pid": 5,
+            "ts": 1512188347361307,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "t",
+            "id": 6
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_7/sub",
+                "input1": "SparseTranspose_7/range",
+                "name": "SparseTranspose_7/sub_1",
+                "op": "Sub"
+            },
+            "pid": 5,
+            "ts": 1512188347361360,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 5
+            "dur": 14
+        },
+        {
+            "name": "Gather",
+            "args": {
+                "input0": "shuffle_batch_3/DeserializeManySparse:2",
+                "input1": "SparseTranspose_7/sub_1",
+                "name": "SparseTranspose_7/Gather_1",
+                "op": "Gather"
+            },
+            "pid": 5,
+            "ts": 1512188347361379,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 40
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "SparseTranspose_7/Gather_1",
+                "name": "SparseTranspose_7/Identity",
+                "op": "Identity"
+            },
+            "pid": 5,
+            "ts": 1512188347361472,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 13
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "SparseTranspose_7/transpose/Rank",
+                "input1": "SparseTranspose_7/transpose/sub/y",
+                "name": "SparseTranspose_7/transpose/sub",
+                "op": "Sub"
+            },
+            "pid": 5,
+            "ts": 1512188347361370,
+            "cat": "Op",
+            "tid": 1,
+            "ph": "X",
+            "dur": 249
+        },
+        {
+            "name": "SparseTranspose_7/transpose/Rank",
+            "pid": 5,
+            "ts": 1512188347361241,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "s",
+            "id": 7
+        },
+        {
+            "name": "SparseTranspose_7/transpose/Rank",
+            "pid": 5,
+            "ts": 1512188347361370,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "t",
+            "id": 7
         },
         {
             "name": "Sub",
@@ -1475,11 +1547,47 @@
                 "op": "Sub"
             },
             "pid": 5,
-            "ts": 1512179750398565,
+            "ts": 1512188347361630,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 6
+            "dur": 16
+        },
+        {
+            "name": "SparseTranspose_7/transpose/sub",
+            "pid": 5,
+            "ts": 1512188347361619,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "s",
+            "id": 8
+        },
+        {
+            "name": "SparseTranspose_7/transpose/sub",
+            "pid": 5,
+            "ts": 1512188347361630,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "t",
+            "id": 8
+        },
+        {
+            "name": "SparseTranspose_7/transpose/Range",
+            "pid": 5,
+            "ts": 1512188347361355,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "s",
+            "id": 9
+        },
+        {
+            "name": "SparseTranspose_7/transpose/Range",
+            "pid": 5,
+            "ts": 1512188347361630,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "t",
+            "id": 9
         },
         {
             "name": "Transpose",
@@ -1490,11 +1598,11 @@
                 "op": "Transpose"
             },
             "pid": 5,
-            "ts": 1512179750398574,
+            "ts": 1512188347361650,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 49
+            "dur": 314
         },
         {
             "name": "Gather",
@@ -1505,11 +1613,11 @@
                 "op": "Gather"
             },
             "pid": 5,
-            "ts": 1512179750398627,
+            "ts": 1512188347361974,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 19
+            "dur": 53
         },
         {
             "name": "Rank",
@@ -1519,11 +1627,11 @@
                 "op": "Rank"
             },
             "pid": 5,
-            "ts": 1512179750398649,
+            "ts": 1512188347362033,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 5
+            "dur": 8
         },
         {
             "name": "Sub",
@@ -1534,11 +1642,11 @@
                 "op": "Sub"
             },
             "pid": 5,
-            "ts": 1512179750398658,
+            "ts": 1512188347362054,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 6
+            "dur": 11
         },
         {
             "name": "Range",
@@ -1550,11 +1658,11 @@
                 "op": "Range"
             },
             "pid": 5,
-            "ts": 1512179750398667,
+            "ts": 1512188347362076,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 5
+            "dur": 8
         },
         {
             "name": "Sub",
@@ -1565,11 +1673,11 @@
                 "op": "Sub"
             },
             "pid": 5,
-            "ts": 1512179750398675,
+            "ts": 1512188347362089,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 5
+            "dur": 10
         },
         {
             "name": "Transpose",
@@ -1580,11 +1688,11 @@
                 "op": "Transpose"
             },
             "pid": 5,
-            "ts": 1512179750398683,
+            "ts": 1512188347362103,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 70
+            "dur": 718
         },
         {
             "name": "SparseReorder",
@@ -1596,11 +1704,11 @@
                 "op": "SparseReorder"
             },
             "pid": 5,
-            "ts": 1512179750398759,
+            "ts": 1512188347362832,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 218
+            "dur": 1274
         },
         {
             "name": "SparseTensorDenseMatMul",
@@ -1613,11 +1721,11 @@
                 "op": "SparseTensorDenseMatMul"
             },
             "pid": 5,
-            "ts": 1512179754391727,
+            "ts": 1512188352497262,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 2209
+            "dur": 317
         },
         {
             "name": "Mul",
@@ -1628,11 +1736,11 @@
                 "op": "Mul"
             },
             "pid": 5,
-            "ts": 1512179754393958,
+            "ts": 1512188352497594,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 33
+            "dur": 31
         },
         {
             "name": "Sigmoid",
@@ -1642,11 +1750,11 @@
                 "op": "Sigmoid"
             },
             "pid": 5,
-            "ts": 1512179754393996,
+            "ts": 1512188352497630,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 9
+            "dur": 15
         },
         {
             "name": "Sub",
@@ -1657,11 +1765,11 @@
                 "op": "Sub"
             },
             "pid": 5,
-            "ts": 1512179754394008,
+            "ts": 1512188352497649,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 13
+            "dur": 16
         },
         {
             "name": "Mul",
@@ -1672,11 +1780,11 @@
                 "op": "Mul"
             },
             "pid": 5,
-            "ts": 1512179754394032,
+            "ts": 1512188352497669,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 9
+            "dur": 11
         },
         {
             "name": "SparseTensorDenseMatMul",
@@ -1689,11 +1797,11 @@
                 "op": "SparseTensorDenseMatMul"
             },
             "pid": 5,
-            "ts": 1512179754394045,
+            "ts": 1512188352497684,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 80911
+            "dur": 47629
         },
         {
             "name": "Sum",
@@ -1704,11 +1812,11 @@
                 "op": "Sum"
             },
             "pid": 5,
-            "ts": 1512179754474998,
+            "ts": 1512188352545356,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 24
+            "dur": 34
         },
         {
             "name": "Mul",
@@ -1719,11 +1827,11 @@
                 "op": "Mul"
             },
             "pid": 5,
-            "ts": 1512179754475025,
+            "ts": 1512188352545405,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 42445
+            "dur": 27873
         },
         {
             "name": "NoOp",
@@ -1732,11 +1840,11 @@
                 "op": "NoOp"
             },
             "pid": 5,
-            "ts": 1512179754517595,
+            "ts": 1512188352573630,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 6
+            "dur": 18
         },
         {
             "name": "NoOp",
@@ -1745,11 +1853,11 @@
                 "op": "NoOp"
             },
             "pid": 7,
-            "ts": 1512179750334434,
+            "ts": 1512188347296159,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 26
+            "dur": 19
         },
         {
             "name": "Const",
@@ -1758,11 +1866,11 @@
                 "op": "Const"
             },
             "pid": 7,
-            "ts": 1512179750334486,
+            "ts": 1512188347296203,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 30
+            "dur": 17
         },
         {
             "name": "Const",
@@ -1771,11 +1879,11 @@
                 "op": "Const"
             },
             "pid": 7,
-            "ts": 1512179750334519,
+            "ts": 1512188347296223,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 9
+            "dur": 7
         },
         {
             "name": "Const",
@@ -1784,7 +1892,7 @@
                 "op": "Const"
             },
             "pid": 7,
-            "ts": 1512179750334530,
+            "ts": 1512188347296232,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
@@ -1797,7 +1905,7 @@
                 "op": "Const"
             },
             "pid": 7,
-            "ts": 1512179750334543,
+            "ts": 1512188347296239,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
@@ -1810,11 +1918,11 @@
                 "op": "Const"
             },
             "pid": 7,
-            "ts": 1512179750334552,
+            "ts": 1512188347296246,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 6
+            "dur": 5
         },
         {
             "name": "RandomShuffleQueue",
@@ -1823,7 +1931,7 @@
                 "op": "RandomShuffleQueue"
             },
             "pid": 7,
-            "ts": 1512179750334716,
+            "ts": 1512188347296352,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
@@ -1838,11 +1946,11 @@
                 "op": "QueueDequeueMany"
             },
             "pid": 7,
-            "ts": 1512179750334735,
+            "ts": 1512188347296371,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 135
+            "dur": 323
         },
         {
             "name": "DeserializeManySparse",
@@ -1852,11 +1960,11 @@
                 "op": "DeserializeManySparse"
             },
             "pid": 7,
-            "ts": 1512179750334921,
+            "ts": 1512188347296740,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 322
+            "dur": 1215
         },
         {
             "name": "Rank",
@@ -1866,11 +1974,11 @@
                 "op": "Rank"
             },
             "pid": 7,
-            "ts": 1512179750335249,
+            "ts": 1512188347297963,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 9
+            "dur": 10
         },
         {
             "name": "Size",
@@ -1880,11 +1988,11 @@
                 "op": "Size"
             },
             "pid": 7,
-            "ts": 1512179750335264,
+            "ts": 1512188347297982,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 6
+            "dur": 5
         },
         {
             "name": "Sub",
@@ -1895,11 +2003,11 @@
                 "op": "Sub"
             },
             "pid": 7,
-            "ts": 1512179750335274,
+            "ts": 1512188347297991,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 37
+            "dur": 36
         },
         {
             "name": "Range",
@@ -1911,7 +2019,7 @@
                 "op": "Range"
             },
             "pid": 7,
-            "ts": 1512179750335316,
+            "ts": 1512188347298031,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
@@ -1926,11 +2034,11 @@
                 "op": "Sub"
             },
             "pid": 7,
-            "ts": 1512179750335330,
+            "ts": 1512188347298045,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 11
+            "dur": 12
         },
         {
             "name": "Gather",
@@ -1941,11 +2049,11 @@
                 "op": "Gather"
             },
             "pid": 7,
-            "ts": 1512179750335345,
+            "ts": 1512188347298061,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 24
+            "dur": 22
         },
         {
             "name": "Identity",
@@ -1955,11 +2063,11 @@
                 "op": "Identity"
             },
             "pid": 7,
-            "ts": 1512179750335373,
+            "ts": 1512188347298087,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 7
+            "dur": 6
         },
         {
             "name": "Sub",
@@ -1970,11 +2078,11 @@
                 "op": "Sub"
             },
             "pid": 7,
-            "ts": 1512179750335383,
+            "ts": 1512188347298096,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 7
+            "dur": 6
         },
         {
             "name": "Range",
@@ -1986,11 +2094,11 @@
                 "op": "Range"
             },
             "pid": 7,
-            "ts": 1512179750335394,
+            "ts": 1512188347298106,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 7
+            "dur": 6
         },
         {
             "name": "Sub",
@@ -2001,11 +2109,11 @@
                 "op": "Sub"
             },
             "pid": 7,
-            "ts": 1512179750335406,
+            "ts": 1512188347298116,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 8
+            "dur": 7
         },
         {
             "name": "Transpose",
@@ -2016,11 +2124,11 @@
                 "op": "Transpose"
             },
             "pid": 7,
-            "ts": 1512179750335417,
+            "ts": 1512188347298127,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 63
+            "dur": 550
         },
         {
             "name": "Gather",
@@ -2031,11 +2139,11 @@
                 "op": "Gather"
             },
             "pid": 7,
-            "ts": 1512179750335484,
+            "ts": 1512188347298685,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 21
+            "dur": 68
         },
         {
             "name": "Rank",
@@ -2045,11 +2153,11 @@
                 "op": "Rank"
             },
             "pid": 7,
-            "ts": 1512179750335509,
+            "ts": 1512188347298757,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 6
+            "dur": 7
         },
         {
             "name": "Sub",
@@ -2060,11 +2168,11 @@
                 "op": "Sub"
             },
             "pid": 7,
-            "ts": 1512179750335520,
+            "ts": 1512188347298774,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 7
+            "dur": 9
         },
         {
             "name": "Range",
@@ -2076,11 +2184,11 @@
                 "op": "Range"
             },
             "pid": 7,
-            "ts": 1512179750335531,
+            "ts": 1512188347298787,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 6
+            "dur": 8
         },
         {
             "name": "Sub",
@@ -2091,11 +2199,11 @@
                 "op": "Sub"
             },
             "pid": 7,
-            "ts": 1512179750335540,
+            "ts": 1512188347298799,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 8
+            "dur": 9
         },
         {
             "name": "Transpose",
@@ -2106,11 +2214,11 @@
                 "op": "Transpose"
             },
             "pid": 7,
-            "ts": 1512179750335551,
+            "ts": 1512188347298812,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 52
+            "dur": 820
         },
         {
             "name": "SparseReorder",
@@ -2122,11 +2230,11 @@
                 "op": "SparseReorder"
             },
             "pid": 7,
-            "ts": 1512179750335606,
+            "ts": 1512188347299643,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 214
+            "dur": 1398
         },
         {
             "name": "SparseTensorDenseMatMul",
@@ -2139,11 +2247,11 @@
                 "op": "SparseTensorDenseMatMul"
             },
             "pid": 7,
-            "ts": 1512179752462272,
+            "ts": 1512188348482101,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 856
+            "dur": 804
         },
         {
             "name": "Mul",
@@ -2154,11 +2262,11 @@
                 "op": "Mul"
             },
             "pid": 7,
-            "ts": 1512179752463146,
+            "ts": 1512188348482918,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 47
+            "dur": 50
         },
         {
             "name": "Sigmoid",
@@ -2168,11 +2276,11 @@
                 "op": "Sigmoid"
             },
             "pid": 7,
-            "ts": 1512179752463199,
+            "ts": 1512188348482973,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 11
+            "dur": 18
         },
         {
             "name": "Sub",
@@ -2183,11 +2291,11 @@
                 "op": "Sub"
             },
             "pid": 7,
-            "ts": 1512179752463214,
+            "ts": 1512188348482994,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 12
+            "dur": 14
         },
         {
             "name": "Mul",
@@ -2198,7 +2306,7 @@
                 "op": "Mul"
             },
             "pid": 7,
-            "ts": 1512179752463231,
+            "ts": 1512188348483011,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
@@ -2215,11 +2323,11 @@
                 "op": "SparseTensorDenseMatMul"
             },
             "pid": 7,
-            "ts": 1512179752463243,
+            "ts": 1512188348483022,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 47928
+            "dur": 38215
         },
         {
             "name": "Sum",
@@ -2230,11 +2338,11 @@
                 "op": "Sum"
             },
             "pid": 7,
-            "ts": 1512179752511232,
+            "ts": 1512188348521289,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 25
+            "dur": 27
         },
         {
             "name": "Mul",
@@ -2245,11 +2353,11 @@
                 "op": "Mul"
             },
             "pid": 7,
-            "ts": 1512179752511262,
+            "ts": 1512188348521320,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 18585
+            "dur": 23751
         },
         {
             "name": "NoOp",
@@ -2258,7 +2366,7 @@
                 "op": "NoOp"
             },
             "pid": 7,
-            "ts": 1512179752530001,
+            "ts": 1512188348545247,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
@@ -2271,11 +2379,11 @@
                 "op": "NoOp"
             },
             "pid": 9,
-            "ts": 1512179750334828,
+            "ts": 1512188347295744,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 28
+            "dur": 23
         },
         {
             "name": "Const",
@@ -2284,11 +2392,11 @@
                 "op": "Const"
             },
             "pid": 9,
-            "ts": 1512179750334880,
+            "ts": 1512188347295791,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 19
+            "dur": 43
         },
         {
             "name": "Const",
@@ -2297,33 +2405,7 @@
                 "op": "Const"
             },
             "pid": 9,
-            "ts": 1512179750334903,
-            "cat": "Op",
-            "tid": 0,
-            "ph": "X",
-            "dur": 13
-        },
-        {
-            "name": "Const",
-            "args": {
-                "name": "Sum/reduction_indices",
-                "op": "Const"
-            },
-            "pid": 9,
-            "ts": 1512179750334922,
-            "cat": "Op",
-            "tid": 0,
-            "ph": "X",
-            "dur": 9
-        },
-        {
-            "name": "Const",
-            "args": {
-                "name": "SparseTranspose_1/transpose_1/Range/start",
-                "op": "Const"
-            },
-            "pid": 9,
-            "ts": 1512179750334933,
+            "ts": 1512188347295837,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
@@ -2332,11 +2414,24 @@
         {
             "name": "Const",
             "args": {
-                "name": "sub/y",
+                "name": "Sum/reduction_indices",
                 "op": "Const"
             },
             "pid": 9,
-            "ts": 1512179750334944,
+            "ts": 1512188347295845,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "SparseTranspose_1/transpose_1/Range/start",
+                "op": "Const"
+            },
+            "pid": 9,
+            "ts": 1512188347295855,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
@@ -2345,11 +2440,24 @@
         {
             "name": "Const",
             "args": {
+                "name": "sub/y",
+                "op": "Const"
+            },
+            "pid": 9,
+            "ts": 1512188347295863,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "Const",
+            "args": {
                 "name": "shuffle_batch/n",
                 "op": "Const"
             },
             "pid": 9,
-            "ts": 1512179750334952,
+            "ts": 1512188347295869,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
@@ -2362,11 +2470,11 @@
                 "op": "Variable"
             },
             "pid": 9,
-            "ts": 1512179750335111,
+            "ts": 1512188347296066,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 16
+            "dur": 11
         },
         {
             "name": "Identity",
@@ -2376,11 +2484,11 @@
                 "op": "Identity"
             },
             "pid": 9,
-            "ts": 1512179750335131,
+            "ts": 1512188347296082,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 10
+            "dur": 9
         },
         {
             "name": "RandomShuffleQueue",
@@ -2389,11 +2497,11 @@
                 "op": "RandomShuffleQueue"
             },
             "pid": 9,
-            "ts": 1512179750335214,
+            "ts": 1512188347296155,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 8
+            "dur": 7
         },
         {
             "name": "QueueDequeueMany",
@@ -2404,11 +2512,11 @@
                 "op": "QueueDequeueMany"
             },
             "pid": 9,
-            "ts": 1512179750335225,
+            "ts": 1512188347296165,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 191
+            "dur": 313
         },
         {
             "name": "DeserializeManySparse",
@@ -2418,11 +2526,11 @@
                 "op": "DeserializeManySparse"
             },
             "pid": 9,
-            "ts": 1512179750335465,
+            "ts": 1512188347296613,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 396
+            "dur": 1399
         },
         {
             "name": "Rank",
@@ -2432,11 +2540,11 @@
                 "op": "Rank"
             },
             "pid": 9,
-            "ts": 1512179750335867,
+            "ts": 1512188347298022,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 20
+            "dur": 10
         },
         {
             "name": "Size",
@@ -2446,11 +2554,11 @@
                 "op": "Size"
             },
             "pid": 9,
-            "ts": 1512179750335893,
+            "ts": 1512188347298037,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 17
+            "dur": 6
         },
         {
             "name": "Sub",
@@ -2461,11 +2569,11 @@
                 "op": "Sub"
             },
             "pid": 9,
-            "ts": 1512179750335915,
+            "ts": 1512188347298046,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 41
+            "dur": 17
         },
         {
             "name": "Range",
@@ -2477,11 +2585,11 @@
                 "op": "Range"
             },
             "pid": 9,
-            "ts": 1512179750335961,
+            "ts": 1512188347298067,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 10
+            "dur": 9
         },
         {
             "name": "Sub",
@@ -2492,11 +2600,11 @@
                 "op": "Sub"
             },
             "pid": 9,
-            "ts": 1512179750335975,
+            "ts": 1512188347298085,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 13
+            "dur": 11
         },
         {
             "name": "Gather",
@@ -2507,11 +2615,11 @@
                 "op": "Gather"
             },
             "pid": 9,
-            "ts": 1512179750335992,
+            "ts": 1512188347298099,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 25
+            "dur": 11
         },
         {
             "name": "Identity",
@@ -2521,7 +2629,7 @@
                 "op": "Identity"
             },
             "pid": 9,
-            "ts": 1512179750336021,
+            "ts": 1512188347298113,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
@@ -2536,7 +2644,7 @@
                 "op": "Sub"
             },
             "pid": 9,
-            "ts": 1512179750336031,
+            "ts": 1512188347298122,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
@@ -2552,11 +2660,11 @@
                 "op": "Range"
             },
             "pid": 9,
-            "ts": 1512179750336042,
+            "ts": 1512188347298132,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 7
+            "dur": 6
         },
         {
             "name": "Sub",
@@ -2567,11 +2675,11 @@
                 "op": "Sub"
             },
             "pid": 9,
-            "ts": 1512179750336053,
+            "ts": 1512188347298142,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 8
+            "dur": 7
         },
         {
             "name": "Transpose",
@@ -2582,177 +2690,11 @@
                 "op": "Transpose"
             },
             "pid": 9,
-            "ts": 1512179750336065,
+            "ts": 1512188347298152,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 99
-        },
-        {
-            "name": "SparseTensorDenseMatMul",
-            "args": {
-                "input2": "shuffle_batch/DeserializeManySparse:2",
-                "input3": "model/read",
-                "input0": "shuffle_batch/DeserializeManySparse",
-                "input1": "shuffle_batch/DeserializeManySparse:1",
-                "name": "SparseTensorDenseMatMul/SparseTensorDenseMatMul",
-                "op": "SparseTensorDenseMatMul"
-            },
-            "pid": 9,
-            "ts": 1512179750336036,
-            "cat": "Op",
-            "tid": 1,
-            "ph": "X",
-            "dur": 210
-        },
-        {
-            "name": "shuffle_batch/DeserializeManySparse",
-            "pid": 9,
-            "ts": 1512179750335861,
-            "cat": "DataFlow",
-            "tid": 0,
-            "ph": "s",
-            "id": 4
-        },
-        {
-            "name": "shuffle_batch/DeserializeManySparse",
-            "pid": 9,
-            "ts": 1512179750336036,
-            "cat": "DataFlow",
-            "tid": 1,
-            "ph": "t",
-            "id": 4
-        },
-        {
-            "name": "shuffle_batch/DeserializeManySparse:1",
-            "pid": 9,
-            "ts": 1512179750335861,
-            "cat": "DataFlow",
-            "tid": 0,
-            "ph": "s",
-            "id": 5
-        },
-        {
-            "name": "shuffle_batch/DeserializeManySparse:1",
-            "pid": 9,
-            "ts": 1512179750336036,
-            "cat": "DataFlow",
-            "tid": 1,
-            "ph": "t",
-            "id": 5
-        },
-        {
-            "name": "shuffle_batch/DeserializeManySparse:2",
-            "pid": 9,
-            "ts": 1512179750335861,
-            "cat": "DataFlow",
-            "tid": 0,
-            "ph": "s",
-            "id": 6
-        },
-        {
-            "name": "shuffle_batch/DeserializeManySparse:2",
-            "pid": 9,
-            "ts": 1512179750336036,
-            "cat": "DataFlow",
-            "tid": 1,
-            "ph": "t",
-            "id": 6
-        },
-        {
-            "name": "model/read",
-            "pid": 9,
-            "ts": 1512179750335141,
-            "cat": "DataFlow",
-            "tid": 0,
-            "ph": "s",
-            "id": 7
-        },
-        {
-            "name": "model/read",
-            "pid": 9,
-            "ts": 1512179750336036,
-            "cat": "DataFlow",
-            "tid": 1,
-            "ph": "t",
-            "id": 7
-        },
-        {
-            "name": "Mul",
-            "args": {
-                "input0": "shuffle_batch:1",
-                "input1": "SparseTensorDenseMatMul/SparseTensorDenseMatMul",
-                "name": "Mul",
-                "op": "Mul"
-            },
-            "pid": 9,
-            "ts": 1512179750336262,
-            "cat": "Op",
-            "tid": 0,
-            "ph": "X",
-            "dur": 48
-        },
-        {
-            "name": "SparseTensorDenseMatMul/SparseTensorDenseMatMul",
-            "pid": 9,
-            "ts": 1512179750336246,
-            "cat": "DataFlow",
-            "tid": 1,
-            "ph": "s",
-            "id": 8
-        },
-        {
-            "name": "SparseTensorDenseMatMul/SparseTensorDenseMatMul",
-            "pid": 9,
-            "ts": 1512179750336262,
-            "cat": "DataFlow",
-            "tid": 0,
-            "ph": "t",
-            "id": 8
-        },
-        {
-            "name": "Sigmoid",
-            "args": {
-                "input0": "Mul",
-                "name": "Sigmoid",
-                "op": "Sigmoid"
-            },
-            "pid": 9,
-            "ts": 1512179750336315,
-            "cat": "Op",
-            "tid": 0,
-            "ph": "X",
-            "dur": 31
-        },
-        {
-            "name": "Sub",
-            "args": {
-                "input0": "Sigmoid",
-                "input1": "sub/y",
-                "name": "sub",
-                "op": "Sub"
-            },
-            "pid": 9,
-            "ts": 1512179750336350,
-            "cat": "Op",
-            "tid": 0,
-            "ph": "X",
-            "dur": 25
-        },
-        {
-            "name": "Mul",
-            "args": {
-                "input0": "shuffle_batch:1",
-                "input1": "sub",
-                "name": "Mul_1",
-                "op": "Mul"
-            },
-            "pid": 9,
-            "ts": 1512179750336380,
-            "cat": "Op",
-            "tid": 0,
-            "ph": "X",
-            "dur": 9
+            "dur": 372
         },
         {
             "name": "Gather",
@@ -2763,7 +2705,7 @@
                 "op": "Gather"
             },
             "pid": 9,
-            "ts": 1512179750336725,
+            "ts": 1512188347298530,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
@@ -2777,11 +2719,11 @@
                 "op": "Rank"
             },
             "pid": 9,
-            "ts": 1512179750336759,
+            "ts": 1512188347298562,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 8
+            "dur": 6
         },
         {
             "name": "Sub",
@@ -2792,7 +2734,7 @@
                 "op": "Sub"
             },
             "pid": 9,
-            "ts": 1512179750336778,
+            "ts": 1512188347298572,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
@@ -2808,11 +2750,11 @@
                 "op": "Range"
             },
             "pid": 9,
-            "ts": 1512179750336792,
+            "ts": 1512188347298585,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 8
+            "dur": 7
         },
         {
             "name": "Sub",
@@ -2823,11 +2765,177 @@
                 "op": "Sub"
             },
             "pid": 9,
-            "ts": 1512179750336804,
+            "ts": 1512188347298596,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 9
+            "dur": 7
+        },
+        {
+            "name": "SparseTensorDenseMatMul",
+            "args": {
+                "input2": "shuffle_batch/DeserializeManySparse:2",
+                "input3": "model/read",
+                "input0": "shuffle_batch/DeserializeManySparse",
+                "input1": "shuffle_batch/DeserializeManySparse:1",
+                "name": "SparseTensorDenseMatMul/SparseTensorDenseMatMul",
+                "op": "SparseTensorDenseMatMul"
+            },
+            "pid": 9,
+            "ts": 1512188347298482,
+            "cat": "Op",
+            "tid": 1,
+            "ph": "X",
+            "dur": 353
+        },
+        {
+            "name": "shuffle_batch/DeserializeManySparse",
+            "pid": 9,
+            "ts": 1512188347298012,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "s",
+            "id": 10
+        },
+        {
+            "name": "shuffle_batch/DeserializeManySparse",
+            "pid": 9,
+            "ts": 1512188347298482,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "t",
+            "id": 10
+        },
+        {
+            "name": "shuffle_batch/DeserializeManySparse:1",
+            "pid": 9,
+            "ts": 1512188347298012,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "s",
+            "id": 11
+        },
+        {
+            "name": "shuffle_batch/DeserializeManySparse:1",
+            "pid": 9,
+            "ts": 1512188347298482,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "t",
+            "id": 11
+        },
+        {
+            "name": "shuffle_batch/DeserializeManySparse:2",
+            "pid": 9,
+            "ts": 1512188347298012,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "s",
+            "id": 12
+        },
+        {
+            "name": "shuffle_batch/DeserializeManySparse:2",
+            "pid": 9,
+            "ts": 1512188347298482,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "t",
+            "id": 12
+        },
+        {
+            "name": "model/read",
+            "pid": 9,
+            "ts": 1512188347296091,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "s",
+            "id": 13
+        },
+        {
+            "name": "model/read",
+            "pid": 9,
+            "ts": 1512188347298482,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "t",
+            "id": 13
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "shuffle_batch:1",
+                "input1": "SparseTensorDenseMatMul/SparseTensorDenseMatMul",
+                "name": "Mul",
+                "op": "Mul"
+            },
+            "pid": 9,
+            "ts": 1512188347298851,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 19
+        },
+        {
+            "name": "SparseTensorDenseMatMul/SparseTensorDenseMatMul",
+            "pid": 9,
+            "ts": 1512188347298835,
+            "cat": "DataFlow",
+            "tid": 1,
+            "ph": "s",
+            "id": 14
+        },
+        {
+            "name": "SparseTensorDenseMatMul/SparseTensorDenseMatMul",
+            "pid": 9,
+            "ts": 1512188347298851,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "t",
+            "id": 14
+        },
+        {
+            "name": "Sigmoid",
+            "args": {
+                "input0": "Mul",
+                "name": "Sigmoid",
+                "op": "Sigmoid"
+            },
+            "pid": 9,
+            "ts": 1512188347298874,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 10
+        },
+        {
+            "name": "Sub",
+            "args": {
+                "input0": "Sigmoid",
+                "input1": "sub/y",
+                "name": "sub",
+                "op": "Sub"
+            },
+            "pid": 9,
+            "ts": 1512188347298887,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 12
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "shuffle_batch:1",
+                "input1": "sub",
+                "name": "Mul_1",
+                "op": "Mul"
+            },
+            "pid": 9,
+            "ts": 1512188347298903,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
         },
         {
             "name": "Transpose",
@@ -2838,11 +2946,47 @@
                 "op": "Transpose"
             },
             "pid": 9,
-            "ts": 1512179750336818,
+            "ts": 1512188347298607,
             "cat": "Op",
-            "tid": 0,
+            "tid": 2,
             "ph": "X",
-            "dur": 48
+            "dur": 310
+        },
+        {
+            "name": "SparseTranspose_1/Gather",
+            "pid": 9,
+            "ts": 1512188347298558,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "s",
+            "id": 15
+        },
+        {
+            "name": "SparseTranspose_1/Gather",
+            "pid": 9,
+            "ts": 1512188347298607,
+            "cat": "DataFlow",
+            "tid": 2,
+            "ph": "t",
+            "id": 15
+        },
+        {
+            "name": "SparseTranspose_1/transpose_1/sub_1",
+            "pid": 9,
+            "ts": 1512188347298603,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "s",
+            "id": 16
+        },
+        {
+            "name": "SparseTranspose_1/transpose_1/sub_1",
+            "pid": 9,
+            "ts": 1512188347298607,
+            "cat": "DataFlow",
+            "tid": 2,
+            "ph": "t",
+            "id": 16
         },
         {
             "name": "SparseReorder",
@@ -2854,11 +2998,29 @@
                 "op": "SparseReorder"
             },
             "pid": 9,
-            "ts": 1512179750336870,
+            "ts": 1512188347298925,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 231
+            "dur": 1394
+        },
+        {
+            "name": "SparseTranspose_1/transpose_1",
+            "pid": 9,
+            "ts": 1512188347298917,
+            "cat": "DataFlow",
+            "tid": 2,
+            "ph": "s",
+            "id": 17
+        },
+        {
+            "name": "SparseTranspose_1/transpose_1",
+            "pid": 9,
+            "ts": 1512188347298925,
+            "cat": "DataFlow",
+            "tid": 0,
+            "ph": "t",
+            "id": 17
         },
         {
             "name": "SparseTensorDenseMatMul",
@@ -2871,11 +3033,11 @@
                 "op": "SparseTensorDenseMatMul"
             },
             "pid": 9,
-            "ts": 1512179750337107,
+            "ts": 1512188347300329,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 51979
+            "dur": 83594
         },
         {
             "name": "Sum",
@@ -2886,11 +3048,11 @@
                 "op": "Sum"
             },
             "pid": 9,
-            "ts": 1512179750389117,
+            "ts": 1512188347383973,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 27
+            "dur": 20
         },
         {
             "name": "Mul",
@@ -2901,11 +3063,11 @@
                 "op": "Mul"
             },
             "pid": 9,
-            "ts": 1512179750389149,
+            "ts": 1512188347384001,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 27856
+            "dur": 26441
         },
         {
             "name": "AddN",
@@ -2919,11 +3081,11 @@
                 "op": "AddN"
             },
             "pid": 9,
-            "ts": 1512179757372686,
+            "ts": 1512188353754643,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 66967
+            "dur": 55300
         },
         {
             "name": "Reshape",
@@ -2934,11 +3096,11 @@
                 "op": "Reshape"
             },
             "pid": 9,
-            "ts": 1512179757439692,
+            "ts": 1512188353809990,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 20
+            "dur": 22
         },
         {
             "name": "AssignAdd",
@@ -2949,11 +3111,11 @@
                 "op": "AssignAdd"
             },
             "pid": 9,
-            "ts": 1512179757439717,
+            "ts": 1512188353810016,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 18145
+            "dur": 18202
         },
         {
             "name": "NoOp",
@@ -2962,11 +3124,11 @@
                 "op": "NoOp"
             },
             "pid": 9,
-            "ts": 1512179757457922,
+            "ts": 1512188353828283,
             "cat": "Op",
             "tid": 0,
             "ph": "X",
-            "dur": 6
+            "dur": 8
         }
     ]
 }
