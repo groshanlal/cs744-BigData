@@ -148,7 +148,7 @@ with g.as_default():
         print "total size of test set:--------------------------",total_tests
         print "# training iterations before each testing period:",( train_test_ratio/(5*s_batch) )
         print "# of testing iterations per testing period:------", total_tests/s_test
-
+        print "======================================================"
         def report_precision():
             with tf.device("/job:worker/task:0"):
                 test_X,test_Y = get_datapoint_iter(file_dict[-1],batch_size = s_test)
