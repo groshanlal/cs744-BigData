@@ -6,10 +6,10 @@ import os
 # number of features in the criteo dataset after one-hot encoding
 num_features = 33762578 # DO NOT CHANGE THIS VALUE
 
-s_batch = 20
+s_batch = 40
 eta = .1
-train_test_ratio = 1000
-total_trains = 10001
+train_test_ratio = 2000
+total_trains = 100001
 iterations = total_trains/(5*s_batch)
 
 
@@ -148,7 +148,7 @@ with g.as_default():
         print "testing batch size per iteration:----------------", s_test
         print "total size of test set:--------------------------",total_tests
         print "# training iterations before each testing period:",( train_test_ratio/(5*s_batch) )
-        print "# of testing iterations per testing period:------", total_tests/s_test
+        print "# of iterations per testing period:------", total_tests/s_test
         print "======================================================"
 
         # utility function to report the precision during training 
