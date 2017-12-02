@@ -7,7 +7,7 @@ import os
 num_features = 33762578 # DO NOT CHANGE THIS VALUE
 
 s_batch = 100
-eta = .1
+eta = 1
 train_test_ratio = 1000
 total_trains = 1001
 iterations = total_trains/(5*s_batch)
@@ -184,12 +184,12 @@ with g.as_default():
             run_metadata = tf.RunMetadata()
             print "Step ",i
             sess.run(assign_op)
+            print "update log:",update_log.eval()
             # sess.run(assign_op,options=options, run_metadata=run_metadata)
             # print "ulog ", ulog
 
             # start testing period
             if i%( train_test_ratio/(5*s_batch) ) == 0:
-                print "update log:",update_log.eval()
                 report_precision();
 
             # print w.eval()
