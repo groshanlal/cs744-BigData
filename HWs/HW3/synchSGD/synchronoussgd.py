@@ -178,7 +178,9 @@ with g.as_default():
 
         # main loop of training
         for i in range(iterations):
-            options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
+            # options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
+            options = tf.RunOptions(trace_level=tf.RunOptions.NO_TRACE)
+            
             run_metadata = tf.RunMetadata()
             print "Step ",i
             sess.run(assign_op,options=options, run_metadata=run_metadata)
@@ -190,12 +192,13 @@ with g.as_default():
 
             # print w.eval()
         # Create the Timeline object, and write it to a json file
-        fetched_timeline = timeline.Timeline(
-                                run_metadata.step_stats)
-        chrome_trace = fetched_timeline.generate_chrome_trace_format()
+        # fetched_timeline = timeline.Timeline(
+        #                         run_metadata.step_stats)
+        # chrome_trace = fetched_timeline.generate_chrome_trace_format()
         with open('timeline_01.json', 'w') as f:
             f.write(chrome_trace)
 
         coord.request_stop()
         coord.join(threads, stop_grace_period_secs=5)
+        tf.train.SummaryWriter("%s/synchSGD" % (os.environ.get("TF_LOG_DIR")), sess.graph)
         sess.close()
