@@ -2,13 +2,16 @@ import tensorflow as tf
 import os
 
 # number of features in the criteo dataset after one-hot encoding
-num_features = 33762578
-s_batch = 10
-eta = .1
+num_features = 33762578 # DO NOT CHANGE THIS VALUE
 
-iterations = 20
+s_batch = 20
+eta = .1
+train_test_ratio = 1000
+iterations = 200
+
 
 s_test = 20;
+total_tests = 2000;
 
 file_dict = {0:["00","01","02","03","04"],
              1:["05","06","07","08","09"],
@@ -124,9 +127,9 @@ with g.as_default():
         precision = tf.reduce_sum((diffs+1)/2)/s_test
         return precision
 
-    with tf.device("/job:worker/task:0"):
-        test_X,test_Y = get_datapoint_iter(file_dict[-1],batch_size = s_test)
-        precision = calc_precision(w,test_X,test_Y)
+    # with tf.device("/job:worker/task:0"):
+    #     test_X,test_Y = get_datapoint_iter(file_dict[-1],batch_size = s_test)
+    #     precision = calc_precision(w,test_X,test_Y)
 
     ###########################################################
     with tf.Session("grpc://vm-32-1:2222") as sess:
@@ -136,13 +139,37 @@ with g.as_default():
         coord = tf.train.Coordinator()
         threads = tf.train.start_queue_runners(sess=sess, coord=coord)
         # tf.train.start_queue_runners(sess=sess)
+
+        print "Inforamtion:"
+        print "test_train_ratio:",train_test_ratio
+        print "training batch size per iteration:", s_batch
+        print "testing batch size per iteration:", s_test
+        print "total size of test set:",total_tests
+        print "# testing iterations before each testing period:",( train_test_ratio/(5*s_batch) )
+        print "# of testing iterations per testing period:", total_tests/s_test
+
+        def report_precision():
+            with tf.device("/job:worker/task:0"):
+                test_X,test_Y = get_datapoint_iter(file_dict[-1],batch_size = s_test)
+                precision = calc_precision(w,test_X,test_Y)
+
+            
+            out_prec = []
+            for j in range(total_tests/s_test):
+                out_prec[j] = precision.eval()
+                #print "precision: ",out_prec[j]
+            print "precision vector:",out_prec
+            print "total precision:", np.mean(out_prec)
+
         for i in range(iterations):
             print "Step ",i
             sess.run(assign_op)
 
-            if i>1 and i%2 == 0:
-                print "precision: ",precision.eval()
+            if i%( train_test_ratio/(5*s_batch) ) == 0:
+                report_precision();
+
             # print w.eval()
+
         coord.request_stop()
         coord.join(threads, stop_grace_period_secs=5)
         sess.close()
