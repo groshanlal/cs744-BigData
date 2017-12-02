@@ -147,6 +147,7 @@ with g.as_default():
         print "training batch size per iteration:---------------", s_batch
         print "testing batch size per iteration:----------------", s_test
         print "total size of test set:--------------------------",total_tests
+        print "total training iterations:-----------------------",iterations
         print "# training iterations before each testing period:",( train_test_ratio/(5*s_batch) )
         print "# of iterations per testing period:------", total_tests/s_test
         print "======================================================"
