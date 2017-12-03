@@ -53,7 +53,13 @@ with g.as_default():
         # only one client initializes the variable
         if FLAGS.task_index == 0:
             sess_asynch.run(tf.initialize_all_variables())
+<<<<<<< HEAD
         for i in range(0, 1000):
             sess_asynch.run(assign_op_asynch)
+=======
+        for i in range(0, 10):
+            print "step:", i
+            sess.run(assign_op_asynch)
+>>>>>>> bf2505d413ff38a6c8a22fd2bd12ff2f9273b939
             print w_asynch.eval()
         sess_asynch.close()
