@@ -45,7 +45,7 @@ with g.as_default():
         local_gradient_asynch = tf.mul(reader_asynch, tf.matmul(tf.transpose(w_asynch), reader_asynch))
 
     with tf.device("/job:worker/task:0"):
-        assign_op_asynch = w.assign_add(tf.mul(local_gradient_asynch, 0.001))
+        assign_op_asynch = w_asynch.assign_add(tf.mul(local_gradient_asynch, 0.001))
 
 
     with tf.Session("grpc://vm-32-%d:2222" % (FLAGS.task_index+1)) as sess_asynch:
