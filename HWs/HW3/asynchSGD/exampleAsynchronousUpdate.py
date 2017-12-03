@@ -54,6 +54,6 @@ with g.as_default():
         if FLAGS.task_index == 0:
             sess_asynch.run(tf.initialize_all_variables())
         for i in range(0, 1000):
-            sess.run(assign_op_asynch)
+            sess_asynch.run(assign_op_asynch)
             print w_asynch.eval()
-        sess.close()
+        sess_asynch.close()

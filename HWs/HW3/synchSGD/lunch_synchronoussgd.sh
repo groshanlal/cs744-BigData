@@ -16,7 +16,7 @@ echo "Executing the distributed tensorflow job from exampleSynchronousUpdate.py"
 
 
 # python exampleSynchronousUpdate.py
-python synchronoussgd.py
+time python synchronoussgd.py
 
 # defined in tfdefs.sh to terminate the cluster
 terminate_cluster
