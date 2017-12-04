@@ -13,7 +13,7 @@ echo "Executing the distributed tensorflow job from matMulDistributed.py"
 # testdistributed.py is a client that can run jobs on the exampleMatmulDistributedcluster.
 # please read testdistributed.py to understand the steps defining a Graph and
 # launch a session to run the Graph
-python matMulDistributed.py
+python bigmatrixmultiplication.py
 
 # defined in tfdefs.sh to terminate the cluster
 terminate_cluster
