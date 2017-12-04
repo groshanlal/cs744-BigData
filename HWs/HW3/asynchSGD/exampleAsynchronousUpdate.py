@@ -140,22 +140,16 @@ with g.as_default():
         assign_op_a = w_a.assign_add(agg_shape_a)
     ##########################################################
 
-    with tf.Session("grpc://vm-32-%d:2222" % (FLAGS.task_index+1)) as f:
+    with tf.Session("grpc://vm-32-%d:2222" % (FLAGS.task_index+1)) as sess_asynch:
         print_specs()
         # only one client initializes the variable
         if FLAGS.task_index == 0:
             sess_asynch.run(tf.initialize_all_variables())
-<<<<<<< HEAD
-<<<<<<< HEAD
-        for i in range(0, 1000):
-            sess_asynch.run(assign_op_asynch)
-=======
+
         for i in range(0, 10):
             print "step:", i
-            sess.run(assign_op_asynch)
->>>>>>> bf2505d413ff38a6c8a22fd2bd12ff2f9273b939
-            print w_asynch.eval()
-=======
+            sess_asynch.run(assign_op_asynch)
+            #print w_asynch.eval()
         ###################################################################
         # utility function to report the precision during training 
         def report_precision():
@@ -168,7 +162,7 @@ with g.as_default():
             for j in range(total_tests/s_test):
                 out_prec.append(precision.eval())
                 #print "precision: ",out_prec[j]
-            # print "precision vector:",out_prec
+            #print "precision vector:",out_prec
             print "total precision:", np.mean(out_prec), "max:", np.max(out_prec)
         ###################################################################
 
@@ -190,5 +184,4 @@ with g.as_default():
 
         coord_a.request_stop()
         coord_a.join(threads, stop_grace_period_secs=5)
->>>>>>> 5d3e9ade4f0d23f4e0fcd5bcb62ef46c22c947d9
         sess_asynch.close()
