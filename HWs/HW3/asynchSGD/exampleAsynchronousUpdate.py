@@ -179,5 +179,5 @@ with g.as_default():
             # print "ulog ", ulog
 
         coord_a.request_stop()
-        coord_a.join(threads, stop_grace_period_secs=5)
+        coord_a.join(threads_a, stop_grace_period_secs=5)
         sess_asynch.close()
