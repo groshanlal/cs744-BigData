@@ -8,13 +8,13 @@ num_features = 33762578 # DO NOT CHANGE THIS VALUE
 
 s_batch = 100
 eta = 10
-train_test_ratio = 1000
-total_trains = 10001
+train_test_ratio = 2000
+total_trains = 200001
 iterations = total_trains/(5*s_batch)
 
 
 s_test = 20;
-total_tests = 2000;
+total_tests = 20000;
 
 file_dict = {0:["00","01","02","03","04"],
              1:["05","06","07","08","09"],

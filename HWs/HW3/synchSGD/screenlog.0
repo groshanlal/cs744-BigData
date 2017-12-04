@@ -1,0 +1,857 @@
+ubuntu@vm-32-1:~/CS_744/HWs/HW3/synchSGD$ sourse tfdefs.sh 
+sourse: command not found
+ubuntu@vm-32-1:~/CS_744/HWs/HW3/synchSGD$ sourse tfdefs.sh [K[K[K[K[K[K[K[K[K[K[K[K[K[Krce tfdefs.sh 
+ubuntu@vm-32-1:~/CS_744/HWs/HW3/synchSGD$ terma[Kinate_cluster 
+Terminating the servers
+ubuntu@vm-32-1:~/CS_744/HWs/HW3/synchSGD$ [H[Jubuntu@vm-32-1:~/CS_744/HWs/HW3/synchSGD$ terminate_cluster [1Psource tfdefs.sh[Cs[C[C[C[C[C[C[C[C[C[C[C[C[1@creen -r syncSGD[C[10Pgit pull[K[K[K[K[K[K[K[K./lunch_synchronoussgd.sh 
+Create /home/ubuntu/run/ on remote hosts if they do not exist.
+Copying the script to all the remote hosts.
+Starting tensorflow servers on all hosts based on the spec in startserver.py
+The server output is logged to serverlog-i.out, where i = 1, ..., 5 are the VM numbers.
+Executing the distributed tensorflow job from exampleSynchronousUpdate.py
+WARNING:tensorflow:tf.op_scope(values, name, default_name) is deprecated, use tf.name_scope(name, default_name, values)
+WARNING:tensorflow:tf.op_scope(values, name, default_name) is deprecated, use tf.name_scope(name, default_name, values)
+WARNING:tensorflow:tf.op_scope(values, name, default_name) is deprecated, use tf.name_scope(name, default_name, values)
+WARNING:tensorflow:tf.op_scope(values, name, default_name) is deprecated, use tf.name_scope(name, default_name, values)
+WARNING:tensorflow:tf.op_scope(values, name, default_name) is deprecated, use tf.name_scope(name, default_name, values)
+WARNING:tensorflow:tf.op_scope(values, name, default_name) is deprecated, use tf.name_scope(name, default_name, values)
+WARNING:tensorflow:tf.op_scope(values, name, default_name) is deprecated, use tf.name_scope(name, default_name, values)
+WARNING:tensorflow:tf.op_scope(values, name, default_name) is deprecated, use tf.name_scope(name, default_name, values)
+WARNING:tensorflow:tf.op_scope(values, name, default_name) is deprecated, use tf.name_scope(name, default_name, values)
+WARNING:tensorflow:tf.op_scope(values, name, default_name) is deprecated, use tf.name_scope(name, default_name, values)
+WARNING:tensorflow:tf.op_scope(values, name, default_name) is deprecated, use tf.name_scope(name, default_name, values)
+====================Inforamtion=======================
+test_train_ratio:-------------------------------- 20000
+training batch size per iteration:--------------- 100
+testing batch size per iteration:---------------- 20
+total size of test set:-------------------------- 2000
+total training iterations:----------------------- 400
+# training iterations before each testing period: 40
+# of iterations per testing period:-------------- 100
+======================================================
+Step  0
+update log: 0.00247612
+------------reporting precision------------
+total precision: 0.4 max: 0.6
+Step  1
+update log: 0.00248204
+Step  2
+update log: 0.00242203
+Step  3
+update log: 0.00253533
+Step  4
+update log: 0.00260281
+Step  5
+update log: 0.00244058
+Step  6
+update log: 0.0025411
+Step  7
+update log: 0.00248917
+Step  8
+update log: 0.00253312
+Step  9
+update log: 0.00248403
+Step  10
+update log: 0.00240265
+Step  11
+update log: 0.0025615
+Step  12
+update log: 0.00258461
+Step  13
+update log: 0.00246935
+Step  14
+update log: 0.00245228
+Step  15
+update log: 0.00256923
+Step  16
+update log: 0.00246872
+Step  17
+update log: 0.00246173
+Step  18
+update log: 0.00265306
+Step  19
+update log: 0.00250654
+Step  20
+update log: 0.00246973
+Step  21
+update log: 0.00247006
+Step  22
+update log: 0.00252428
+Step  23
+update log: 0.00257031
+Step  24
+update log: 0.00252954
+Step  25
+update log: 0.00245667
+Step  26
+update log: 0.00255656
+Step  27
+update log: 0.00243166
+Step  28
+update log: 0.00237994
+Step  29
+update log: 0.00248494
+Step  30
+update log: 0.00256418
+Step  31
+update log: 0.00249691
+Step  32
+update log: 0.00256888
+Step  33
+update log: 0.00257505
+Step  34
+update log: 0.00250269
+Step  35
+update log: 0.00247549
+Step  36
+update log: 0.00242504
+Step  37
+update log: 0.00246226
+Step  38
+update log: 0.00243717
+Step  39
+update log: 0.00239843
+Step  40
+update log: 0.00249168
+------------reporting precision------------
+total precision: 0.4005 max: 0.55
+Step  41
+update log: 0.00260038
+Step  42
+update log: 0.00243278
+Step  43
+update log: 0.00239192
+Step  44
+update log: 0.00257552
+Step  45
+update log: 0.00253879
+Step  46
+update log: 0.00253566
+Step  47
+update log: 0.00249481
+Step  48
+update log: 0.00242929
+Step  49
+update log: 0.00263205
+Step  50
+update log: 0.00258833
+Step  51
+update log: 0.00240576
+Step  52
+update log: 0.00242795
+Step  53
+update log: 0.00255296
+Step  54
+update log: 0.0025652
+Step  55
+update log: 0.00251076
+Step  56
+update log: 0.00243886
+Step  57
+update log: 0.00245976
+Step  58
+update log: 0.0025786
+Step  59
+update log: 0.00248515
+Step  60
+update log: 0.00247805
+Step  61
+update log: 0.00242755
+Step  62
+update log: 0.00249191
+Step  63
+update log: 0.00255322
+Step  64
+update log: 0.00257635
+Step  65
+update log: 0.00252343
+Step  66
+update log: 0.00245085
+Step  67
+update log: 0.00239526
+Step  68
+update log: 0.00249263
+Step  69
+update log: 0.00255656
+Step  70
+update log: 0.00248482
+Step  71
+update log: 0.0025043
+Step  72
+update log: 0.00249655
+Step  73
+update log: 0.00249936
+Step  74
+update log: 0.00261472
+Step  75
+update log: 0.00253956
+Step  76
+update log: 0.00248989
+Step  77
+update log: 0.00245746
+Step  78
+update log: 0.00259025
+Step  79
+update log: 0.002477
+Step  80
+update log: 0.00250869
+------------reporting precision------------
+total precision: 0.399 max: 0.55
+Step  81
+update log: 0.00247648
+Step  82
+update log: 0.00259558
+Step  83
+update log: 0.00256986
+Step  84
+update log: 0.00252122
+Step  85
+update log: 0.00245233
+Step  86
+update log: 0.00241104
+Step  87
+update log: 0.00242509
+Step  88
+update log: 0.00255286
+Step  89
+update log: 0.00245904
+Step  90
+update log: 0.00250821
+Step  91
+update log: 0.00251698
+Step  92
+update log: 0.00262155
+Step  93
+update log: 0.00243319
+Step  94
+update log: 0.00247436
+Step  95
+update log: 0.00252869
+Step  96
+update log: 0.00247413
+Step  97
+update log: 0.00255414
+Step  98
+update log: 0.00249514
+Step  99
+update log: 0.00252144
+Step  100
+update log: 0.00249213
+Step  101
+update log: 0.00250482
+Step  102
+update log: 0.00239979
+Step  103
+update log: 0.00253014
+Step  104
+update log: 0.00253597
+Step  105
+update log: 0.00251538
+Step  106
+update log: 0.00264096
+Step  107
+update log: 0.00250163
+Step  108
+update log: 0.00243113
+Step  109
+update log: 0.00244442
+Step  110
+update log: 0.00250052
+Step  111
+update log: 0.00260791
+Step  112
+update log: 0.00240791
+Step  113
+update log: 0.00260485
+Step  114
+update log: 0.0023637
+Step  115
+update log: 0.00247259
+Step  116
+update log: 0.00258664
+Step  117
+update log: 0.0024817
+Step  118
+update log: 0.00247672
+Step  119
+update log: 0.00252634
+Step  120
+update log: 0.00245882
+------------reporting precision------------
+total precision: 0.4015 max: 0.6
+Step  121
+update log: 0.00245869
+Step  122
+update log: 0.00237818
+Step  123
+update log: 0.00251407
+Step  124
+update log: 0.00256451
+Step  125
+update log: 0.00241909
+Step  126
+update log: 0.00244552
+Step  127
+update log: 0.00254983
+Step  128
+update log: 0.00242271
+Step  129
+update log: 0.00262795
+Step  130
+update log: 0.00246207
+Step  131
+update log: 0.00248185
+Step  132
+update log: 0.00245545
+Step  133
+update log: 0.00252805
+Step  134
+update log: 0.00247425
+Step  135
+update log: 0.00257228
+Step  136
+update log: 0.0025074
+Step  137
+update log: 0.00245824
+Step  138
+update log: 0.00253037
+Step  139
+update log: 0.00245316
+Step  140
+update log: 0.00252376
+Step  141
+update log: 0.00244461
+Step  142
+update log: 0.00249457
+Step  143
+update log: 0.00257132
+Step  144
+update log: 0.00252704
+Step  145
+update log: 0.00240858
+Step  146
+update log: 0.00251323
+Step  147
+update log: 0.0023858
+Step  148
+update log: 0.00251073
+Step  149
+update log: 0.00258553
+Step  150
+update log: 0.00247389
+Step  151
+update log: 0.00250903
+Step  152
+update log: 0.0024601
+Step  153
+update log: 0.00258639
+Step  154
+update log: 0.00251903
+Step  155
+update log: 0.00238237
+Step  156
+update log: 0.00248156
+Step  157
+update log: 0.00256701
+Step  158
+update log: 0.00257753
+Step  159
+update log: 0.00249932
+Step  160
+update log: 0.00255412
+------------reporting precision------------
+total precision: 0.4005 max: 0.55
+Step  161
+update log: 0.00246263
+Step  162
+update log: 0.00256602
+Step  163
+update log: 0.00242398
+Step  164
+update log: 0.00249436
+Step  165
+update log: 0.00239782
+Step  166
+update log: 0.00255007
+Step  167
+update log: 0.00254445
+Step  168
+update log: 0.00242422
+Step  169
+update log: 0.00248612
+Step  170
+update log: 0.00253742
+Step  171
+update log: 0.00242397
+Step  172
+update log: 0.0025332
+Step  173
+update log: 0.00246612
+Step  174
+update log: 0.00252876
+Step  175
+update log: 0.00255117
+Step  176
+update log: 0.0024631
+Step  177
+update log: 0.0024587
+Step  178
+update log: 0.00241833
+Step  179
+update log: 0.00254467
+Step  180
+update log: 0.00253774
+Step  181
+update log: 0.00254425
+Step  182
+update log: 0.00242657
+Step  183
+update log: 0.00248647
+Step  184
+update log: 0.00251338
+Step  185
+update log: 0.00249419
+Step  186
+update log: 0.0025699
+Step  187
+update log: 0.00254546
+Step  188
+update log: 0.00248269
+Step  189
+update log: 0.00250891
+Step  190
+update log: 0.0025005
+Step  191
+update log: 0.00259513
+Step  192
+update log: 0.00251126
+Step  193
+update log: 0.00233696
+Step  194
+update log: 0.00257694
+Step  195
+update log: 0.00252327
+Step  196
+update log: 0.00255578
+Step  197
+update log: 0.00245485
+Step  198
+update log: 0.002431
+Step  199
+update log: 0.00250906
+Step  200
+update log: 0.00254502
+------------reporting precision------------
+total precision: 0.3985 max: 0.6
+Step  201
+update log: 0.00254003
+Step  202
+update log: 0.00246158
+Step  203
+update log: 0.00258358
+Step  204
+update log: 0.00243766
+Step  205
+update log: 0.00250305
+Step  206
+update log: 0.00252521
+Step  207
+update log: 0.00240704
+Step  208
+update log: 0.00251199
+Step  209
+update log: 0.00244273
+Step  210
+update log: 0.00250086
+Step  211
+update log: 0.00244893
+Step  212
+update log: 0.00248176
+Step  213
+update log: 0.00255844
+Step  214
+update log: 0.00245808
+Step  215
+update log: 0.00252042
+Step  216
+update log: 0.00253206
+Step  217
+update log: 0.00245048
+Step  218
+update log: 0.00255186
+Step  219
+update log: 0.00263607
+Step  220
+update log: 0.0024855
+Step  221
+update log: 0.00248905
+Step  222
+update log: 0.00251818
+Step  223
+update log: 0.00239856
+Step  224
+update log: 0.00254551
+Step  225
+update log: 0.00255508
+Step  226
+update log: 0.00248856
+Step  227
+update log: 0.00247917
+Step  228
+update log: 0.00254828
+Step  229
+update log: 0.00253328
+Step  230
+update log: 0.00250616
+Step  231
+update log: 0.00251973
+Step  232
+update log: 0.00249169
+Step  233
+update log: 0.00249619
+Step  234
+update log: 0.0024593
+Step  235
+update log: 0.00262164
+Step  236
+update log: 0.00252795
+Step  237
+update log: 0.00249342
+Step  238
+update log: 0.00249563
+Step  239
+update log: 0.00255041
+Step  240
+update log: 0.00245057
+------------reporting precision------------
+total precision: 0.401 max: 0.65
+Step  241
+update log: 0.00261292
+Step  242
+update log: 0.00245227
+Step  243
+update log: 0.0025399
+Step  244
+update log: 0.00247507
+Step  245
+update log: 0.00257432
+Step  246
+update log: 0.0025154
+Step  247
+update log: 0.00254366
+Step  248
+update log: 0.00253013
+Step  249
+update log: 0.00245887
+Step  250
+update log: 0.00247918
+Step  251
+update log: 0.00255144
+Step  252
+update log: 0.00255268
+Step  253
+update log: 0.00245987
+Step  254
+update log: 0.00247372
+Step  255
+update log: 0.00246014
+Step  256
+update log: 0.00253549
+Step  257
+update log: 0.00254148
+Step  258
+update log: 0.0024149
+Step  259
+update log: 0.00262524
+Step  260
+update log: 0.00239523
+Step  261
+update log: 0.00253406
+Step  262
+update log: 0.00243903
+Step  263
+update log: 0.00245053
+Step  264
+update log: 0.00251769
+Step  265
+update log: 0.00243125
+Step  266
+update log: 0.0025251
+Step  267
+update log: 0.00248091
+Step  268
+update log: 0.00256373
+Step  269
+update log: 0.00244643
+Step  270
+update log: 0.00255571
+Step  271
+update log: 0.00244811
+Step  272
+update log: 0.0024544
+Step  273
+update log: 0.00250961
+Step  274
+update log: 0.00252097
+Step  275
+update log: 0.00240163
+Step  276
+update log: 0.00255064
+Step  277
+update log: 0.00253386
+Step  278
+update log: 0.00264818
+Step  279
+update log: 0.00254791
+Step  280
+update log: 0.00251816
+------------reporting precision------------
+total precision: 0.399 max: 0.65
+Step  281
+update log: 0.00255709
+Step  282
+update log: 0.00242287
+Step  283
+update log: 0.00249892
+Step  284
+update log: 0.00247477
+Step  285
+update log: 0.00246102
+Step  286
+update log: 0.00237776
+Step  287
+update log: 0.00253352
+Step  288
+update log: 0.00247566
+Step  289
+update log: 0.00250361
+Step  290
+update log: 0.00239376
+Step  291
+update log: 0.00251393
+Step  292
+update log: 0.00251747
+Step  293
+update log: 0.00262156
+Step  294
+update log: 0.00241159
+Step  295
+update log: 0.00249362
+Step  296
+update log: 0.00251236
+Step  297
+update log: 0.00251635
+Step  298
+update log: 0.00247836
+Step  299
+update log: 0.00252516
+Step  300
+update log: 0.00244877
+Step  301
+update log: 0.00258274
+Step  302
+update log: 0.00259289
+Step  303
+update log: 0.00244388
+Step  304
+update log: 0.00253916
+Step  305
+update log: 0.0024542
+Step  306
+update log: 0.00250526
+Step  307
+update log: 0.00243205
+Step  308
+update log: 0.00259628
+Step  309
+update log: 0.0025195
+Step  310
+update log: 0.00245661
+Step  311
+update log: 0.00258871
+Step  312
+update log: 0.0024414
+Step  313
+update log: 0.00242402
+Step  314
+update log: 0.00255387
+Step  315
+update log: 0.00256174
+Step  316
+update log: 0.00241496
+Step  317
+update log: 0.00253423
+Step  318
+update log: 0.00249995
+Step  319
+update log: 0.00259732
+Step  320
+update log: 0.00252473
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  321
+update log: 0.00248366
+Step  322
+update log: 0.00239224
+Step  323
+update log: 0.00256369
+Step  324
+update log: 0.0025377
+Step  325
+update log: 0.00253093
+Step  326
+update log: 0.00254749
+Step  327
+update log: 0.00250424
+Step  328
+update log: 0.00250331
+Step  329
+update log: 0.002381
+Step  330
+update log: 0.00252134
+Step  331
+update log: 0.00248051
+Step  332
+update log: 0.00252042
+Step  333
+update log: 0.00250711
+Step  334
+update log: 0.00246072
+Step  335
+update log: 0.0024722
+Step  336
+update log: 0.00255525
+Step  337
+update log: 0.00251072
+Step  338
+update log: 0.00240689
+Step  339
+update log: 0.00244286
+Step  340
+update log: 0.00249602
+Step  341
+update log: 0.0025287
+Step  342
+update log: 0.00241455
+Step  343
+update log: 0.00248381
+Step  344
+update log: 0.00257749
+Step  345
+update log: 0.00253636
+Step  346
+update log: 0.00240668
+Step  347
+update log: 0.00248013
+Step  348
+update log: 0.00254217
+Step  349
+update log: 0.00237653
+Step  350
+update log: 0.00244414
+Step  351
+update log: 0.00257121
+Step  352
+update log: 0.00243288
+Step  353
+update log: 0.0024608
+Step  354
+update log: 0.00247286
+Step  355
+update log: 0.00255872
+Step  356
+update log: 0.00243831
+Step  357
+update log: 0.00240128
+Step  358
+update log: 0.00265908
+Step  359
+update log: 0.00248614
+Step  360
+update log: 0.00255538
+------------reporting precision------------
+total precision: 0.4 max: 0.55
+Step  361
+update log: 0.00247445
+Step  362
+update log: 0.00240363
+Step  363
+update log: 0.00250473
+Step  364
+update log: 0.00250762
+Step  365
+update log: 0.00245427
+Step  366
+update log: 0.00243696
+Step  367
+update log: 0.00243443
+Step  368
+update log: 0.00246096
+Step  369
+update log: 0.00257042
+Step  370
+update log: 0.00258556
+Step  371
+update log: 0.0025848
+Step  372
+update log: 0.00244891
+Step  373
+update log: 0.00264101
+Step  374
+update log: 0.00236286
+Step  375
+update log: 0.00250809
+Step  376
+update log: 0.00236931
+Step  377
+update log: 0.00254169
+Step  378
+update log: 0.00249136
+Step  379
+update log: 0.00253083
+Step  380
+update log: 0.00268061
+Step  381
+update log: 0.00240146
+Step  382
+update log: 0.00244411
+Step  383
+update log: 0.00251773
+Step  384
+update log: 0.00248432
+Step  385
+update log: 0.0025375
+Step  386
+update log: 0.00254406
+Step  387
+update log: 0.00254858
+Step  388
+update log: 0.00247541
+Step  389
+update log: 0.00260248
+Step  390
+update log: 0.00250861
+Step  391
+update log: 0.00246002
+Step  392
+update log: 0.00246059
+Step  393
+update log: 0.00245934
+Step  394
+update log: 0.00256838
+Step  395
+update log: 0.00246176
+Step  396
+update log: 0.00250961
+Step  397
+update log: 0.00248751
+Step  398
+update log: 0.00265768
+Step  399
+update log: 0.00254082
+
+real	100m51.196s
+user	4m31.263s
+sys	2m39.471s
+Terminating the servers
+ubuntu@vm-32-1:~/CS_744/HWs/HW3/synchSGD$ ./lunch_synchronoussgd.sh [8Pterminate_cluster[C[1Psource tfdefs.sh[Cs[C[C[C[C[C[C[C[C[C[C[C[C[1@creen -r syncSGD[C[10Pgit pullcommit -m "come modification durin grun time " -a[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpull[Kstash[1Ppullshcommit -m "come modification durin grun time " -a[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpush[Kcommit -m "come modification durin grun time "[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[31Pcat asynclog-0.out 1[C[C[C[C[C0[C[C[C[C[C[1P./exampleAsync.sh[C[15@vim exampleAsynchronousUpdate.py[C[14Pcat asynclog-0.out[C[1P./exampleAsync.sh[C[2@vim [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[13@hronousUpdate.py[Ccat[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[Kscreen -r syncSGD [1@cat asynclog-0.out[C[1P./exampleAsync.sh[C[10Pgit pullcat asynclog-0.out [1P./exampleAsync.sh[C[1@cat asynclog-0.out[C[11Pgit pull./exampleAsync.sh [1@cat asynclog-0.out[C[1Pscreen -r syncSGD[Cls[Kcat exampleAsynchronousUpdate.py vim[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C.sh [K[2P./[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@cat asynclog-0.out[C[14@vim exampleAsynchronousUpdate.py[C[15P./exampleAsync.sh[C[1@cat asynclog-0.out[C1[C[C[C[C[C0[C[C[C[C[Cgit commit -m "come modification durin grun time "push[Kcommit -m "come modification durin grun time " -a[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpush[Kllstash[1Ppullcommit -m "come modification durin grun time " -a[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpull[Kscreen -r syncSGD [1Pourse tfdefs.sh[Cc[C[C[C[C[C[C[C[C[C[C[C[C[1@terminate_cluster[C[8@./lunch_synchronoussgd.sh[C[K
