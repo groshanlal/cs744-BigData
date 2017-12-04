@@ -149,7 +149,7 @@ with g.as_default():
 
     with tf.device("/job:worker/task:%d" % FLAGS.task_index):
         test_X,test_Y = get_datapoint_iter(file_dict[-1],batch_size = s_test)
-        precision = calc_precision(w,test_X,test_Y)
+        precision = calc_precision(w_a,test_X,test_Y)
 
     ###########################################################
     with tf.Session("grpc://vm-32-%d:2222" % (FLAGS.task_index+1)) as sess_asynch:
