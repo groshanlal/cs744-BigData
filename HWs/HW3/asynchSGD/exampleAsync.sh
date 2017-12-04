@@ -1,4 +1,8 @@
 #!/bin/bash
+
+rm serverlog-*
+rm asynclog-*
+
 source tfdefs.sh
 start_cluster startserver.py
 # start multiple clients
