@@ -195,6 +195,14 @@ with g.as_default():
             if i%( train_test_ratio/(5*s_batch) ) == 0:
                 report_precision();
 
+
+        # Create the Timeline object, and write it to a json file
+        # fetched_timeline = timeline.Timeline(
+        #                         run_metadata.step_stats)
+        # chrome_trace = fetched_timeline.generate_chrome_trace_format()
+        # with open('timeline_01.json', 'w') as f:
+        #     f.write(chrome_trace)
+
         coord_a.request_stop()
         coord_a.join(threads_a, stop_grace_period_secs=5)
         sess_asynch.close()
