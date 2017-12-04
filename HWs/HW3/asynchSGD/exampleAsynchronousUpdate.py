@@ -1,4 +1,6 @@
 import tensorflow as tf
+from tensorflow.python.client import timeline
+import numpy as np
 import os
 
 # number of features in the criteo dataset after one-hot encoding
