@@ -7,7 +7,7 @@ num_features = 33762578 # DO NOT CHANGE THIS VALUE
 s_batch = 100
 eta = 10
 train_test_ratio = 1000
-total_trains = 100001
+total_trains = 10001
 iterations = total_trains/(5*s_batch)
 
 
@@ -138,8 +138,20 @@ with g.as_default():
 
         update_log_a = tf.reduce_mean(tf.abs(agg_shape_a) )
         assign_op_a = w_a.assign_add(agg_shape_a)
-    ##########################################################
+    ###########################################################
+    ###########################################################
+    def calc_precision(W,X,Y):
+        pred = tf.sparse_tensor_dense_matmul(X, W)
+        diffs = tf.sign(tf.mul(Y,pred))
 
+        precision = tf.reduce_sum((diffs+1)/2)/s_test
+        return precision
+
+    with tf.device("/job:worker/task:%d" % FLAGS.task_index):
+        test_X,test_Y = get_datapoint_iter(file_dict[-1],batch_size = s_test)
+        precision = calc_precision(w,test_X,test_Y)
+
+    ###########################################################
     with tf.Session("grpc://vm-32-%d:2222" % (FLAGS.task_index+1)) as sess_asynch:
         print_specs()
         # only one client initializes the variable
@@ -167,7 +179,7 @@ with g.as_default():
         coord_a = tf.train.Coordinator()
         threads_a = tf.train.start_queue_runners(sess=sess_asynch, coord=coord_a)
         ###################################################################
-        for i in range(0, 10):
+        for i in range(iterations):
             # options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
             options_a = tf.RunOptions(trace_level=tf.RunOptions.NO_TRACE)
             
@@ -177,6 +189,9 @@ with g.as_default():
             print "update log:",update_log_a.eval()
             # sess.run(assign_op,options=options, run_metadata=run_metadata)
             # print "ulog ", ulog
+            # start testing period
+            if i%( train_test_ratio/(5*s_batch) ) == 0:
+                report_precision();
 
         coord_a.request_stop()
         coord_a.join(threads_a, stop_grace_period_secs=5)
