@@ -1,0 +1,1013 @@
+WARNING:tensorflow:tf.op_scope(values, name, default_name) is deprecated, use tf.name_scope(name, default_name, values)
+WARNING:tensorflow:tf.op_scope(values, name, default_name) is deprecated, use tf.name_scope(name, default_name, values)
+WARNING:tensorflow:tf.op_scope(values, name, default_name) is deprecated, use tf.name_scope(name, default_name, values)
+====================Inforamtion=======================
+task ID------------------------------------------ 0
+test_train_ratio:-------------------------------- 2000
+training batch size per iteration:--------------- 100
+testing batch size per iteration:---------------- 20
+total size of test set:-------------------------- 20000
+total training iterations:----------------------- 400
+# training iterations before each testing period: 4
+# of iterations per testing period:-------------- 1000
+======================================================
+Step  0
+update log: 0.000581092
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  1
+update log: 0.000557611
+Step  2
+update log: 0.000592128
+Step  3
+update log: 0.000546102
+Step  4
+update log: 0.000595743
+------------reporting precision------------
+total precision: 0.39995 max: 0.65
+Step  5
+update log: 0.000541313
+Step  6
+update log: 0.000612753
+Step  7
+update log: 0.00056815
+Step  8
+update log: 0.000560327
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  9
+update log: 0.000610277
+Step  10
+update log: 0.000579988
+Step  11
+update log: 0.000549628
+Step  12
+update log: 0.000549161
+------------reporting precision------------
+total precision: 0.4001 max: 0.6
+Step  13
+update log: 0.00054793
+Step  14
+update log: 0.000589822
+Step  15
+update log: 0.000541799
+Step  16
+update log: 0.000527631
+------------reporting precision------------
+total precision: 0.39995 max: 0.65
+Step  17
+update log: 0.000551634
+Step  18
+update log: 0.000588017
+Step  19
+update log: 0.000566746
+Step  20
+update log: 0.000535051
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  21
+update log: 0.000575588
+Step  22
+update log: 0.000582767
+Step  23
+update log: 0.000558652
+Step  24
+update log: 0.000549291
+------------reporting precision------------
+total precision: 0.40005 max: 0.6
+Step  25
+update log: 0.000583093
+Step  26
+update log: 0.000564412
+Step  27
+update log: 0.000600027
+Step  28
+update log: 0.000562882
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  29
+update log: 0.000543139
+Step  30
+update log: 0.000550948
+Step  31
+update log: 0.000558157
+Step  32
+update log: 0.000599232
+------------reporting precision------------
+total precision: 0.40005 max: 0.65
+Step  33
+update log: 0.000606244
+Step  34
+update log: 0.000596197
+Step  35
+update log: 0.000547214
+Step  36
+update log: 0.000559416
+------------reporting precision------------
+total precision: 0.39985 max: 0.65
+Step  37
+update log: 0.000570045
+Step  38
+update log: 0.000594064
+Step  39
+update log: 0.000579004
+Step  40
+update log: 0.000573617
+------------reporting precision------------
+total precision: 0.4 max: 0.6
+Step  41
+update log: 0.000574184
+Step  42
+update log: 0.000555036
+Step  43
+update log: 0.000583312
+Step  44
+update log: 0.00054016
+------------reporting precision------------
+total precision: 0.4001 max: 0.6
+Step  45
+update log: 0.000619962
+Step  46
+update log: 0.000587104
+Step  47
+update log: 0.000547359
+Step  48
+update log: 0.000596655
+------------reporting precision------------
+total precision: 0.4 max: 0.6
+Step  49
+update log: 0.000570507
+Step  50
+update log: 0.000580341
+Step  51
+update log: 0.000568331
+Step  52
+update log: 0.000589031
+------------reporting precision------------
+total precision: 0.39995 max: 0.65
+Step  53
+update log: 0.000590943
+Step  54
+update log: 0.000575591
+Step  55
+update log: 0.000571156
+Step  56
+update log: 0.000526673
+------------reporting precision------------
+total precision: 0.4 max: 0.6
+Step  57
+update log: 0.000569733
+Step  58
+update log: 0.000597707
+Step  59
+update log: 0.000558208
+Step  60
+update log: 0.00060205
+------------reporting precision------------
+total precision: 0.40005 max: 0.7
+Step  61
+update log: 0.000561418
+Step  62
+update log: 0.000552369
+Step  63
+update log: 0.000568072
+Step  64
+update log: 0.000592942
+------------reporting precision------------
+total precision: 0.4 max: 0.6
+Step  65
+update log: 0.000590335
+Step  66
+update log: 0.000555518
+Step  67
+update log: 0.000597564
+Step  68
+update log: 0.000596927
+------------reporting precision------------
+total precision: 0.4 max: 0.6
+Step  69
+update log: 0.000543998
+Step  70
+update log: 0.000595174
+Step  71
+update log: 0.000581837
+Step  72
+update log: 0.000585062
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  73
+update log: 0.00055283
+Step  74
+update log: 0.000582427
+Step  75
+update log: 0.00054737
+Step  76
+update log: 0.000620046
+------------reporting precision------------
+total precision: 0.39995 max: 0.65
+Step  77
+update log: 0.00060623
+Step  78
+update log: 0.000568971
+Step  79
+update log: 0.000569812
+Step  80
+update log: 0.000602194
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  81
+update log: 0.00052833
+Step  82
+update log: 0.0005736
+Step  83
+update log: 0.000635134
+Step  84
+update log: 0.000560494
+------------reporting precision------------
+total precision: 0.40005 max: 0.65
+Step  85
+update log: 0.000615168
+Step  86
+update log: 0.000587541
+Step  87
+update log: 0.000580791
+Step  88
+update log: 0.000575975
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  89
+update log: 0.00057271
+Step  90
+update log: 0.000590214
+Step  91
+update log: 0.000575553
+Step  92
+update log: 0.000560682
+------------reporting precision------------
+total precision: 0.4 max: 0.7
+Step  93
+update log: 0.000589555
+Step  94
+update log: 0.000593921
+Step  95
+update log: 0.000549488
+Step  96
+update log: 0.000580253
+------------reporting precision------------
+total precision: 0.39995 max: 0.65
+Step  97
+update log: 0.000586896
+Step  98
+update log: 0.000621635
+Step  99
+update log: 0.000572548
+Step  100
+update log: 0.000586757
+------------reporting precision------------
+total precision: 0.40005 max: 0.6
+Step  101
+update log: 0.000557842
+Step  102
+update log: 0.000555611
+Step  103
+update log: 0.000550336
+Step  104
+update log: 0.000580174
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  105
+update log: 0.000547113
+Step  106
+update log: 0.000549688
+Step  107
+update log: 0.000559686
+Step  108
+update log: 0.000580353
+------------reporting precision------------
+total precision: 0.40005 max: 0.6
+Step  109
+update log: 0.000574929
+Step  110
+update log: 0.000563777
+Step  111
+update log: 0.000566803
+Step  112
+update log: 0.000575361
+------------reporting precision------------
+total precision: 0.3999 max: 0.7
+Step  113
+update log: 0.000615057
+Step  114
+update log: 0.000590648
+Step  115
+update log: 0.000583274
+Step  116
+update log: 0.000534012
+------------reporting precision------------
+total precision: 0.40015 max: 0.6
+Step  117
+update log: 0.000573459
+Step  118
+update log: 0.00056225
+Step  119
+update log: 0.00052738
+Step  120
+update log: 0.000545527
+------------reporting precision------------
+total precision: 0.39995 max: 0.6
+Step  121
+update log: 0.000586475
+Step  122
+update log: 0.000600059
+Step  123
+update log: 0.000546938
+Step  124
+update log: 0.00061059
+------------reporting precision------------
+total precision: 0.39985 max: 0.6
+Step  125
+update log: 0.000575725
+Step  126
+update log: 0.000585813
+Step  127
+update log: 0.000551954
+Step  128
+update log: 0.00057044
+------------reporting precision------------
+total precision: 0.40005 max: 0.6
+Step  129
+update log: 0.000546939
+Step  130
+update log: 0.000585402
+Step  131
+update log: 0.000574396
+Step  132
+update log: 0.000592888
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  133
+update log: 0.000549938
+Step  134
+update log: 0.000521769
+Step  135
+update log: 0.000587167
+Step  136
+update log: 0.000578144
+------------reporting precision------------
+total precision: 0.4001 max: 0.6
+Step  137
+update log: 0.000582208
+Step  138
+update log: 0.000598878
+Step  139
+update log: 0.000570274
+Step  140
+update log: 0.000557616
+------------reporting precision------------
+total precision: 0.3999 max: 0.7
+Step  141
+update log: 0.000579352
+Step  142
+update log: 0.000596064
+Step  143
+update log: 0.0005529
+Step  144
+update log: 0.000590164
+------------reporting precision------------
+total precision: 0.39995 max: 0.65
+Step  145
+update log: 0.000566088
+Step  146
+update log: 0.000572868
+Step  147
+update log: 0.000577845
+Step  148
+update log: 0.000570966
+------------reporting precision------------
+total precision: 0.40015 max: 0.65
+Step  149
+update log: 0.000593976
+Step  150
+update log: 0.000576794
+Step  151
+update log: 0.000574663
+Step  152
+update log: 0.000544823
+------------reporting precision------------
+total precision: 0.39985 max: 0.65
+Step  153
+update log: 0.000554248
+Step  154
+update log: 0.000564326
+Step  155
+update log: 0.000601987
+Step  156
+update log: 0.000582589
+------------reporting precision------------
+total precision: 0.40005 max: 0.65
+Step  157
+update log: 0.000578327
+Step  158
+update log: 0.000540691
+Step  159
+update log: 0.00055179
+Step  160
+update log: 0.000583029
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  161
+update log: 0.00060174
+Step  162
+update log: 0.000564898
+Step  163
+update log: 0.000553117
+Step  164
+update log: 0.00054136
+------------reporting precision------------
+total precision: 0.39995 max: 0.65
+Step  165
+update log: 0.000573788
+Step  166
+update log: 0.000545734
+Step  167
+update log: 0.000593541
+Step  168
+update log: 0.000536407
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  169
+update log: 0.000609273
+Step  170
+update log: 0.000552572
+Step  171
+update log: 0.000612199
+Step  172
+update log: 0.000583802
+------------reporting precision------------
+total precision: 0.40005 max: 0.6
+Step  173
+update log: 0.000565667
+Step  174
+update log: 0.000498488
+Step  175
+update log: 0.000585494
+Step  176
+update log: 0.00062746
+------------reporting precision------------
+total precision: 0.4001 max: 0.65
+Step  177
+update log: 0.00055092
+Step  178
+update log: 0.00055863
+Step  179
+update log: 0.000547671
+Step  180
+update log: 0.000604421
+------------reporting precision------------
+total precision: 0.3998 max: 0.6
+Step  181
+update log: 0.00056959
+Step  182
+update log: 0.000613664
+Step  183
+update log: 0.000607174
+Step  184
+update log: 0.000547098
+------------reporting precision------------
+total precision: 0.40015 max: 0.6
+Step  185
+update log: 0.000595692
+Step  186
+update log: 0.000588138
+Step  187
+update log: 0.000577462
+Step  188
+update log: 0.000588952
+------------reporting precision------------
+total precision: 0.3999 max: 0.65
+Step  189
+update log: 0.000591953
+Step  190
+update log: 0.000575182
+Step  191
+update log: 0.000553113
+Step  192
+update log: 0.000584358
+------------reporting precision------------
+total precision: 0.4001 max: 0.65
+Step  193
+update log: 0.000619064
+Step  194
+update log: 0.000525355
+Step  195
+update log: 0.000571897
+Step  196
+update log: 0.000565974
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  197
+update log: 0.000544165
+Step  198
+update log: 0.000588877
+Step  199
+update log: 0.000530491
+Step  200
+update log: 0.000530519
+------------reporting precision------------
+total precision: 0.40005 max: 0.65
+Step  201
+update log: 0.000569726
+Step  202
+update log: 0.000579331
+Step  203
+update log: 0.000595719
+Step  204
+update log: 0.000554837
+------------reporting precision------------
+total precision: 0.3999 max: 0.65
+Step  205
+update log: 0.000547255
+Step  206
+update log: 0.00053678
+Step  207
+update log: 0.000575792
+Step  208
+update log: 0.000543683
+------------reporting precision------------
+total precision: 0.4001 max: 0.65
+Step  209
+update log: 0.00060162
+Step  210
+update log: 0.000623704
+Step  211
+update log: 0.000604108
+Step  212
+update log: 0.000576193
+------------reporting precision------------
+total precision: 0.3999 max: 0.65
+Step  213
+update log: 0.000590442
+Step  214
+update log: 0.000557827
+Step  215
+update log: 0.000595142
+Step  216
+update log: 0.000589225
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  217
+update log: 0.000576914
+Step  218
+update log: 0.000549967
+Step  219
+update log: 0.000577585
+Step  220
+update log: 0.000570789
+------------reporting precision------------
+total precision: 0.40015 max: 0.65
+Step  221
+update log: 0.000566276
+Step  222
+update log: 0.00059499
+Step  223
+update log: 0.000577884
+Step  224
+update log: 0.000578266
+------------reporting precision------------
+total precision: 0.3999 max: 0.65
+Step  225
+update log: 0.000608903
+Step  226
+update log: 0.000571387
+Step  227
+update log: 0.000562748
+Step  228
+update log: 0.000588715
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  229
+update log: 0.000571774
+Step  230
+update log: 0.000580802
+Step  231
+update log: 0.000566072
+Step  232
+update log: 0.000597997
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  233
+update log: 0.000608969
+Step  234
+update log: 0.000560225
+Step  235
+update log: 0.000586957
+Step  236
+update log: 0.000586396
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  237
+update log: 0.000604303
+Step  238
+update log: 0.000515111
+Step  239
+update log: 0.000586007
+Step  240
+update log: 0.000572049
+------------reporting precision------------
+total precision: 0.39995 max: 0.65
+Step  241
+update log: 0.00055858
+Step  242
+update log: 0.000550255
+Step  243
+update log: 0.000613185
+Step  244
+update log: 0.000568159
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  245
+update log: 0.0005958
+Step  246
+update log: 0.000587986
+Step  247
+update log: 0.000542434
+Step  248
+update log: 0.000587302
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  249
+update log: 0.000547911
+Step  250
+update log: 0.000587169
+Step  251
+update log: 0.000561358
+Step  252
+update log: 0.000603017
+------------reporting precision------------
+total precision: 0.3999 max: 0.65
+Step  253
+update log: 0.00058301
+Step  254
+update log: 0.000555892
+Step  255
+update log: 0.000599574
+Step  256
+update log: 0.000593146
+------------reporting precision------------
+total precision: 0.40015 max: 0.65
+Step  257
+update log: 0.000567922
+Step  258
+update log: 0.000571654
+Step  259
+update log: 0.000593161
+Step  260
+update log: 0.000581493
+------------reporting precision------------
+total precision: 0.4 max: 0.6
+Step  261
+update log: 0.000580126
+Step  262
+update log: 0.000540218
+Step  263
+update log: 0.000569048
+Step  264
+update log: 0.000578411
+------------reporting precision------------
+total precision: 0.39985 max: 0.6
+Step  265
+update log: 0.000566672
+Step  266
+update log: 0.000618419
+Step  267
+update log: 0.000592064
+Step  268
+update log: 0.000597275
+------------reporting precision------------
+total precision: 0.40005 max: 0.65
+Step  269
+update log: 0.000577058
+Step  270
+update log: 0.000539012
+Step  271
+update log: 0.000612677
+Step  272
+update log: 0.000536461
+------------reporting precision------------
+total precision: 0.4 max: 0.6
+Step  273
+update log: 0.000587533
+Step  274
+update log: 0.000569072
+Step  275
+update log: 0.000549174
+Step  276
+update log: 0.000559589
+------------reporting precision------------
+total precision: 0.40015 max: 0.65
+Step  277
+update log: 0.000581297
+Step  278
+update log: 0.000572527
+Step  279
+update log: 0.000583818
+Step  280
+update log: 0.000583763
+------------reporting precision------------
+total precision: 0.40005 max: 0.6
+Step  281
+update log: 0.000568145
+Step  282
+update log: 0.000549232
+Step  283
+update log: 0.000562147
+Step  284
+update log: 0.000599491
+------------reporting precision------------
+total precision: 0.39995 max: 0.6
+Step  285
+update log: 0.000549783
+Step  286
+update log: 0.000563304
+Step  287
+update log: 0.000549971
+Step  288
+update log: 0.00058775
+------------reporting precision------------
+total precision: 0.39985 max: 0.65
+Step  289
+update log: 0.000543108
+Step  290
+update log: 0.000561956
+Step  291
+update log: 0.000559223
+Step  292
+update log: 0.000537989
+------------reporting precision------------
+total precision: 0.39995 max: 0.6
+Step  293
+update log: 0.000583209
+Step  294
+update log: 0.000592016
+Step  295
+update log: 0.00054037
+Step  296
+update log: 0.000614192
+------------reporting precision------------
+total precision: 0.40015 max: 0.65
+Step  297
+update log: 0.000561492
+Step  298
+update log: 0.000542359
+Step  299
+update log: 0.000539575
+Step  300
+update log: 0.000547403
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  301
+update log: 0.000586801
+Step  302
+update log: 0.000546224
+Step  303
+update log: 0.000588647
+Step  304
+update log: 0.000613775
+------------reporting precision------------
+total precision: 0.39995 max: 0.65
+Step  305
+update log: 0.0005609
+Step  306
+update log: 0.000537243
+Step  307
+update log: 0.000576454
+Step  308
+update log: 0.000554621
+------------reporting precision------------
+total precision: 0.4001 max: 0.65
+Step  309
+update log: 0.000559782
+Step  310
+update log: 0.000574351
+Step  311
+update log: 0.000603043
+Step  312
+update log: 0.000547709
+------------reporting precision------------
+total precision: 0.39985 max: 0.65
+Step  313
+update log: 0.00060354
+Step  314
+update log: 0.00058567
+Step  315
+update log: 0.000569526
+Step  316
+update log: 0.000544288
+------------reporting precision------------
+total precision: 0.40005 max: 0.6
+Step  317
+update log: 0.000555317
+Step  318
+update log: 0.000612227
+Step  319
+update log: 0.000603349
+Step  320
+update log: 0.000556982
+------------reporting precision------------
+total precision: 0.40005 max: 0.65
+Step  321
+update log: 0.000548222
+Step  322
+update log: 0.000585029
+Step  323
+update log: 0.000589481
+Step  324
+update log: 0.000555269
+------------reporting precision------------
+total precision: 0.3999 max: 0.6
+Step  325
+update log: 0.000608315
+Step  326
+update log: 0.000554602
+Step  327
+update log: 0.000608513
+Step  328
+update log: 0.000575439
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  329
+update log: 0.000546202
+Step  330
+update log: 0.000547675
+Step  331
+update log: 0.000557709
+Step  332
+update log: 0.000605708
+------------reporting precision------------
+total precision: 0.4001 max: 0.65
+Step  333
+update log: 0.000561612
+Step  334
+update log: 0.00061254
+Step  335
+update log: 0.000568529
+Step  336
+update log: 0.000561083
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  337
+update log: 0.000573996
+Step  338
+update log: 0.000596571
+Step  339
+update log: 0.000560443
+Step  340
+update log: 0.00057622
+------------reporting precision------------
+total precision: 0.39995 max: 0.6
+Step  341
+update log: 0.000579038
+Step  342
+update log: 0.000526841
+Step  343
+update log: 0.000565597
+Step  344
+update log: 0.000605656
+------------reporting precision------------
+total precision: 0.40005 max: 0.6
+Step  345
+update log: 0.000566526
+Step  346
+update log: 0.000546828
+Step  347
+update log: 0.000543239
+Step  348
+update log: 0.000594947
+------------reporting precision------------
+total precision: 0.39995 max: 0.65
+Step  349
+update log: 0.000574812
+Step  350
+update log: 0.000588319
+Step  351
+update log: 0.000610846
+Step  352
+update log: 0.000560614
+------------reporting precision------------
+total precision: 0.4 max: 0.6
+Step  353
+update log: 0.000589178
+Step  354
+update log: 0.000562737
+Step  355
+update log: 0.000602772
+Step  356
+update log: 0.000601409
+------------reporting precision------------
+total precision: 0.39995 max: 0.6
+Step  357
+update log: 0.000565571
+Step  358
+update log: 0.000602375
+Step  359
+update log: 0.000579963
+Step  360
+update log: 0.000548566
+------------reporting precision------------
+total precision: 0.40005 max: 0.7
+Step  361
+update log: 0.000605576
+Step  362
+update log: 0.000587657
+Step  363
+update log: 0.000622195
+Step  364
+update log: 0.000606452
+------------reporting precision------------
+total precision: 0.40005 max: 0.65
+Step  365
+update log: 0.00055893
+Step  366
+update log: 0.000608678
+Step  367
+update log: 0.000544116
+Step  368
+update log: 0.000572297
+------------reporting precision------------
+total precision: 0.39995 max: 0.6
+Step  369
+update log: 0.000580631
+Step  370
+update log: 0.000579639
+Step  371
+update log: 0.000573074
+Step  372
+update log: 0.000592145
+------------reporting precision------------
+total precision: 0.4 max: 0.65
+Step  373
+update log: 0.000590864
+Step  374
+update log: 0.000578921
+Step  375
+update log: 0.000611587
+Step  376
+update log: 0.000590119
+------------reporting precision------------
+total precision: 0.4001 max: 0.65
+Step  377
+update log: 0.000579356
+Step  378
+update log: 0.00049051
+Step  379
+update log: 0.000590072
+Step  380
+update log: 0.000577887
+------------reporting precision------------
+total precision: 0.3999 max: 0.6
+Step  381
+update log: 0.000576941
+Step  382
+update log: 0.000594497
+Step  383
+update log: 0.000560338
+Step  384
+update log: 0.000546973
+------------reporting precision------------
+total precision: 0.3999 max: 0.65
+Step  385
+update log: 0.000564162
+Step  386
+update log: 0.000536665
+Step  387
+update log: 0.000645212
+Step  388
+update log: 0.000594564
+------------reporting precision------------
+total precision: 0.4002 max: 0.7
+Step  389
+update log: 0.000540835
+Step  390
+update log: 0.000586754
+Step  391
+update log: 0.000545238
+Step  392
+update log: 0.000599785
+------------reporting precision------------
+total precision: 0.3999 max: 0.6
+Step  393
+update log: 0.000584838
+Step  394
+update log: 0.000564478
+Step  395
+update log: 0.000571317
+Step  396
+update log: 0.000596078
+------------reporting precision------------
+total precision: 0.39995 max: 0.65
+Step  397
+update log: 0.000555171
+Step  398
+update log: 0.000585184
+Step  399
+update log: 0.000574321
