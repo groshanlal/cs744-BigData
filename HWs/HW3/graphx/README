@@ -1,0 +1,39 @@
+PartB Application1:
+1. First we read soc-livejournal1.txt from hdfs
+2. Then load egdes as a graph
+3. Based on vertices, calculate the outgoing degrees and join with original edge graph
+4. Based on the ragerank algorithm, give each edge an attribute and each vertice an initial weight 
+5. Set up the initial message received by all vertices in PageRank under Pregel framework, which is an iterative API. Limited the iteration number as 20 to prevent from non converging computation.
+6. Finally I let the application print 1000 results
+
+
+PartB Application2:
+The programs can be run as "sh file-name.sh" or "./file-name.sh"
+The txt file is stored in HDFS.
+
+PartBApplication2Question1.sh:
+
+Used the triplets API, use reduction to get the result.
+
+PartBApplication2Question2.sh:
+
+First need to sum up the count of neighbors at each vertex and using a custom max function.
+ Then we can get the most popular vertex:
+
+PartBApplication2Question3.sh:
+
+First we calculate the number of words and the count of the words. Then we use a reduce function to compute the average.
+
+PartBApplication2Question4.sh:
+
+For each vertex using the triplets API to sum up comma separated 
+string. Then we used the standard word count program to determine the maximum popular word.
+
+PartBApplication2Question5.sh:
+
+We used the graphX connectedComponents construct. after get this output,
+we used mapReduce to get the size of the maximum connected component.
+
+PartBApplication2Question6.sh:
+
+First we determine the most popular word. Then we use the triplet api to get total number for each vertex. Then we used map and reduce to get the number of vertices containing this popular word. 
