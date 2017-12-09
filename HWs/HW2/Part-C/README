@@ -1,0 +1,4 @@
+1. The file name is PartCQuestion1.java and PartCQuestion2.java because the java class cannot have a "-" in the name of the class
+2. I write the output to files under /home/ubuntu/flinktest/ with name partCQ*_*slides.txt and partCQ*_*Late.txt because some results are too long.
+3. The results may randomly appear on one of the 5 nodes of out virtue machine.
+4. The script needs to run as bash PartCQuestion*.sh
