@@ -82,6 +82,31 @@ SPFPM is provided as-is, with no warranty of any form.
 
 SPFPM_VERSION = '1.2'
 
+class ouf_handler():
+    def __init__(self):
+        self.OUF_MODE = "SAT"
+    # "RND"
+    def set_ouf(self,s):
+        assert s in ["SAT","RND"], "invalid value of OUF MODE"
+        self.OUF_MODE = s;
+
+OUF = ouf_handler()
+
+def overflow_val(family, val):
+    if OUF.OUF_MODE == "SAT":
+        return family.thresh - 1
+    elif OUF.OUF_MODE == "RND":
+        return val-2*family.thresh # simulate the overflow process
+    else:
+        return 0;
+
+def underflow_val(family, val):
+    if OUF.OUF_MODE == "SAT":
+        return -family.thresh
+    elif OUF.OUF_MODE == "RND":
+        return val+2*family.thresh # simulate the underflow process
+    else:
+        return 0;
 
 class FXfamily(object):
     """Descriptor of the accuracy of a set of fixed-point numbers.
@@ -278,9 +303,9 @@ class FXnum(object):
         try:
             self.family.validate(self.scaledval)
         except FXoverflowError:
-            self.scaledval = self.family.thresh - 1
+            self.scaledval = overflow_val(self.family,self.scaledval)
         except FXunderflowError:
-            self.scaledval = -self.family.thresh
+            self.scaledval = underflow_val(self.family,self.scaledval)
 
     def __hash__(self):
         return hash(self.scaledval) ^ hash(self.family)
