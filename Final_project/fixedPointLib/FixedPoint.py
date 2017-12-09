@@ -95,17 +95,20 @@ class FXfamily(object):
     can be manipulated concurrently.
     """
 
-    def __init__(self, n_bits=64, n_intbits=None):
-        self.fraction_bits = n_bits         # Bits to right of binary point
-        self.integer_bits = n_intbits       # Bits to left of binary point (including sign)
-        self.scale = 1 << n_bits
-        self._roundup = 1 << (n_bits - 1)
+    def __init__(self, n_int_bit=64, n_frac_bit=None):
+        self.fraction_bits = n_int_bit         # Bits to right of binary point
+        self.integer_bits = n_frac_bit       # Bits to left of binary point (including sign)
+        self.scale = 1 << n_int_bit
+        self._roundup = 1 << (n_int_bit - 1)
 
         try:
-            thresh = 1 << (n_bits + n_intbits - 1)
+            self.thresh = 1 << (n_int_bit + n_frac_bit - 1)
+            # thresh = 1 << (n_int_bit + n_frac_bit - 1)
             def validate(scaledval):
-                if scaledval >= thresh or scaledval < -thresh:
+                if scaledval >= self.thresh:
                     raise FXoverflowError
+                elif scaledval < -self.thresh:
+                    raise FXunderflowError
         except:
             def validate(scaledval): return
         self.validate = validate
@@ -116,7 +119,7 @@ class FXfamily(object):
         # Estimate number of extra bits required for accurate values of Pi etc,
         # assuming worst-case of O(n_bits) operations, each with 1-LSB error:
         self._augbits = 4
-        nb = n_bits
+        nb = n_int_bit
         while nb > 0:
             self._augbits += 1
             nb >>= 1
@@ -204,14 +207,14 @@ class FXfamily(object):
             return (self.fraction_bits == other.fraction_bits
                     and self.integer_bits == other.integer_bits)
         except AttributeError:
-            return false
+            return False
 
     def __ne__(self, other):
         try:
             return (self.fraction_bits != other.fraction_bits
                     or self.integer_bits != other.integer_bits)
         except AttributeError:
-            return true
+            return True
 
     def Convert(self, other, other_val):
         """Convert number from different number of fraction-bits"""
@@ -245,6 +248,9 @@ class FXdomainError(FXexception):
 class FXoverflowError(FXexception):
     """Signal that value has overflowed its most-significant bit"""
 
+class FXunderflowError(FXexception):
+    """Signal that value has overflowed its most-significant bit"""
+
 class FXfamilyError(FXexception, TypeError):
     """Signal that family-types of FXnums in binary operation are mismatched"""
 
@@ -267,7 +273,14 @@ class FXnum(object):
         except AttributeError:
             self.scaledval = kwargs.get('scaled_value',
                                         int(val * family.scale))
-        self.family.validate(self.scaledval)
+
+
+        try:
+            self.family.validate(self.scaledval)
+        except FXoverflowError:
+            self.scaledval = self.family.thresh - 1
+        except FXunderflowError:
+            self.scaledval = -self.family.thresh
 
     def __hash__(self):
         return hash(self.scaledval) ^ hash(self.family)
